@@ -1,0 +1,30 @@
+<div id="lang-full">
+  <div class="output" id="lang-name">
+    <h1 class="head-langname">The Language of Momemian</h1>
+    <h2>
+      <h5 class="center">
+        Natively known as: Momem
+        <p>/moˈmem/</p>
+      </h5>
+    </h2>
+    <div id="lang-sentence">
+      <i>...and he stood holding his hat and turned his wet face to the wind...</i>
+      <br /> <br /> {{ langName.sentence }} <br /> <br />
+      <b>Pronunciation</b>:
+      <br /> {{ langName.pronunciation }} <br /> <br />
+      <b>Momem word order</b>:
+      <br /> {{ langName.wordOrder }}
+    </div>
+    <app-translator></app-translator>
+    <div id="lang-seed"> <span>Seed for this language: 28315718894752484</span> </div>
+  </div>
+  <div id="lang-phon">
+    <h2 class="head-phon">Phonology</h2>
+    <app-consonants></app-consonants>
+    <app-vowels></app-vowels>
+    <app-syllables></app-syllables>
+  </div>
+  <app-grammar></app-grammar>
+  <app-lexicon></app-lexicon>
+</div>
+<app-evolve></app-evolve>

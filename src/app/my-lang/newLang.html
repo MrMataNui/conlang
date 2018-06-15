@@ -1,0 +1,984 @@
+<!--
+  style="background: #f9f9f9; padding:0px 1px 0px 2px;"
+  class="vowel1"
+  style="background: transparent; padding:0px 1px 0px 2px;"
+  class="vowel2"
+  -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Momem</title>
+  <link rel="stylesheet" type="text/css" href="main.css" />
+  <link rel="stylesheet" type="text/css" href="newLang.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="pageDefaults.js"></script>
+  <script src="vowelGraph.js"></script>
+  <script src="newLang.js"></script>
+</head>
+
+<body>
+  <main ng-app="myApp" ng-controller="myCtrl">
+    <div id="lang-full">
+      <div class="output" id="lang-name">
+        <h1 class="head-langname">The Language of Momemian</h1>
+        <h2>
+          <center>
+            Natively known as: Momem
+            <f>/moˈmem/</f>
+          </center>
+        </h2>
+        <div id="lang-sentence">
+          <i>...and he stood holding his hat and turned his wet face to the wind...</i>
+          <br />
+          <r>tap</r>
+          <r>je</r>
+          <r>
+          </r>
+          <r>
+          </r>
+          <r>je</r>
+          <r>pu</r>
+          <r>hotkaja</r>
+          <r>hiɥerap</r>
+          <r>
+          </r>
+          <r>bulam</r>
+          <r>tap</r>
+          <r>
+          </r>
+          <r>noɥundeme</r>
+          <r>tu</r>
+          <r>je</r>
+          <r>pu</r>
+          <r>pubi</r>
+          <r>kem</r>
+          <r>hugelam</r>
+          <br />
+          <b>Pronunciation</b>:
+          <f>/tap ʤe ʤe puː hotˈkaʤa hiˈʧeɽap buˈɭam tap noˈʧundeme ʈuː ʤe puː puˈbiː kem huːˈgeɭam/</f>
+          <br />
+          <b>Momem word order</b>: and he his hat holding stood and the wind to his wet face turned
+        </div>
+        <no>Show Translator</no>
+        <div id="togTrans" style="display: none">
+          <center>
+            <form action="" method="GET">
+              <nu>
+                Note: Translator does not automatically do word order and only finds exact matches in your dictionary (will not find plurals, past-tense, etc.) Making the translator smarter is a work in progress.
+                <br /> Sentence:
+                <br />
+                <textarea rows="4" cols="50" type="textarea" name="in" spellcheck="false"> </textarea>
+                <br /> Translation:
+                <br />
+                <textarea rows="4" cols="50" type="textarea" name="out" spellcheck="false"> </textarea>
+                <br />
+                <input type="button" value="Translate" onclick="doTrans(this.form)">
+              </nu>
+            </form>
+          </center>
+        </div>
+        <div id="lang-seed">
+          <span>Seed for this language: 28315718894752484</span>
+        </div>
+      </div>
+      <div id="lang-phon">
+        <h2 class="head-phon">Phonology</h2>
+        <div id="consonants">
+          <div id="cons-inv"> </div>
+          <div class="table-tab" id="bigcontab">
+            <b>Consonant inventory</b>:
+            <f>/b d ʤ g h j k m n p t ʧ ɖ̥ ɭ ɲ ɳ ɽ ʂ ʈ ʔ/</f>
+            <table>
+              <tr>
+                <th>↓Manner/Place→</th>
+                <th>Bilabial</th>
+                <th>Alveolar</th>
+                <th>Postalveolar</th>
+                <th>Retroflex</th>
+                <th>Palatal</th>
+                <th>Velar</th>
+                <th>Glottal</th>
+              </tr>
+              <tr>
+                <td>Stop</td>
+                <td>p b</td>
+                <td>t d</td>
+                <td></td>
+                <td>ʈ</td>
+                <td></td>
+                <td>k g</td>
+                <td>ʔ</td>
+              </tr>
+              <tr>
+                <td>Nasal</td>
+                <td>m</td>
+                <td>n</td>
+                <td></td>
+                <td>ɳ</td>
+                <td>ɲ</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Affricate</td>
+                <td></td>
+                <td></td>
+                <td>ʧ ʤ</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Fricative</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>ʂ</td>
+                <td></td>
+                <td></td>
+                <td>h</td>
+              </tr>
+              <tr>
+                <td>Approximant</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>j</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Tap</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>ɽ</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Lateral approximant</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>ɭ</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div id="vowels">
+          <div id="vow-inv">
+            <b>Vowel inventory</b>
+            <f>: /a aː e eː i iː o u uː/</f>
+          </div>
+          <div id="dipthongs">
+            <b>Diphthongs</b>
+            <f>: None</f>
+          </div>
+          <div class="table-tab" id="bigvowtab">
+            <br />
+            <table id="vowelTable" ng-cloak>
+              <tr>
+                <th colspan="2" id="vowelChart">IPA vowel chart</th>
+              </tr>
+              <tr>
+                <td colspan="2" style="text-align:center">
+                  <table id="vowelHead">
+                    <tr>
+                      <tr>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td> <span style="position:relative;">Front</span> </td>
+                      </tr>
+                      <tr>
+                        <td>Near-front</td>
+                      </tr>
+                      <tr>
+                        <td>Central</td>
+                      </tr>
+                      <tr>
+                        <td>Near-back</td>
+                      </tr>
+                      <tr>
+                        <td>Back</td>
+                      </tr>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td class="right"> <b>High</b> </td>
+              </tr>
+              <td colspan="5" rowspan="7">
+                <div style="position:relative;">
+                  <img alt="Blank vowel trapezoid.svg" src="https://www.vulgarlang.com/320px-Blank_vowel_trapezoid.svg.png" width="320" height="224" srcset="https://www.vulgarlang.com/480px-Blank_vowel_trapezoid.svg.png 1.5x, https://www.vulgarlang.com/640px-Blank_vowel_trapezoid.svg.png 2x" data-file-width="1000" data-file-height="700" />
+                  <div id="largeVowelGraph">
+                    <table id="vowelGraph" ng-cloak> {{ vowelGraph }} </table>
+                  </div>
+                </div>
+              </td>
+              <tr>
+                <td class="right">Near-&nbsp;high</td>
+              </tr>
+              <tr>
+                <td class="right">High-&nbsp;mid</td>
+              </tr>
+              <tr>
+                <td class="right"> <b>Mid</b> </td>
+              </tr>
+              <tr>
+                <td class="right">Low-&nbsp;mid</td>
+              </tr>
+              <tr>
+                <td class="right">Near-&nbsp;Low</td>
+              </tr>
+              <tr>
+                <td class="right" style="height:32px;"> <b>Low</b> </td>
+              </tr>
+              <tr></tr>
+              <tr></tr>
+            </table>
+          </div>
+        </div>
+        <div id="phon-other">
+          <div id="syll-struct" ng-cloak>
+            <table>
+              <tr>
+                <th> <b>Syllable structure</b> </th>
+                <td ng-cloak> {{ syll.syll }} </td>
+              </tr>
+              <tr>
+                <th> <b>Syllable structure</b> </th>
+                <td ng-cloak> {{ syll.stress }} </td>
+              </tr>
+              <tr>
+                <th> <b>Word initial consonants</b> </th>
+                <td ng-cloak> {{ syll.wordStart }} </td>
+              </tr>
+              <tr>
+                <th> <b>Mid-word consonants</b> </th>
+                <td ng-cloak> {{ syll.wordMid }} </td>
+              </tr>
+              <tr>
+                <th> <b>Word final consonants</b> </th>
+                <td ng-cloak> {{ syll.wordFinal }} </td>
+              </tr>
+            </table>
+          </div>
+          <div id="phon-rules" ng-cloak> {{ phonRules }} </div>
+        </div>
+      </div>
+      <div id="lang-grammar">
+        <h2 class="head-grammar">Grammar</h2>
+        <div id="main-word-order">
+          <b>Main word order</b>: Subject-Oblique-Object-Verb. "Mary opened the door with a key" turns into <i>Mary with a key the door opened</i>.
+          <br />
+          <b>Adjective order</b>: Adjectives are positioned before the noun.
+          <br />
+          <b>Adposition</b>: postpositions
+        </div>
+        <br />
+        <div class="table-tab" id="noun-morph">
+          <div class="hh">
+            <h3 class="head-noun-morph">Noun morphology</h3>
+          </div>
+          <table id="howbig">
+            <tr>
+              <th colspan="1"></th>
+              <th colspan="2">Singular</th>
+              <th colspan="2">Plural</th>
+            </tr>
+            <tr>
+              <td rowspan="1">
+                <b>Nominative</b>
+              </td>
+              <td>
+                <i>man</i>
+              </td>
+              <td>
+                <r>uka</r>
+                <f>/uˈka/</f>
+              </td>
+              <td>
+                <i>men</i>
+              </td>
+              <td>
+                Prefix:
+                <r>ɲu-</r>
+                <f>/ɲu-/</f>
+                <br />
+                <r>ɲuuka</r>
+                <f>/ɲuˈuka/</f>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="1">
+                <b>Accusative</b>
+              </td>
+              <td>
+                <i>man</i>
+              </td>
+              <td>
+                Prefix:
+                <r>ja-</r>
+                <f>/ʤa-/</f>
+                <br />
+                <r>jauka</r>
+                <f>/ʤaˈuka/</f>
+              </td>
+              <td>
+                <i>men</i>
+              </td>
+              <td>
+                Prefix:
+                <r>u-</r>
+                <f>/uː-/</f>
+                <br />
+                <r>uuka</r>
+                <f>/uːˈuka/</f>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="1">
+                <b>Genitive</b>
+              </td>
+              <td>
+                <i>man"s</i>
+              </td>
+              <td>
+                Prefix:
+                <r>ɲe-</r>
+                <f>/ɲe-/</f>
+                <br />
+                <r>ɲeuka</r>
+                <f>/ɲeˈuka/</f>
+              </td>
+              <td>
+                <i>men"s</i>
+              </td>
+              <td>
+                Prefix:
+                <r>s(u)-</r>
+                <f>/ʂ(u)-/</f>
+                <br />
+                <r>suka</r>
+                <f>/ʂuˈka/</f>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="1">
+                <b>Dative</b>
+              </td>
+              <td>
+                <i>to [the/a] man</i>
+              </td>
+              <td>
+                Prefix:
+                <r>e-</r>
+                <f>/e-/</f>
+                <br />
+                <r>euka</r>
+                <f>/eˈuka/</f>
+              </td>
+              <td>
+                <i>to men</i>
+              </td>
+              <td>
+                Prefix:
+                <r>p(i)-</r>
+                <f>/p(i)-/</f>
+                <br />
+                <r>puka</r>
+                <f>/puˈka/</f>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="1">
+                <b>Locative</b>
+              </td>
+              <td>
+                <i>in/at/by [the/a] man</i>
+              </td>
+              <td>
+                Prefix:
+                <r>o-</r>
+                <f>/o-/</f>
+                <br />
+                <r>ouka</r>
+                <f>/oˈuka/</f>
+              </td>
+              <td>
+                <i>in/at/by [the/some] men</i>
+              </td>
+              <td>
+                Prefix:
+                <r>u-</r>
+                <f>/uː-/</f>
+                <br />
+                <r>uuka</r>
+                <f>/uːˈuka/</f>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="table-tab" id="def-art">
+          <div class="hh">
+            <h3 class="head-def-art">Definite article</h3>
+          </div>
+          <table>
+            <tr>
+              <th colspan="1"></th>
+              <th colspan="2">Singular</th>
+              <th colspan="2">Plural</th>
+            </tr>
+            <tr>
+              <td rowspan="1">
+                <b>Nominative</b>
+              </td>
+              <td>
+                <i>the [man]</i>
+              </td>
+              <td>
+                <r>ɥoj</r>
+                <f>/ʧoʤ/</f>
+              </td>
+              <td>
+                <i>the [men]</i>
+              </td>
+              <td>
+                <r>ɥek</r>
+                <f>/ʧek/</f>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="1">
+                <b>Accusative</b>
+              </td>
+              <td>
+                <i>the [man]</i>
+              </td>
+              <td>
+                <r>bep</r>
+                <f>/bep/</f>
+              </td>
+              <td>
+                <i>the [men]</i>
+              </td>
+              <td>
+                <r>taɥ</r>
+                <f>/taʧ/</f>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="1">
+                <b>Genitive</b>
+              </td>
+              <td>
+                <i>the [man"s]</i>
+              </td>
+              <td>
+                <r>ham</r>
+                <f>/ham/</f>
+              </td>
+              <td>
+                <i>the [men"s]</i>
+              </td>
+              <td>
+                <r>ɥeb</r>
+                <f>/ʧeb/</f>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="1">
+                <b>Dative</b>
+              </td>
+              <td>
+                <i>to the [man]</i>
+              </td>
+              <td>
+                <r>ham</r>
+                <f>/ham/</f>
+              </td>
+              <td>
+                <i>to the [men]</i>
+              </td>
+              <td>
+                <r>eb</r>
+                <f>/eb/</f>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="1">
+                <b>Locative</b>
+              </td>
+              <td>
+                <i>in/at/by the [man]</i>
+              </td>
+              <td>
+                <r>tam</r>
+                <f>/tam/</f>
+              </td>
+              <td>
+                <i>in/at/by the [men]</i>
+              </td>
+              <td>
+                <r>ut</r>
+                <f>/ut/</f>
+              </td>
+            </tr>
+          </table>
+          Uses of definite article that differ from English:• Definite article can be omitted
+          <br /> &emsp;Example: ‘I am going to jacuzzi’
+          <br /> • Used for languages: ‘The English’
+        </div>
+        <div class="table-tab" id="indef-art">
+          <div class="hh">
+            <h3 class="head-indef-art">Indefinite article</h3>
+          </div>
+          Numeral for ‘one’ is used as indefinite article.
+        </div>
+        <div class="table-tab" id="pers-pronouns">
+          <h3 class="head-pers-pronouns">Personal pronouns</h3>
+          <table cellspacing="0" border="1">
+            <tr>
+              <th></th>
+              <th colspan="2">Nominative</th>
+              <th colspan="2">Accusative</th>
+              <th colspan="2">Genitive</th>
+              <th colspan="2">Dative</th>
+            </tr>
+            <tr>
+              <td>
+                <sc>1st.sg</sc>
+              </td>
+              <td>I</td>
+              <td>
+                <r>bo</r>
+                <f>/bo/</f>
+              </td>
+              <td>me</td>
+              <td>
+                <r>buħ</r>
+                <f>/buʔ/</f>
+              </td>
+              <td>mine</td>
+              <td>
+                <r>bo</r>
+                <r>pu</r>
+                <f>/bo puː/</f>
+              </td>
+              <td>to me</td>
+              <td>
+                <r>bo</r>
+                <r>hi</r>
+                <f>/bo hiː/</f>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <sc>2nd.sg</sc>
+              </td>
+              <td>you</td>
+              <td>
+                <r>hup</r>
+                <f>/huːp/</f>
+              </td>
+              <td>you</td>
+              <td>
+                <r>hob</r>
+                <f>/hob/</f>
+              </td>
+              <td>yours</td>
+              <td>
+                <r>hup</r>
+                <r>pu</r>
+                <f>/huːp puː/</f>
+              </td>
+              <td>to you</td>
+              <td>
+                <r>hup</r>
+                <r>hi</r>
+                <f>/huːp hiː/</f>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <sc>3rd.sg</sc>
+              </td>
+              <td>he/she/it</td>
+              <td>
+                <r>je</r>
+                <f>/ʤe/</f>
+              </td>
+              <td>him/her/it</td>
+              <td>
+                <r>job</r>
+                <f>/ʤob/</f>
+              </td>
+              <td>his/hers/its</td>
+              <td>
+                <r>je</r>
+                <r>pu</r>
+                <f>/ʤe puː/</f>
+              </td>
+              <td>to him/her/it</td>
+              <td>
+                <r>je</r>
+                <r>hi</r>
+                <f>/ʤe hiː/</f>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <sc>1st.pl</sc>
+              </td>
+              <td>we</td>
+              <td>
+                <r>o</r>
+                <f>/o/</f>
+              </td>
+              <td>us</td>
+              <td>
+                <r>ot</r>
+                <f>/oʈ/</f>
+              </td>
+              <td>ours</td>
+              <td>
+                <r>o</r>
+                <r>pu</r>
+                <f>/o puː/</f>
+              </td>
+              <td>to us</td>
+              <td>
+                <r>o</r>
+                <r>hi</r>
+                <f>/o hiː/</f>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <sc>2nd.pl</sc>
+              </td>
+              <td>you</td>
+              <td>
+                <r>hum</r>
+                <f>/huːm/</f>
+              </td>
+              <td>you</td>
+              <td>
+                <r>hed</r>
+                <f>/heːd/</f>
+              </td>
+              <td>yours</td>
+              <td>
+                <r>hum</r>
+                <r>pu</r>
+                <f>/huːm puː/</f>
+              </td>
+              <td>to you</td>
+              <td>
+                <r>hum</r>
+                <r>hi</r>
+                <f>/huːm hiː/</f>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <sc>3rd.pl</sc>
+              </td>
+              <td>they</td>
+              <td>
+                <r>pe</r>
+                <f>/pe/</f>
+              </td>
+              <td>them</td>
+              <td>
+                <r>po</r>
+                <f>/po/</f>
+              </td>
+              <td>theirs</td>
+              <td>
+                <r>pe</r>
+                <r>pu</r>
+                <f>/pe puː/</f>
+              </td>
+              <td>to them</td>
+              <td>
+                <r>pe</r>
+                <r>hi</r>
+                <f>/pe hiː/</f>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="table-tab" id="lang-verbs">
+          <h3 class="head-verbs">Verbs</h3>
+          <table class="tg">
+            <tr>
+              <th colspan="5">Indicative mood</th>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>Past</td>
+              <td>Present</td>
+              <td>Future</td>
+            </tr>
+            <tr>
+              <td rowspan="7">Perfective</td>
+              <td></td>
+              <td>
+                <i>studied</i>
+              </td>
+              <td>
+                <i>study</i>
+              </td>
+              <td>
+                <i>will study</i>
+              </td>
+            </tr>
+            <tr>
+              <td>1st.sg</td>
+              <td>
+                Suffix:
+                <r>-(u)y</r>
+                <f>/-(uː)j/</f>
+                <br />
+                <r>heey</r>
+                <f>/heˈej/</f>
+              </td>
+              <td>
+                No affix
+                <br />
+                <r>hee</r>
+                <f>/heˈe/</f>
+              </td>
+              <td>
+                Suffix:
+                <r>-e</r>
+                <f>/-eː/</f>
+                <br />
+                <r>heee</r>
+                <f>/heˈeeː/</f>
+              </td>
+            </tr>
+            <tr>
+              <td>2nd.sg</td>
+              <td>
+                Suffix:
+                <r>-(i)y</r>
+                <f>/-(i)j/</f>
+                <br />
+                <r>heey</r>
+                <f>/heˈej/</f>
+              </td>
+              <td>
+                No affix
+                <br />
+                <r>hee</r>
+                <f>/heˈe/</f>
+              </td>
+              <td>
+                Suffix:
+                <r>-(e)s</r>
+                <f>/-(e)ʂ/</f>
+                <br />
+                <r>hees</r>
+                <f>/heˈeʂ/</f>
+              </td>
+            </tr>
+            <tr>
+              <td>3rd.sg</td>
+              <td>
+                Suffix:
+                <r>-(a)m</r>
+                <f>/-(a)m/</f>
+                <br />
+                <r>heem</r>
+                <f>/heˈem/</f>
+              </td>
+              <td>
+                No affix
+                <br />
+                <r>hee</r>
+                <f>/heˈe/</f>
+              </td>
+              <td>
+                Suffix:
+                <r>-(a)t</r>
+                <f>/-(a)t/</f>
+                <br />
+                <r>heet</r>
+                <f>/heˈet/</f>
+              </td>
+            </tr>
+            <tr>
+              <td>1st.pl</td>
+              <td>
+                Suffix:
+                <r>-(e)ge</r>
+                <f>/ege/</f>
+                <br />
+                <r>heege</r>
+                <f>/heˈege/</f>
+              </td>
+              <td>
+                No affix
+                <br />
+                <r>hee</r>
+                <f>/heˈe/</f>
+              </td>
+              <td>
+                Suffix:
+                <r>-(e)mo</r>
+                <f>/emo/</f>
+                <br />
+                <r>heemo</r>
+                <f>/heˈemo/</f>
+              </td>
+            </tr>
+            <tr>
+              <td>2nd.pl</td>
+              <td>
+                Suffix:
+                <r>-(e)ji</r>
+                <f>/eʤiː/</f>
+                <br />
+                <r>heeji</r>
+                <f>/heˈeʤiː/</f>
+              </td>
+              <td>
+                No affix
+                <br />
+                <r>hee</r>
+                <f>/heˈe/</f>
+              </td>
+              <td>
+                Suffix:
+                <r>-u</r>
+                <f>/-u/</f>
+                <br />
+                <r>heeu</r>
+                <f>/heˈeu/</f>
+              </td>
+            </tr>
+            <tr>
+              <td>3rd.pl</td>
+              <td>
+                Suffix:
+                <r>-(e)go</r>
+                <f>/ego/</f>
+                <br />
+                <r>heego</r>
+                <f>/heˈego/</f>
+              </td>
+              <td>
+                No affix
+                <br />
+                <r>hee</r>
+                <f>/heˈe/</f>
+              </td>
+              <td>
+                Suffix:
+                <r>-e</r>
+                <f>/-e/</f>
+                <br />
+                <r>heee</r>
+                <f>/heˈee/</f>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="table-tab" id="lang-perf">
+          <h3 class="head-verbs">Perfect aspect</h3>
+          <i>‘have studied’</i>Uses the word for ‘have’ before main verb.
+          <h3 class="head-verbs">Progressive aspect</h3>
+          <i>‘am studying’</i>Prefix:
+          <r>pe-</r>
+          <f>/pe-/</f>
+          <br /> Tense affixes come between the root verb and the progressive affix.
+        </div>
+        <div class="table-tab" id="lang-imp">
+          <h3 class="head-verbs">Imperative</h3>
+          <i>‘study!’</i> (as a command)Prefix:
+          <r>t(e)-</r>
+          <f>/t(e)-/</f>
+          <br />
+        </div>
+        <div class="table-tab" id="lang-neg">
+          <h3 class="head-verbs">Negation</h3>
+          Prefix on verb:
+          <r>u-</r>
+          <f>/u-/</f>
+          <br /> Tense affixes come between the root verb and the negative affix.
+        </div>
+        <div id="lang-der-morph">
+          <h3 class="head-der-morph">Derivational morphology</h3>
+          <b>Noun → adjective</b>: Prefix:
+          <r>h(u)-</r>
+          <f>/h(u)-/</f>
+          <br />
+          <b>Adjective → noun</b>: Prefix:
+          <r>hu-</r>
+          <f>/hu-/</f>
+          <br />
+          <b>Noun → verb</b>: Prefix:
+          <r>u-</r>
+          <f>/u-/</f>
+          <br />
+          <b>Verb → noun</b>: Prefix:
+          <r>u-</r>
+          <f>/u-/</f>
+          <br />
+          <b>Verb → adjective</b>: Prefix:
+          <r>u-</r>
+          <f>/u-/</f>
+          <br />
+          <b>Adjective → adverb</b>: Prefix:
+          <r>h(e)-</r>
+          <f>/h(eː)-/</f>
+          <br />
+          <b>One who Xs (e.g. paint → painter)</b>: Prefix:
+          <r>ɥ(e)-</r>
+          <f>/ʧ(e)-/</f>
+          <br />
+          <b>Place where (e.g. wine → winery)</b>: Prefix:
+          <r>s(u)-</r>
+          <f>/ʂ(uː)-/</f>
+          <br />
+          <b>Diminutive</b>: Prefix:
+          <r>s(u)-</r>
+          <f>/ʂ(u)-/</f>
+          <br />
+          <b>Augmentative</b>: Prefix:
+          <r>o-</r>
+          <f>/o-/</f>
+          <br />
+          <br />
+        </div>
+      </div>
+      <app-lexicon></app-lexicon>
+    </div>
+    <div>
+      <center>
+        <button class="button0 button10" onclick="evolve()">Evolve language (beta)</button>
+        <nu> This feature applies <b>sound changes</b> to the IPA of your language and allows you to reconfigure the orthography (jump to orthography). </nu>
+        <br />
+        <nu> Use the format <b>e > ɛ</b> to apply changes. (Supports RegEx, and <b>OR</b> command to create random choice between two options). </nu>
+        <textarea id="evsound" rows="12" cols="15" autocapitalize="off" spellcheck="false" style="margin-right: 20px; margin-top: 10px;"> </textarea>
+      </center>
+    </div>
+    <div id="englishhere"> </div>
+  </main>
+</body>
+
+</html>

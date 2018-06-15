@@ -1,0 +1,123 @@
+table:not(#vowelTable),
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+  vertical-align: center;
+  border-spacing: 5px;
+  font-family: serif;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid black;
+}
+
+table:not(#vowelTable) {
+  margin: auto;
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 95%;
+}
+
+table:not(#vowelTable) th,
+table:not(#vowelTable) td {
+  border: 1px dashed black;
+  vertical-align: center;
+  text-align: center;
+}
+
+table:not(#vowelTable) th {
+  border: 1px solid black;
+  background-color: #00F;
+  color: #FFF;
+}
+
+table:not(#vowelTable) tr:nth-child(odd) {
+  background-color: #CCC;
+}
+
+table:not(#vowelTable) tr:nth-child(even) {
+  background-color: #EEE;
+}
+
+#vowelHead {
+  position: relative;
+  line-height: 1.4em;
+  background: transparent;
+  background: #f9f9f9;
+  margin: 0em auto 0em auto;
+}
+
+#vowelHead tr {
+  text-align: center;
+}
+
+#vowelHead td:nth-child(odd) {
+  width: 64px;
+}
+
+#vowelHead td:nth-child(even) {
+  width: 62px;
+}
+
+#vowelGraph {
+  position: relative;
+  width: 320px;
+  height: 224px;
+  font-size: 110%;
+/*
+  background-color: transparent;
+  border-style: none;
+  background: none !important;
+*/
+}
+
+#vowelGraph div {
+  position: absolute;
+  background: transparent;
+  width: 60px;
+  height: 1px;
+  left: 0px;
+  text-align: right;
+}
+
+#vowelGraph .vowel1 {
+  background: #F9F9F9;
+  padding: 0px 1px 0px 0px;
+}
+
+#vowelGraph .vowel2 {
+  background: transparent;
+  padding: 0px 1px 0px 0px;
+}
+
+#largeVowelGraph {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: transparent;
+/*
+  background-color: transparent;
+  border-style: none;
+  background: none !important;
+*/
+}
+
+#largeVowelGraph tr,
+#largeVowelGraph td {
+  all: unset;
+}
+
+#vowelTable th {
+  background-color: blue;
+}
+
+.vowels {
+  position:absolute;
+  left:0px;
+  text-align:right;
+  background:transparent;
+}

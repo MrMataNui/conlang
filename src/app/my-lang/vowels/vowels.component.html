@@ -1,0 +1,83 @@
+<!--
+(<div) (style="top:\d+px; left:\d+px;")>\n[ ]*<span (class="vowel[12]")(>.*</)span>\n[ ]*</(div>)
+$1 $3 $2 $4$5
+(style="top:\d+px; left:\d+px;")> <span (class="vowel[12]")(>[ ]*.*)</span>
+$2$1
+-->
+<div id="vowels">
+  <div id="vow-inv">
+    <p><b>Vowel inventory</b>: /{{ vowelList.join(' ') }}/</p>
+  </div>
+  <div id="dipthongs">
+    <p><b>Diphthongs</b>: None</p>
+  </div>
+  <div class="table-tab" id="bigvowtab">
+    <br />
+    <table id="vowelTable">
+      <tr>
+        <th colspan="2" id="vowelChart">IPA vowel chart</th>
+      </tr>
+      <tr>
+        <td colspan="2" style="text-align:center">
+          <table id="vowelHead">
+            <tr style="text-align:center;">
+              <td></td>
+              <td style="width:64px;">
+                <div style="position:relative;">Front</div>
+              </td>
+              <td style="width:62px;">Near-​front</td>
+              <td style="width:64px;">Central</td>
+              <td style="width:62px;">Near-​back</td>
+              <td style="width:64px;">Back</td>
+            </tr>
+            <tr>
+              <td style="text-align:right;"> <b>High</b> </td>
+              <td colspan="5" rowspan="7">
+                <div style="position:relative;">
+                  <img alt="Blank vowel trapezoid.svg" src="https://www.vulgarlang.com/320px-Blank_vowel_trapezoid.svg.png" width="320" height="224" srcset="https://www.vulgarlang.com/480px-Blank_vowel_trapezoid.svg.png 1.5x, https://www.vulgarlang.com/640px-Blank_vowel_trapezoid.svg.png 2x" data-file-width="1000" data-file-height="700" />
+                  <div id="largeVowelGraph">
+                    <table id="vowelGraph">
+                      <tr>
+                        <td>
+                          <div *ngFor="let vowEl of getVowelGraph">
+                            <div [ngStyle]="vowEl.style">
+                              <span class="vowels">
+                                <span [ngClass]="vowEl.class">
+                                  {{ vowEl.value1 }}&#160;&#160;{{ vowEl.value2 }}
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align:right;">Near-&nbsp;high</td>
+            </tr>
+            <tr>
+              <td style="text-align:right;">High-&nbsp;mid</td>
+            </tr>
+            <tr>
+              <td style="text-align:right;"> <b>Mid</b> </td>
+            </tr>
+            <tr>
+              <td style="text-align:right;">Low-&nbsp;mid</td>
+            </tr>
+            <tr>
+              <td style="text-align:right;">Near-&nbsp;Low</td>
+            </tr>
+            <tr>
+              <td style="height:32px; text-align:right;"> <b>Low</b> </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr></tr>
+      <tr></tr>
+    </table>
+  </div>
+</div>

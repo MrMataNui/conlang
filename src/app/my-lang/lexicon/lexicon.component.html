@@ -1,0 +1,20 @@
+<div id="lang-lexi">
+  <table>
+    <tr>
+      <th> Spelling </th>
+      <th> /Pronunciation/ </th>
+      <th> Part Of Speech </th>
+      <th> Definition(s) </th>
+      <th> Part Of Speech 2 </th>
+      <th> Definition(s) 2 </th>
+    </tr>
+    <tr *ngFor="let x of newLang">
+      <td ng-cloak> {{ capitalize(x.word) }} </td>
+      <td ng-cloak> {{ x.IPA }} </td>
+      <td ng-cloak> {{ capitalize(x.partOfSpeech) }} </td>
+      <td ng-cloak> {{ capitalize(x.engWord) }} </td>
+      <td ng-cloak> {{ (x.partOfSpeech2) ? capitalize(x.partOfSpeech2) : "" }} </td>
+      <td ng-cloak> {{ (x.engWord2) ? capitalize(x.engWord2) : "" }} </td>
+    </tr>
+  </table>
+</div>

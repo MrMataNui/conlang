@@ -1,0 +1,22 @@
+<div id="togTrans">
+  <p> <button class="button0 button10" (click)="showTranslator = !showTranslator">Show Translator</button> </p>
+  <h5 [ngStyle]="(showTranslator) ? {display: 'initial'} : {display: 'none'}">
+    <form action="" method="GET">
+      <p>
+        Note: Translator does not automatically do word order and only finds exact matches in your dictionary (will not find plurals, past-tense, etc.)
+        <br /> Making the translator smarter is a work in progress.
+        <br />
+        <br /> Sentence:
+        <br />
+        <textarea id="engLang" rows="4" cols="50" type="textarea" name="in" spellcheck="false"> </textarea>
+        <br />
+        <br /> Translation:
+        <br />
+        <textarea id="newLang" rows="4" cols="50" type="textarea" name="out" spellcheck="false"> </textarea>
+        <br />
+        <br />
+        <input type="button" value="Translate" onclick="doTrans(this.form)" />
+      </p>
+    </form>
+  </h5>
+</div>

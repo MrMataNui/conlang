@@ -1,0 +1,40 @@
+<div id="phon-other">
+  <div id="syll-struct">
+    <table>
+      <tr>
+        <th> <b>Syllable structure</b> </th>
+        <td ng-cloak> {{ syll.syll }} </td>
+      </tr>
+      <tr>
+        <th> <b>Syllable structure</b> </th>
+        <td ng-cloak> {{ syll.stress }} </td>
+      </tr>
+      <tr>
+        <th> <b>Word initial consonants</b> </th>
+        <td ng-cloak> {{ syll.wordStart }} </td>
+      </tr>
+      <tr>
+        <th> <b>Mid-word consonants</b> </th>
+        <td ng-cloak> {{ syll.wordMid }} </td>
+      </tr>
+      <tr>
+        <th> <b>Word final consonants</b> </th>
+        <td ng-cloak> {{ syll.wordFinal }} </td>
+      </tr>
+    </table>
+  </div>
+  <div id="phon-rules">
+    <table class="phonRules">
+      <tr>
+        <th> <b>Phonological rules (in order of application)</b> </th>
+        <th> </th>
+        <th> Phonological rules </th>
+      </tr>
+      <tr *ngFor="let item of getData()">
+        <td ng-cloak> {{ item.data }} </td>
+        <td> </td>
+        <td ng-cloak> {{ item.rules }} </td>
+      </tr>
+    </table>
+  </div>
+</div>
