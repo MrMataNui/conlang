@@ -1,0 +1,17 @@
+#const-symbols {
+  width: 20em;
+  margin: 0 auto;
+}
+
+#const-symbols tr {
+  width: 20em;
+  margin: 0 auto;
+}
+
+#constTable {
+  margin: initial;
+}
+
+#constTable th {
+  font-size: 14px;
+}

@@ -1,15 +1,15 @@
 html {
-  margin: 0 auto;
+	margin: 0 auto;
 }
 
 body {
-  margin: 0 auto;
-  width: 90%;
+	margin: 0 auto;
+	width: 90%;
 }
 
 body main {
-  margin: 0 auto;
-  border: double black;
-  background-color: #BBB;
-  font-family: serif;
+	margin: 0 auto;
+	border: double black;
+	background-color: #BBB;
+	font-family: serif;
 }

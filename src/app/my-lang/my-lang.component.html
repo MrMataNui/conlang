@@ -1,30 +1,44 @@
 <div id="lang-full">
   <div class="output" id="lang-name">
-    <h1 class="head-langname">The Language of Momemian</h1>
+    <h1 class="head-langname">The Language of Johi</h1>
     <h2>
       <h5 class="center">
-        Natively known as: Momem
-        <p>/moˈmem/</p>
+        <p>Natively known as: Ȼoʯi</p>
+        <p>/ʤoˈʔi/</p>
       </h5>
     </h2>
     <div id="lang-sentence">
-      <i>...and he stood holding his hat and turned his wet face to the wind...</i>
-      <br /> <br /> {{ langName.sentence }} <br /> <br />
-      <b>Pronunciation</b>:
-      <br /> {{ langName.pronunciation }} <br /> <br />
-      <b>Momem word order</b>:
-      <br /> {{ langName.wordOrder }}
+      <p [innerHTML]="langName().engSentence"> Loading... </p>
+      <p [innerHTML]="langName().sentence"> Loading... </p>
+      <p> <b>Pronunciation</b>: </p>
+      <p class="IPA" [innerHTML]="langName().pronunciation"> Loading... </p>
+      <p> <b>Johi word order</b>: </p>
+      <p class="word-order" [innerHTML]="langName().wordOrder"> Loading... </p>
     </div>
-    <app-translator></app-translator>
-    <div id="lang-seed"> <span>Seed for this language: 28315718894752484</span> </div>
+    <!-- <div id="lang-seed"> -->
+    <!-- Seed for this language: -->
+    <!-- <b>28315718894752484</b> -->
+    <!-- </div> -->
+    <nav>
+      <a routerLink="/translate" routerLinkActive="active">Translator</a>
+      <a routerLink="/consonants" routerLinkActive="active">Consonants</a>
+      <a routerLink="/vowels" routerLinkActive="active">Vowels</a>
+      <a routerLink="/syllables" routerLinkActive="active">Syllables</a>
+      <div class="dropdown">
+        <button class="dropbtn">
+          <b>Grammar</b> &nbsp;
+          <i class="down-arrow"></i>
+        </button>
+        <div class="dropdown-content">
+          <a routerLink="/grammar" routerLinkActive="active">Grammar</a>
+          <a routerLink="/articles" routerLinkActive="active">Articles</a>
+          <a routerLink="/morphology" routerLinkActive="active">Morphology</a>
+          <a routerLink="/grammar-misc" routerLinkActive="active">Miscellaneous</a>
+        </div>
+      </div>
+      <a routerLink="/lexicon" routerLinkActive="active">Lexicon</a>
+      <a routerLink="/data" routerLinkActive="active">Data</a>
+    </nav>
+    <router-outlet></router-outlet>
   </div>
-  <div id="lang-phon">
-    <h2 class="head-phon">Phonology</h2>
-    <app-consonants></app-consonants>
-    <app-vowels></app-vowels>
-    <app-syllables></app-syllables>
-  </div>
-  <app-grammar></app-grammar>
-  <app-lexicon></app-lexicon>
 </div>
-<app-evolve></app-evolve>

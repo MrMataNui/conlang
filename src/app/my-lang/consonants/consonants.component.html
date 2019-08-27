@@ -1,301 +1,37 @@
 <div id="consonants">
-  <div id="cons-inv">
-    <p><b>Consonant inventory</b>: /b d ʤ g h j k m n p t ʧ ɖ̥ ɭ ɲ ɳ ɽ ʂ ʈ ʔ/</p>
-  </div>
-  <div class="table-tab" id="bigcontab">
-    <table>
+  <div id="bigcontab">
+    <h3>Consonants</h3>
+    <div id="cons-inv">
+      <p ng-cloak>
+        <b>Consonant inventory</b>:
+        <span>/{{ constList.join(' ') }}/</span>
+      </p>
+    </div>
+    <table id="constTable">
       <tr>
-        <th>↓Manner/Place→</th>
-        <th>Bilabial</th>
-        <th>Alveolar</th>
-        <th>Postalveolar</th>
-        <th>Retroflex</th>
-        <th>Palatal</th>
-        <th>Velar</th>
-        <th>Glottal</th>
+        <th style="color: orange;">→Place→ / ↓Manner↓</th>
+        <th *ngFor="let place of placeList">
+          {{ placeListNames(place) }}
+        </th>
       </tr>
-      <tr>
-        <td>Stop</td>
-        <td>p b</td>
-        <td>t d</td>
-        <td></td>
-        <td>ʈ</td>
-        <td></td>
-        <td>k g</td>
-        <td>ʔ</td>
-      </tr>
-      <tr>
-        <td>Nasal</td>
-        <td>m</td>
-        <td>n</td>
-        <td></td>
-        <td>ɳ</td>
-        <td>ɲ</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>Affricate</td>
-        <td></td>
-        <td></td>
-        <td>ʧ ʤ</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>Fricative</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>ʂ</td>
-        <td></td>
-        <td></td>
-        <td>h</td>
-      </tr>
-      <tr>
-        <td>Approximant</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>j</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>Tap</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>ɽ</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>Lateral approximant</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>ɭ</td>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr *ngFor="let manner of mannerList">
+        <th> {{ mannerListNames(manner) }} </th>
+        <td *ngFor="let place of placeList">
+          {{ consonantTable[place][manner] }}
+        </td>
       </tr>
     </table>
   </div>
 </div>
-<!--
-<table id='constTable'>
-<tr>
-<th>↓Manner/Place→</th>
-<th>Dental</th>
-<th>Bilabial</th>
-<th>Labiodental</th>
-<th>Alveolar</th>
-<th>Postalveolar</th>
-<th>Retroflex</th>
-<th>Alveolo-palatal</th>
-<th>Palatal</th>
-<th>Velar</th>
-<th>Labio-velar</th>
-<th>Uvular</th>
-<th>Pharyngeal</th>
-<th>Glottal</th>
-</tr>
-<tr>
-<td>	Stop	</td>
-<td>{{ consonant.Den.Stop }}</td>
-<td>{{ consonant.Bil.Stop }}</td>
-<td>{{ consonant.LabDen.Stop }}</td>
-<td>{{ consonant.Alveolar.Stop }}</td>
-<td>{{ consonant.Pos.Stop }}</td>
-<td>{{ consonant.Flex.Stop }}</td>
-<td>{{ consonant.AlvPal.Stop }}</td>
-<td>{{ consonant.Pal.Stop }}</td>
-<td>{{ consonant.Vel.Stop }}</td>
-<td>{{ consonant.LabVel.Stop }}</td>
-<td>{{ consonant.Uvu.Stop }}</td>
-<td>{{ consonant.Pha.Stop }}</td>
-<td>{{ consonant.Glo.Stop }}</td>
-</tr>
-<tr>
-<td>Nasal</td>
-<td>{{ consonant.Den.Nasal }}</td>
-<td>{{ consonant.Bil.Nasal }}</td>
-<td>{{ consonant.LabDen.Nasal }}</td>
-<td>{{ consonant.Alveolar.Nasal }}</td>
-<td>{{ consonant.Pos.Nasal }}</td>
-<td>{{ consonant.Flex.Nasal }}</td>
-<td>{{ consonant.AlvPal.Nasal }}</td>
-<td>{{ consonant.Pal.Nasal }}</td>
-<td>{{ consonant.Vel.Nasal }}</td>
-<td>{{ consonant.LabVel.Nasal }}</td>
-<td>{{ consonant.Uvu.Nasal }}</td>
-<td>{{ consonant.Pha.Nasal }}</td>
-<td>{{ consonant.Glo.Nasal }}</td>
-</tr>
-<tr>
-<td>Affricate</td>
-<td>{{ consonant.Den.Affricate }}</td>
-<td>{{ consonant.Bil.Affricate }}</td>
-<td>{{ consonant.LabDen.Affricate }}</td>
-<td>{{ consonant.Alveolar.Affricate }}</td>
-<td>{{ consonant.Pos.Affricate }}</td>
-<td>{{ consonant.Flex.Affricate }}</td>
-<td>{{ consonant.AlvPal.Affricate }}</td>
-<td>{{ consonant.Pal.Affricate }}</td>
-<td>{{ consonant.Vel.Affricate }}</td>
-<td>{{ consonant.LabVel.Affricate }}</td>
-<td>{{ consonant.Uvu.Affricate }}</td>
-<td>{{ consonant.Pha.Affricate }}</td>
-<td>{{ consonant.Glo.Affricate }}</td>
-</tr>
-<tr>
-<td>Fricative</td>
-<td>{{ consonant.Den.Fricative }}</td>
-<td>{{ consonant.Bil.Fricative }}</td>
-<td>{{ consonant.LabDen.Fricative }}</td>
-<td>{{ consonant.Alveolar.Fricative }}</td>
-<td>{{ consonant.Pos.Fricative }}</td>
-<td>{{ consonant.Flex.Fricative }}</td>
-<td>{{ consonant.AlvPal.Fricative }}</td>
-<td>{{ consonant.Pal.Fricative }}</td>
-<td>{{ consonant.Vel.Fricative }}</td>
-<td>{{ consonant.LabVel.Fricative }}</td>
-<td>{{ consonant.Uvu.Fricative }}</td>
-<td>{{ consonant.Pha.Fricative }}</td>
-<td>{{ consonant.Glo.Fricative }}</td>
-</tr>
-<tr>
-<td>Approximant</td>
-<td>{{ consonant.Den.Approximant }}</td>
-<td>{{ consonant.Bil.Approximant }}</td>
-<td>{{ consonant.LabDen.Approximant }}</td>
-<td>{{ consonant.Alveolar.Approximant }}</td>
-<td>{{ consonant.Pos.Approximant }}</td>
-<td>{{ consonant.Flex.Approximant }}</td>
-<td>{{ consonant.AlvPal.Approximant }}</td>
-<td>{{ consonant.Pal.Approximant }}</td>
-<td>{{ consonant.Vel.Approximant }}</td>
-<td>{{ consonant.LabVel.Approximant }}</td>
-<td>{{ consonant.Uvu.Approximant }}</td>
-<td>{{ consonant.Pha.Approximant }}</td>
-<td>{{ consonant.Glo.Approximant }}</td>
-</tr>
-<tr>
-<td>	Tap	</td>
-<td>{{ consonant.Den.Tap }}</td>
-<td>{{ consonant.Bil.Tap }}</td>
-<td>{{ consonant.LabDen.Tap }}</td>
-<td>{{ consonant.Alveolar.Tap }}</td>
-<td>{{ consonant.Pos.Tap }}</td>
-<td>{{ consonant.Flex.Tap }}</td>
-<td>{{ consonant.AlvPal.Tap }}</td>
-<td>{{ consonant.Pal.Tap }}</td>
-<td>{{ consonant.Vel.Tap }}</td>
-<td>{{ consonant.LabVel.Tap }}</td>
-<td>{{ consonant.Uvu.Tap }}</td>
-<td>{{ consonant.Pha.Tap }}</td>
-<td>{{ consonant.Glo.Tap }}</td>
-</tr>
-<tr>
-<td>Trill</td>
-<td>{{ consonant.Den.Trill }}</td>
-<td>{{ consonant.Bil.Trill }}</td>
-<td>{{ consonant.LabDen.Trill }}</td>
-<td>{{ consonant.Alveolar.Trill }}</td>
-<td>{{ consonant.Pos.Trill }}</td>
-<td>{{ consonant.Flex.Trill }}</td>
-<td>{{ consonant.AlvPal.Trill }}</td>
-<td>{{ consonant.Pal.Trill }}</td>
-<td>{{ consonant.Vel.Trill }}</td>
-<td>{{ consonant.LabVel.Trill }}</td>
-<td>{{ consonant.Uvu.Trill }}</td>
-<td>{{ consonant.Pha.Trill }}</td>
-<td>{{ consonant.Glo.Trill }}</td>
-</tr>
-<tr>
-<td>	Lateral fricative	</td>
-<td>{{ consonant.Den.LatFric }}</td>
-<td>{{ consonant.Bil.LatFric }}</td>
-<td>{{ consonant.LabDen.LatFric }}</td>
-<td>{{ consonant.Alveolar.LatFric }}</td>
-<td>{{ consonant.Pos.LatFric }}</td>
-<td>{{ consonant.Flex.LatFric }}</td>
-<td>{{ consonant.AlvPal.LatFric }}</td>
-<td>{{ consonant.Pal.LatFric }}</td>
-<td>{{ consonant.Vel.LatFric }}</td>
-<td>{{ consonant.LabVel.LatFric }}</td>
-<td>{{ consonant.Uvu.LatFric }}</td>
-<td>{{ consonant.Pha.LatFric }}</td>
-<td>{{ consonant.Glo.LatFric }}</td>
-</tr>
-<tr>
-<td>Lateral approximant</td>
-<td>{{ consonant.Den.LatApprox }}</td>
-<td>{{ consonant.Bil.LatApprox }}</td>
-<td>{{ consonant.LabDen.LatApprox }}</td>
-<td>{{ consonant.Alveolar.LatApprox }}</td>
-<td>{{ consonant.Pos.LatApprox }}</td>
-<td>{{ consonant.Flex.LatApprox }}</td>
-<td>{{ consonant.AlvPal.LatApprox }}</td>
-<td>{{ consonant.Pal.LatApprox }}</td>
-<td>{{ consonant.Vel.LatApprox }}</td>
-<td>{{ consonant.LabVel.LatApprox }}</td>
-<td>{{ consonant.Uvu.LatApprox }}</td>
-<td>{{ consonant.Pha.LatApprox }}</td>
-<td>{{ consonant.Glo.LatApprox }}</td>
-</tr>
-<tr>
-<td>	Lateral tap	</td>
-<td>{{ consonant.Den.LatTap }}</td>
-<td>{{ consonant.Bil.LatTap }}</td>
-<td>{{ consonant.LabDen.LatTap }}</td>
-<td>{{ consonant.Alveolar.LatTap }}</td>
-<td>{{ consonant.Pos.LatTap }}</td>
-<td>{{ consonant.Flex.LatTap }}</td>
-<td>{{ consonant.AlvPal.LatTap }}</td>
-<td>{{ consonant.Pal.LatTap }}</td>
-<td>{{ consonant.Vel.LatTap }}</td>
-<td>{{ consonant.LabVel.LatTap }}</td>
-<td>{{ consonant.Uvu.LatTap }}</td>
-<td>{{ consonant.Pha.LatTap }}</td>
-<td>{{ consonant.Glo.LatTap }}</td>
-</tr>
-<tr>
-<td>	Implosive	</td>
-<td>{{ consonant.Den.Implosive }}</td>
-<td>{{ consonant.Bil.Implosive }}</td>
-<td>{{ consonant.LabDen.Implosive }}</td>
-<td>{{ consonant.Alveolar.Implosive }}</td>
-<td>{{ consonant.Pos.Implosive }}</td>
-<td>{{ consonant.Flex.Implosive }}</td>
-<td>{{ consonant.AlvPal.Implosive }}</td>
-<td>{{ consonant.Pal.Implosive }}</td>
-<td>{{ consonant.Vel.Implosive }}</td>
-<td>{{ consonant.LabVel.Implosive }}</td>
-<td>{{ consonant.Uvu.Implosive }}</td>
-<td>{{ consonant.Pha.Implosive }}</td>
-<td>{{ consonant.Glo.Implosive }}</td>
-</tr>
-<tr>
-<td>	Click	</td>
-<td>{{ consonant.Den.Click }}</td>
-<td>{{ consonant.Bil.Click }}</td>
-<td>{{ consonant.LabDen.Click }}</td>
-<td>{{ consonant.Alveolar.Click }}</td>
-<td>{{ consonant.Pos.Click }}</td>
-<td>{{ consonant.Flex.Click }}</td>
-<td>{{ consonant.AlvPal.Click }}</td>
-<td>{{ consonant.Pal.Click }}</td>
-<td>{{ consonant.Vel.Click }}</td>
-<td>{{ consonant.LabVel.Click }}</td>
-<td>{{ consonant.Uvu.Click }}</td>
-<td>{{ consonant.Pha.Click }}</td>
-<td>{{ consonant.Glo.Click }}</td>
-</tr>
-</table>
--->
+<div class="bg-block">
+	<table id="const-symbols" ng-cloak>
+		<tr>
+			<th> Consonant sound </th>
+			<th> Consonant symbol </th>
+		</tr>
+		<tr *ngFor="let consonant of soundSymbols">
+			<td> /{{ consonant.sound }}/ </td>
+			<td> {{ consonant.symbol }} </td>
+		</tr>
+	</table>
+</div>

@@ -1,54 +1,61 @@
+div#phon-other {
+	max-width: initial;
+	min-width: initial;
+	display: block;
+	margin: 0 auto;
+}
+
 .phonRules {
-  display: block;
-  margin: 0 auto;
+	display: block;
+	margin: 0 auto;
 }
 
 .phonRules td:nth-child(2),
 .phonRules th:nth-child(2) {
-  background-color: black;
+	background-color: black;
 }
 
 table,
 th,
 td {
-  border: 1px solid black;
-  border-spacing: 5px;
-  border-collapse: collapse;
-  vertical-align: center;
-  text-align: center;
-  font-family: serif;
+	border: 1px solid black;
+	border-spacing: 5px;
+	border-collapse: collapse;
+	vertical-align: center;
+	text-align: center;
+	font-family: serif;
 }
 
 th {
-  border: 1px solid black;
-  background-color: #4CAF50;
-  color: white;
+	border: 1px solid black;
+	background-color: #4CAF50;
+	color: white;
 }
 
 table {
-  margin: auto;
-  width: 95%;
-  border: 1px solid black;
-  border-collapse: collapse;
+	margin: auto;
+	width: 95%;
+	border: 1px solid black;
+	border-collapse: collapse;
 }
 
 table th,
 table td {
-  border: 1px dashed black;
-  vertical-align: center;
-  text-align: center;
+	border: 1px dashed black;
+	vertical-align: center;
+	text-align: center;
 }
 
 table th {
-  border: 1px solid black;
-  background-color: #00F;
-  color: #FFF;
+	border: 1px solid black;
+	background-color: #00F;
+	color: #FFF;
 }
 
 table tr:nth-child(odd) {
-  background-color: #CCC;
+	background-color: #CCC;
 }
 
 table tr:nth-child(even) {
-  background-color: #EEE;
+	background-color: #EEE;
 }

@@ -1,0 +1,14 @@
+<br />
+<div id="data-area">
+	<table id="letter-occourances" style="width: 10em;">
+		<tr>
+			<th> Letter </th>
+			<th> Occourances </th>
+		</tr>
+		<tr *ngFor="let symbol of newSymbols">
+			<td> {{ symbol.symbol }} </td>
+			<td> {{ symbol.count }} </td>
+		</tr>
+	</table>
+	<!-- <br /> -->
+</div>
