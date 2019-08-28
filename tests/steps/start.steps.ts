@@ -4,7 +4,7 @@ const expect = chai.expect;
 
 import { Given, Then } from 'cucumber';
 import { browser, $ } from 'protractor';
-Given('you navigate to the home page', () => browser.get('/'));
+Given('you navigate to the home page', () => { browser.get('/'); });
 
 Then('it should start the app', () => {
 	expect($('.head-langname').getText())

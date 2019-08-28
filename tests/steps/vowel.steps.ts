@@ -4,9 +4,9 @@ const expect = chai.expect;
 
 import { Given, Then } from 'cucumber';
 import { $, browser } from 'protractor';
-Given('you navigate to the vowels page', () => browser.get('/vowels'));
+Given('you navigate to the vowels page', () => { browser.get('/vowels'); });
 
-Then('it should load the inventory', () => {
+Then('it should load the vowel inventory', () => {
 	expect($('#vow-inv').$('span').getText())
 		.to.eventually.equal('/a aː e eː i iː o oː u uː ɯ/');
 

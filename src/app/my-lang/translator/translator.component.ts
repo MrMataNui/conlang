@@ -206,7 +206,7 @@ export class TranslatorComponent implements OnInit {
 		return {
 			display: this.testDisplay(this.engLang, 'block'),
 			english: capitalize(trim.wordOrder),
-			langWord: capitalize(trim.langText, true),
+			langWord: capitalize(trim.langText),
 			IPA: getIPA(trim.langIPA),
 		};
 	}

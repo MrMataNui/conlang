@@ -2,22 +2,24 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
+    "outDir": "ConvertedJSFiles",
+    // "sourceMap": true,
+    "sourceMap": false,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es6",
-    "removeComments": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    // "target": "es6",
+    "target": "es5",
+    // "removeComments": true,
+    "removeComments": false,
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
     "resolveJsonModule": true,
+    "module": "commonjs",
+    "noImplicitAny": false,
+    "types": ["jasmine", "node"],
     "esModuleInterop": true
-  }
+  },
+  "exclude": ["node_modules", "node_modules/"]
 }

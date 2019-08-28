@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "clean": "rm -rf ./node_modules",
+    "test": "protractor ConvertedJSFiles/config.js",
     "reinstall": "npm run clean && npm install",
     "debug": "node --inspect-brk ./node_modules/.bin/protractor conf.js",
     "pretest": "npm run tsc && npm run webdriver-update",
-    "test": "protractor ConvertedJSFiles/config.js",
     "tsc": "tsc",
     "webdriver-update": "webdriver-manager update --standalone=false --gecko=false",
     "ng": "ng",
@@ -31,6 +31,7 @@
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
     "body-parser": "^1.19.0",
+    "chai-truthy": "^1.0.0",
     "core-js": "^2.5.4",
     "express": "^4.17.1",
     "mongoose": "^5.6.2",
@@ -40,7 +41,7 @@
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "@angular/cli": "^8.3.0",
+    "@angular/cli": "^8.3.1",
     "@angular/compiler-cli": "^6.1.10",
     "@angular/language-service": "^6.0.3",
     "@types/chai": "^4.2.0",

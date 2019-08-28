@@ -4,7 +4,7 @@ const expect = chai.expect;
 
 import { Given, Then } from 'cucumber';
 import { browser, $ } from 'protractor';
-Given('you navigate to the lexicon page', () => browser.get('/lexicon'));
+Given('you navigate to the lexicon page', () => { browser.get('/lexicon'); });
 
 Then('it should display the lexicon table', () => {
 	/** Checks the row count */

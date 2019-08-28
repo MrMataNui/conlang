@@ -4,7 +4,7 @@ const expect = chai.expect;
 
 import { Given, Then } from 'cucumber';
 import { $, browser } from 'protractor';
-Given('you navigate to the translate page', () => browser.get('/translate'));
+Given('you navigate to the translate page', () => { browser.get('/translate'); });
 
 Then('it should translate the default scentence', () => {
 	$('#translate-button').click();

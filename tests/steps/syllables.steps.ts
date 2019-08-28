@@ -4,7 +4,7 @@ const expect = chai.expect;
 
 import { Given, Then } from 'cucumber';
 import { $, browser } from 'protractor';
-Given('you navigate to the syllables page', () => browser.get('/syllables'));
+Given('you navigate to the syllables page', () => { browser.get('/syllables'); });
 
 Then('it should load the syllable structure', () => {
 	expect($('#syll-pattern').$('td').getText())

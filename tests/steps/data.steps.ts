@@ -4,9 +4,9 @@ const expect = chai.expect;
 
 import { Given, Then } from 'cucumber';
 import { $, browser } from 'protractor';
-Given('you navigate to the data page', () => browser.get('/data'));
+Given('you navigate to the data page', () => { browser.get('/data'); });
 
-Then('should load the \'data\' table', () => {
+Then('should load the data table', () => {
 	$('#letter-occourances')
 		.$$('tr').then(row => {
 			expect(row.length)

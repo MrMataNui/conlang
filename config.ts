@@ -1,7 +1,7 @@
 import { browser, Config } from 'protractor';
 export let config: Config = {
 	seleniumAddress: 'http://localhost:4444/wd/hub',
-
+	baseUrl: 'localhost:4200',
 	// directConnect: true,
 	// maxSessions: 5,
 	// multiCapabilities: [
@@ -19,10 +19,10 @@ export let config: Config = {
 	cucumberOpts: {
 		strict: true,
 		compiler: 'ts:ts-node/register',
-		require: ['test/steps/*.steps.js'],
+		require: ['tests/steps/**/*.steps.js'],
 		// format: "json:./reports/json/cucumber_report.json",
 	},
-	specs: ['../test/features/*.feature'],
+	specs: ['../tests/features/*.feature'],
 	onPrepare: () => {
 		browser.manage().window().maximize();
 		browser.manage().timeouts().implicitlyWait(5000);
@@ -34,3 +34,7 @@ export let config: Config = {
 	start tests:
 	npm test
 */
+// No inputs were found in config file
+// 'c:/Users/Tyler/OneDrive/Projects/langTest - Copy/node_modules/protractor/tsconfig.json'.
+// Specified 'include' paths were '["**/*"]'
+// and 'exclude' paths were '["built","node_modules","testapp","website","scripts","exampleTypescript","spec/**/*"]'.
