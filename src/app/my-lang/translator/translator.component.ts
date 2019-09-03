@@ -31,11 +31,13 @@ interface BoolCheck {
 	plur: boolean;
 	person: boolean;
 }
+
 @Component({
 	selector: 'app-translator',
 	templateUrl: './translator.component.html',
 	styleUrls: ['./translator.component.css']
 })
+
 export class TranslatorComponent implements OnInit {
 	constructor() { }
 	showTranslator = true;
@@ -53,7 +55,7 @@ export class TranslatorComponent implements OnInit {
 		return newVar;
 	}
 
-	getBlanks(allWords, obj): AllWords {
+	getBlanks(allWords: AllWords, obj: NewLang): AllWords {
 		allWords.getPartOfSpeech += addBlank(obj.partOfSpeech);
 		allWords.wordOrder += addBlank(obj.engWord);
 		allWords.langText += addBlank(obj.langWord);
@@ -61,7 +63,7 @@ export class TranslatorComponent implements OnInit {
 		return allWords;
 	}
 
-	getRegex(userWord, engWord) {
+	getRegex(userWord: string[], engWord: string) {
 		const regex = new RegExp(userWord + ' ');
 		const regex2 = /[\(\)]/.test(engWord);
 		if (regex.test(engWord)) {
@@ -71,12 +73,7 @@ export class TranslatorComponent implements OnInit {
 		}
 	}
 
-	wordStyle(
-		wordType: string,
-		boolCheck: BoolCheck,
-		userWord: string,
-		wordType2?: string
-	): boolean {
+	wordStyle(wordType: string, boolCheck: BoolCheck, userWord: string, wordType2?: string): boolean {
 		const defaults = {
 			er: erWordsDefaults,
 			ist: istWordsDefaults,
@@ -105,15 +102,16 @@ export class TranslatorComponent implements OnInit {
 		text = text.toLowerCase();
 		const userText: string[] = text.split(blankSpace);
 		userText.forEach((userWord, i) => {
-			userText[i] = (userWord !== 'i')
-				? userText[i] : 'I';
+			userText[i] = (userWord !== 'i') ? userText[i] : 'I';
 		});
+
 		const wordDefaults: AllWords = {
 			langText: '',
 			langIPA: '',
 			wordOrder: '',
 			getPartOfSpeech: '',
 		};
+
 		const allWords: AllWords = wordDefaults;
 		let newWords: AllWords = wordDefaults;
 		const newWordMorph: { getWord: GetAffix, wordLoc: number }[] = [];
@@ -121,11 +119,23 @@ export class TranslatorComponent implements OnInit {
 		userText.forEach(userWord => {
 			let prevWord: string;
 			const boolCheck: BoolCheck = { ing: true, ion: true, plur: true, person: true };
+			if (userWord === 'you') {
+				const getNewWord: NewLang = {
+					langWord: 'ɥe',
+					IPA: '/ʍe/',
+					partOfSpeech: 'pronoun',
+					engWord: 'you',
+					partOfSpeech2: '',
+					engWord2: ''
+				};
+				newWords = this.getBlanks(allWords, getNewWord);
+				prevWord = userWord;
+			}
 			newLanguage.forEach(newLangWord => {
 				const { engWord, engWord2 } = newLangWord;
 				const engWordCheck = (engWord !== prevWord);
 				const engWordCheck2 = (engWord2 !== prevWord);
-				if (engWordCheck || engWordCheck2) {
+				if ((userWord !== 'you') && (engWordCheck || engWordCheck2)) {
 					// this.getRegex(userWord, engWord);
 					switch (true) {
 						case userWord === engWord2:
@@ -191,6 +201,7 @@ export class TranslatorComponent implements OnInit {
 			}
 			if (getBool) { index++; }
 		});
+
 		newWords.langIPA = newWords.langIPA.replace(/\//g, '');
 		const trim: AllWords = getTrim(newWords);
 		newWordMorph.forEach(word => {
@@ -203,6 +214,7 @@ export class TranslatorComponent implements OnInit {
 			trim.wordOrder = this.addMorph(trim.wordOrder, getWord.engWord, wordLoc);
 
 		});
+
 		return {
 			display: this.testDisplay(this.engLang, 'block'),
 			english: capitalize(trim.wordOrder),

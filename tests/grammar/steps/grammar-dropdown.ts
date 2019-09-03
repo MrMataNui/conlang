@@ -9,7 +9,9 @@ export default function (grammarLoc: string): void {
 	browser.actions()
 		.mouseMove($('.dropdown'))
 		.perform();
+
 	expect($('.dropbtn').isDisplayed())
 		.to.eventually.be.truthy();
+
 	$(`a[href="${grammarLoc}"]`).click();
 }

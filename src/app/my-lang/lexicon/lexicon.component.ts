@@ -19,9 +19,7 @@ export class LexiconComponent implements OnInit {
 	langSort = true;
 	newTable: Lexicon[];
 	allTable: Lexicon[];
-	symbols: string[] = [...new Set(
-		soundSymbols.map(letter => letter.symbol)
-	)];
+	symbols: string[] = [...soundSymbols.map(letter => letter.symbol)];
 	symbols1: string[];
 	symbols2: string[];
 	soundSymbols: SoundSymbols[] = soundSymbols;

@@ -388,7 +388,7 @@ export class ConsonantsComponent implements OnInit {
 		};
 		let constList2: string[] = this.soundSymbols
 			.map(iCheck).filter(el => el);
-		constList2 = [...new Set(constList2)];
+		constList2 = [...constList2];
 		// console.log('constList2', constList2);
 		this.consonantTable = this.constInit(this.constList);
 	}

@@ -456,7 +456,8 @@ export const nameSort: { [propName: string]: string[]; } = language.namesList;
 	p b t d ʈ ɖ k ᵹ ʯ m n ꞥ ñ ꝭ ƙ ç ỻ ꭓ ɥ ꝡ ȝ ɥ ꝡ ꝛ
 	a ä e ë i ï o ö u ü ʊ
 */
-let getNames: (string | any)[] = [];
+let getNames: string[] = [];
+let getNames2: GetLangNames[] = [];
 for (const letter in nameSort) {
 	getNames = [
 		...getNames,
@@ -558,19 +559,17 @@ export const langNames = (nameLetter: string[]): GetLangNames[] => nameLetter.ma
 		langName: capitalize(langName),
 	};
 });
-// tslint:disable-next-line:prefer-const
-let nameSort2: { [propName: string]: GetLangNames[]; } = {};
+const nameSort2: { [propName: string]: GetLangNames[]; } = {};
 for (const letter in nameSort) {
 	nameSort2[letter] = langNames(nameSort[letter]);
 }
-console.log('nameSort', nameSort);
-console.log('nameSort2', nameSort2);
-getNames = langNames(getNames);
-console.log('getNames', getNames);
+
+getNames2 = langNames(getNames);
+
 // let getLangNames: string[] = getNames.map(name => name.langName);
 // console.log('getLangNames', getLangNames);
-for (const name in getNames) {
-	const newName = getNames[name];
+for (const name in getNames2) {
+	const newName = getNames2[name];
 	switch (newName.engName) {
 		case 'Charlie':
 		case 'Charly':

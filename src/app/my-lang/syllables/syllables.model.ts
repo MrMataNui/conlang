@@ -1,4 +1,4 @@
 export interface PhonRules {
-  data: string;
-  rules: string;
+	data: string;
+	rules: string;
 }

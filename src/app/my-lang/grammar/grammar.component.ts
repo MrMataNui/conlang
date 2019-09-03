@@ -9,11 +9,13 @@ import {
 	Example,
 	Words
 } from './grammar.model';
+
 @Component({
 	selector: 'app-grammar',
 	templateUrl: './grammar.component.html',
 	styleUrls: ['./grammar.component.css']
 })
+
 export class GrammarComponent implements OnInit {
 	constructor() { }
 	langName = ['English', 'NewLang'];
@@ -65,7 +67,7 @@ export class GrammarComponent implements OnInit {
 		first: {
 			singular: {
 				Nominative: 'i /i/',
-				Accusative: 'iꝩ /iʍ/',
+				Accusative: 'iɥ /iʍ/',
 				Genitive: 'ik /ik/',
 				Dative: 'iȝ /ij/',
 			},
@@ -78,10 +80,10 @@ export class GrammarComponent implements OnInit {
 		},
 		second: {
 			singular: {
-				Nominative: 'ꝩe /ʍe/',
-				Accusative: 'ꝩum /ʍum/',
-				Genitive: 'ꝩöp /ʍoːp/',
-				Dative: 'ꝩo /ʍo/',
+				Nominative: 'ɥe /ʍe/',
+				Accusative: 'ɥum /ʍum/',
+				Genitive: 'ɥöp /ʍoːp/',
+				Dative: 'ɥo /ʍo/',
 			},
 			plural: {
 				Nominative: 'peꭓ /peɣ/',
@@ -92,10 +94,10 @@ export class GrammarComponent implements OnInit {
 		},
 		third: {
 			singular: {
-				Nominative: 'ꝩep /hʷep/',
-				Accusative: 'ꝩiᵹ /hʷig/',
-				Genitive: 'ꝩaȼ /hʷaʤ/',
-				Dative: 'ꝩöȝ /hʷoːj/',
+				Nominative: 'ɥep /hʷep/',
+				Accusative: 'ɥiᵹ /hʷig/',
+				Genitive: 'ɥaȼ /hʷaʤ/',
+				Dative: 'ɥöȝ /hʷoːj/',
 			},
 			plural: {
 				Nominative: 'kuȼ /kuʤ/',
@@ -239,7 +241,8 @@ export class GrammarComponent implements OnInit {
 		<p> <b>${name}<br /> ${nameIPA} </b> </p>`;
 	}
 	capitalize = (text: string): string => (text)
-		? text.charAt(0).toUpperCase() + text.slice(1).toLowerCase() : ''
+		? text.charAt(0).toUpperCase() + text.slice(1).toLowerCase()
+		: ''
 	SubScr = (word: string, type: string): string => `(${word})<sub> <b>${type}</b> </sub> `;
 	partOfSpeech = (): PartOfSpeech => ({
 		Subject: this.SubScr('Mary', 'Sub'),
@@ -274,6 +277,7 @@ export class GrammarComponent implements OnInit {
 			case 'third plural': return this.third('plural');
 		}
 	}
+
 	/**
 	 * gets the word order for the specified language
 	 * and displays the example sentance
@@ -286,13 +290,16 @@ export class GrammarComponent implements OnInit {
 		let wordOrder: string;
 		switch (lang) {
 			case 'English':
-				wordOrder = Subject + Verb + Object + Oblique; break;
+				wordOrder = Subject + Verb + Object + Oblique;
+				break;
 			case 'NewLang':
-				wordOrder = Subject + Oblique + Object + Verb; break;
+				wordOrder = Subject + Oblique + Object + Verb;
+				break;
 			default: return;
 		}
 		return this.getBrackets(wordOrder.trim());
 	}
+
 	/**
 	 * checks the tense to determine which table header to display
 	 * @param	{string} tenseCheck

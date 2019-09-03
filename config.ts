@@ -19,10 +19,16 @@ export let config: Config = {
 	cucumberOpts: {
 		strict: true,
 		compiler: 'ts:ts-node/register',
-		require: ['tests/steps/**/*.steps.js'],
+		require: [
+			'tests/**/steps/*.steps.js',
+			// 'tests/steps/*.steps.js',
+		],
 		// format: "json:./reports/json/cucumber_report.json",
 	},
-	specs: ['../tests/features/*.feature'],
+	specs: [
+		'../tests/**/features/*.feature',
+		// '../tests/features/*.feature'
+	],
 	onPrepare: () => {
 		browser.manage().window().maximize();
 		browser.manage().timeouts().implicitlyWait(5000);
@@ -34,7 +40,3 @@ export let config: Config = {
 	start tests:
 	npm test
 */
-// No inputs were found in config file
-// 'c:/Users/Tyler/OneDrive/Projects/langTest - Copy/node_modules/protractor/tsconfig.json'.
-// Specified 'include' paths were '["**/*"]'
-// and 'exclude' paths were '["built","node_modules","testapp","website","scripts","exampleTypescript","spec/**/*"]'.

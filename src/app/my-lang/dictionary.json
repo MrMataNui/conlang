@@ -27,8 +27,7 @@
     "Y": ["Yadgor", "Yago", "Yahya", "Yakup", "Yang", "Yanick", "Yann", "Yannick", "Yaseen", "Yasin", "Yasir", "Yassin", "Yoji", "Yong", "Yoolgeun", "Yorgos", "Youcef", "Yousif", "Youssef", "Yu", "Yuanyu", "Yuri", "Yusef", "Yusuf", "Yves"],
     "Z": ["Zaaine", "Zaak", "Zac", "Zach", "Zachariah", "Zacharias", "Zacharie", "Zacharius", "Zachariya", "Zachary", "Zachary-Marc", "Zachery", "Zack", "Zackary", "Zaid", "Zain", "Zaine", "Zaineddine", "Zainedin", "Zak", "Zakaria", "Zakariya", "Zakary", "Zaki", "Zakir", "Zakk", "Zamaar", "Zander", "Zane", "Zarran", "Zayd", "Zayn", "Zayne", "Ze", "Zechariah", "Zeek", "Zeeshan", "Zeid", "Zein", "Zen", "Zendel", "Zenith", "Zennon", "Zeph", "Zerah", "Zhen", "Zhi", "Zhong", "Zhuo", "Zi", "Zidane", "Zijie", "Zinedine", "Zion", "Zishan", "Ziya", "Ziyaan", "Zohaib", "Zohair", "Zoubaeir", "Zubair", "Zubayr", "Zuriel"]
   },
-  "dictionary": [
-		{
+  "dictionary": [{
       "langWord": "a",
       "IPA": "/a/",
       "partOfSpeech": "noun",
@@ -30519,6 +30518,37 @@
       "IPA": "/hʷeˈgiʂ/",
       "partOfSpeech": "contraction",
       "engWord": "it's",
+      "partOfSpeech2": "",
+      "engWord2": ""
+    }, {
+      "langWord": "ᵹꝡꞥ",
+      "IPA": "/gʍiɳ/",
+      "partOfSpeech": "noun",
+      "engWord": "gwyn",
+      "partOfSpeech2": "",
+      "engWord2": ""
+    },
+    {
+      "langWord": "ꞥïʈö",
+      "IPA": "/ɳiːʈoː/",
+      "partOfSpeech": "noun",
+      "engWord": "nito",
+      "partOfSpeech2": "",
+      "engWord2": ""
+    },
+    {
+      "langWord": "ïçaꞥïʈ",
+      "IPA": "/iːʂaɳiːʈ/",
+      "partOfSpeech": "noun",
+      "engWord": "izalith",
+      "partOfSpeech2": "",
+      "engWord2": ""
+    },
+    {
+      "langWord": "Çïꝡ",
+      "IPA": "/ʂiːhʷi/",
+      "partOfSpeech": "noun",
+      "engWord": "sif",
       "partOfSpeech2": "",
       "engWord2": ""
     }

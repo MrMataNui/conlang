@@ -3,10 +3,10 @@ chai.use(require('chai-as-promised'));
 const expect = chai.expect;
 
 import { Given, Then } from 'cucumber';
-import goTo from './grammar-dropdown';
+import grammarSelect from './grammar-dropdown';
 import { ElementFinder, $ } from 'protractor';
 
-Given('you navigate to the articles page', () => { goTo('/articles'); });
+Given('you navigate to the articles page', () => { grammarSelect('/articles'); });
 
 Then('it should show definite articles', () => {
 	const definiteArticleTable: ElementFinder = $('#def-art').$('table');
