@@ -67,7 +67,9 @@ interface ConstList {
 	sound: string;
 	letter: string;
 }
+
 export const getIPA = (langIPA: string): string => `/${langIPA}/`;
+
 export function capitalize(text: string): string {
 	const textCapital = text.charAt(0).toUpperCase();
 	const textLower = text.slice(1).toLowerCase();
@@ -83,6 +85,7 @@ export function capitalize(text: string): string {
 	}
 	return getText;
 }
+
 export interface NewLang {
 	langWord: string;
 	IPA: string;
@@ -93,6 +96,7 @@ export interface NewLang {
 	engWord2?: string;
 	engWord2Desc?: string;
 }
+
 export const erWordsDefaults: string[] = [
 	'oyster',
 	'matter',
@@ -268,6 +272,7 @@ export const erWordsDefaults: string[] = [
 	'cylinder',
 	'mother',
 ];
+
 export const istWordsDefaults: string[] = [
 	'insist',
 	'mist',
@@ -289,6 +294,7 @@ export const istWordsDefaults: string[] = [
 	'chemist',
 	'wrist',
 ];
+
 export const ionWordsDefaults: string[] = [
 	'friction',
 	'restoration',
@@ -400,6 +406,7 @@ export const ionWordsDefaults: string[] = [
 	'addiction',
 	'reservation',
 ];
+
 export const ingWordsDefaults: string[] = [
 	'concerning',
 	'pending',
@@ -448,10 +455,74 @@ export const ingWordsDefaults: string[] = [
 	'string',
 ];
 
+import { Symbols } from './data/data.model';
+
+export function letterSort(source: string): Symbols[] {
+	const newLanguageTable: string[] = newLanguage.map(get => get.langWord);
+	const symbols: Symbols[] = [
+		{ symbol: 'p', count: 0 },
+		{ symbol: 'b', count: 0 },
+		{ symbol: 't', count: 0 },
+		{ symbol: 'ʈ', count: 0 },
+		{ symbol: 'ɖ', count: 0 },
+		{ symbol: 'k', count: 0 },
+		{ symbol: 'ᵹ', count: 0 },
+		{ symbol: 'ʯ', count: 0 },
+		{ symbol: 'm', count: 0 },
+		{ symbol: 'n', count: 0 },
+		{ symbol: 'ꞥ', count: 0 },
+		{ symbol: 'ñ', count: 0 },
+		{ symbol: 'ꞇ', count: 0 },
+		{ symbol: 'ȼ', count: 0 },
+		{ symbol: 'ç', count: 0 },
+		{ symbol: 'ỻ', count: 0 },
+		{ symbol: 'ꭓ', count: 0 },
+		{ symbol: 'ꝩ', count: 0 },
+		{ symbol: 'ꝡ', count: 0 },
+		{ symbol: 'ȝ', count: 0 },
+		{ symbol: 'ꝛ', count: 0 },
+		{ symbol: 'a', count: 0 },
+		{ symbol: 'ä', count: 0 },
+		{ symbol: 'e', count: 0 },
+		{ symbol: 'ë', count: 0 },
+		{ symbol: 'i', count: 0 },
+		{ symbol: 'ï', count: 0 },
+		{ symbol: 'o', count: 0 },
+		{ symbol: 'ö', count: 0 },
+		{ symbol: 'u', count: 0 },
+		{ symbol: 'ü', count: 0 },
+	];
+	newLanguageTable.forEach(word => {
+		symbols.forEach(symbol => {
+			const wordStart: string = word[0].toLowerCase();
+			const getString: string = symbol.symbol.toLowerCase();
+			switch (source) {
+				case 'lexicon':
+					if (wordStart === getString) { symbol.count++; }
+					break;
+				case 'data':
+					for (const letter of word) {
+						if (letter === symbol.symbol) { symbol.count++; }
+					}
+					break;
+			}
+		});
+	});
+	symbols.forEach(symbol => {
+		if (symbol.symbol !== 'ʯ') {
+			symbol.symbol = capitalize(symbol.symbol) + ' ' + symbol.symbol;
+		}
+	});
+
+	const Sorter = (a: number, b: number): number => (a < b) ? -1 : (a > b) ? 1 : 0;
+	return symbols.sort((a, b) => Sorter(b.count, a.count));
+}
+
 
 import language from './dictionary.json';
 export const newLanguage: NewLang[] = language.dictionary;
 export const nameSort: { [propName: string]: string[]; } = language.namesList;
+
 /*
 	p b t d ʈ ɖ k ᵹ ʯ m n ꞥ ñ ꝭ ƙ ç ỻ ꭓ ɥ ꝡ ȝ ɥ ꝡ ꝛ
 	a ä e ë i ï o ö u ü ʊ

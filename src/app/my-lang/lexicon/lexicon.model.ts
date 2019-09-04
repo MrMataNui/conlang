@@ -17,6 +17,40 @@ export interface FirstWord {
 	word: string;
 }
 
+export const getSymbols: { symbol: string }[] = [
+	{ symbol: 'a' },
+	{ symbol: 'b' },
+	{ symbol: 'e' },
+	{ symbol: 'i' },
+	{ symbol: 'k' },
+	{ symbol: 'm' },
+	{ symbol: 'o' },
+	{ symbol: 'p' },
+	{ symbol: 't' },
+	{ symbol: 'u' },
+	{ symbol: 'ä' },
+	{ symbol: 'ç' },
+	{ symbol: 'ë' },
+	{ symbol: 'ï' },
+	{ symbol: 'ñ' },
+	{ symbol: 'ö' },
+	{ symbol: 'ü' },
+	{ symbol: 'ƙ' },
+	{ symbol: 'ȝ' },
+	{ symbol: 'ɖ' },
+	{ symbol: 'ɥ' },
+	{ symbol: 'ʈ' },
+	{ symbol: 'ʊ' },
+	{ symbol: 'ʯ' },
+	{ symbol: 'ᵹ' },
+	{ symbol: 'ỻ' },
+	{ symbol: 'ꝛ' },
+	{ symbol: 'ꝡ' },
+	{ symbol: 'ꝭ' },
+	{ symbol: 'ꞥ' },
+	{ symbol: 'ꭓ' }
+];
+
 export const soundSymbols: SoundSymbols[] = [
 	{ sound: 'p', symbol: 'p' },
 	{ sound: 'b', symbol: 'b' },
