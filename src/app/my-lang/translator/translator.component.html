@@ -53,16 +53,18 @@
       <input id="translate-button" type="button" value="Translate The Text"
         (click)="langTranslation = reverseTranslate(johiLang)" />
       <br />
-      <h3>Word Order:</h3>
+      <h3>Translation:</h3>
       <div id="wordOrder" *ngIf="langTranslation">
         <p [ngStyle]="langTranslation.display">
-          <i [innerHTML]="langTranslation.english"></i>
+          <b [innerHTML]="langTranslation.english"></b>
+          <!-- <i [innerHTML]="langTranslation.langWord"></i> -->
         </p>
       </div>
-      <h3>Translation:</h3>
+      <h3>Word Order:</h3>
       <div id="langTranslation" *ngIf="langTranslation">
         <p [ngStyle]="langTranslation.display">
-          <b [innerHTML]="langTranslation.langWord"></b>
+          <i [innerHTML]="langTranslation.langWord"></i>
+          <!-- <b [innerHTML]="langTranslation.english"></b> -->
         </p>
       </div>
       <h3>IPA:</h3>

@@ -265,20 +265,47 @@ export class TranslatorComponent implements OnInit {
 			let prevWord: string;
 			newLanguage.forEach(newLangWord => {
 				const { langWord } = newLangWord;
+				let { IPA } = newLangWord;
+				IPA = IPA.replace(/\//g, '');
 				if (langWord !== prevWord) {
-					// this.getRegex(userWord, engWord);
-					if (userWord === langWord) {
-						newWords = this.getBlanks(allWords, newLangWord);
-						prevWord = userWord;
-					} else if (userWord === `u${langWord}`) {
-						newLangWord.langWord = `u${langWord}`;
-						newWords = this.getBlanks(allWords, newLangWord);
-						prevWord = userWord;
-					} else if (userWord === `ɥü${langWord}`) {
-						newLangWord.langWord = `ɥü${langWord}`;
-						newWords = this.getBlanks(allWords, newLangWord);
-						prevWord = userWord;
+					switch (userWord) {
+						case langWord:
+							newWords = this.getBlanks(allWords, newLangWord);
+							prevWord = userWord;
+							break;
+						case `u${langWord}`:
+							newLangWord.langWord = `u${langWord}`;
+							newLangWord.IPA = `/u${IPA}/`;
+							newWords = this.getBlanks(allWords, newLangWord);
+							prevWord = userWord;
+							break;
+						case `ɥü${langWord}`:
+							newLangWord.langWord = `ɥü${langWord}`;
+							newLangWord.engWord = `words`;
+							newLangWord.IPA = `/huː${IPA}/`;
+							newWords = this.getBlanks(allWords, newLangWord);
+							prevWord = userWord;
+							break;
+						case `ɥe${langWord}`:
+							newLangWord.langWord = `ɥe${langWord}`;
+							newLangWord.IPA = `/hʷe${IPA}/`;
+							newWords = this.getBlanks(allWords, newLangWord);
+							prevWord = userWord;
+							break;
+						case `ꝭe${langWord}`:
+							newLangWord.langWord = `ꝭe${langWord}`;
+							newLangWord.IPA = `/ʃe${IPA}/`;
+							newWords = this.getBlanks(allWords, newLangWord);
+							prevWord = userWord;
+							break;
+						case `${langWord}iȝ`:
+							newLangWord.langWord = `${langWord}iȝ`;
+							newLangWord.IPA = `/${IPA}ij/`;
+							newWords = this.getBlanks(allWords, newLangWord);
+							prevWord = userWord;
+							break;
 					}
+					// this.getRegex(userWord, engWord);
 				}
 			});
 		});
