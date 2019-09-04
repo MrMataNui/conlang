@@ -1,0 +1,37 @@
+<div id="consonants">
+  <div id="bigcontab">
+    <h3>Consonants</h3>
+    <div id="cons-inv">
+      <p ng-cloak>
+        <b>Consonant inventory</b>:
+        <span>/{{ constList.join(' ') }}/</span>
+      </p>
+    </div>
+    <table id="constTable">
+      <tr>
+        <th style="color: orange;">→Place→ / ↓Manner↓</th>
+        <th *ngFor="let place of placeList">
+          {{ placeListNames(place) }}
+        </th>
+      </tr>
+      <tr *ngFor="let manner of mannerList">
+        <th> {{ mannerListNames(manner) }} </th>
+        <td *ngFor="let place of placeList">
+          {{ consonantTable[place][manner] }}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="bg-block">
+	<table id="const-symbols" ng-cloak>
+		<tr>
+			<th> Consonant sound </th>
+			<th> Consonant symbol </th>
+		</tr>
+		<tr *ngFor="let consonant of soundSymbols">
+			<td> /{{ consonant.sound }}/ </td>
+			<td> {{ consonant.symbol }} </td>
+		</tr>
+	</table>
+</div>

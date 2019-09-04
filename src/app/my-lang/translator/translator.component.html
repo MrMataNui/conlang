@@ -1,0 +1,34 @@
+<div id="togTrans">
+  <div [ngStyle]="testDisplay(showTranslator, 'initial')">
+    <div>
+      <p>
+        Note: Translator does not automatically do word order and only finds exact matches in your dictionary
+        (will not find plurals, past-tense, etc.)
+      </p>
+      <p>Making the translator smarter is a work in progress.</p>
+      <h3>Sentence:</h3>
+      <textarea id="eng-phrase" rows="3" cols="45" type="text" [value]="(engLang) ? engLang : ''"
+        (input)="engLang=$event.target.value"></textarea>
+      <br />
+      <input id="translate-button" type="button" value="Translate The Text"
+        (click)="translation = translate(engLang)" />
+      <br />
+      <h3>Word Order:</h3>
+      <div id="wordOrder" *ngIf="translation">
+        <p [ngStyle]="translation.display">
+          <i [innerHTML]="translation.english"></i>
+        </p>
+      </div>
+      <h3>Translation:</h3>
+      <div id="translation" *ngIf="translation">
+        <p [ngStyle]="translation.display">
+          <b [innerHTML]="translation.langWord"></b>
+        </p>
+      </div>
+      <h3>IPA:</h3>
+      <div id="ipa" *ngIf="translation">
+        <p [ngStyle]="translation.display" [innerHTML]="translation.IPA"></p>
+      </div>
+    </div>
+  </div>
+</div>

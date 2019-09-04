@@ -1,0 +1,48 @@
+<div id="phon-other">
+  <div class="bg-block" id="syll-struct">
+    <h2>Syllable structure</h2>
+    <table>
+      <tr id="syll-pattern">
+        <th> <b>Syllable pattern</b> </th>
+        <td [innerText]="syll.syll"> Loading... </td>
+      </tr>
+      <tr id="syll-stress">
+        <th> <b>Syllable stress</b> </th>
+        <td [innerText]="syll.stress"> Loading... </td>
+      </tr>
+      <tr id="syll-wordStart">
+        <th> <b>Word initial consonants</b> </th>
+        <td ng-cloak>
+          <div [innerText]="syll.wordStart" class="IPA"> Loading... </div>
+        </td>
+      </tr>
+      <tr id="syll-wordMid">
+        <th> <b>Mid-word consonants</b> </th>
+        <td ng-cloak>
+          <div [innerText]="syll.wordMid" class="IPA"> Loading... </div>
+        </td>
+      </tr>
+      <tr id="syll-wordFinal">
+        <th> <b>Word final consonants</b> </th>
+        <td ng-cloak>
+          <div [innerText]="syll.wordFinal" class="IPA"> Loading... </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="bg-block" id="phon-rules">
+    <h2>Phonological rules</h2>
+    <table id="phonRules" class="phonRules">
+      <tr>
+        <th> <b> Phonological rules (in order of application) </b> </th>
+        <th> </th>
+        <th> Phonological rules </th>
+      </tr>
+      <tr *ngFor="let item of newData">
+        <td [innerHTML]="item.data"> Loading... </td>
+        <td> </td>
+        <td [innerText]="item.rules"> Loading... </td>
+      </tr>
+    </table>
+  </div>
+</div>

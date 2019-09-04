@@ -1,0 +1,79 @@
+<div id="lang-grammar">
+  <h2 class="head-grammar">Grammar</h2>
+  <div class="bg-block" id="word-order">
+    <p id="main-word-order">
+      <b>Main word order</b>:
+      <br />
+      <span [innerHTML]="word().order"> Loading... </span>
+    </p>
+    <p id="word-order-example">
+      <span [innerHTML]="get('English').wordOrder"> Loading... </span>
+      <br />
+      <i> <u>turns into</u> </i>
+      <br />
+      <span [innerHTML]="get('NewLang').wordOrder"> Loading... </span>
+    </p>
+    <p id="adjective-order">
+      <b>Adjective order</b>:
+      <br />
+      <span [innerHTML]="word().adOrder"> Loading... </span>
+    </p>
+    <p id="adposition">
+      <b>Adposition</b>:
+      <br />
+      <span [innerHTML]="word().adposition"> Loading... </span>
+    </p>
+  </div>
+  <br />
+  <div class="table-tab bg-block" id="pers-pronouns">
+    <h3 class="head-pers-pronouns">Personal pronouns</h3>
+    <table cellspacing="0" border="1">
+      <tr>
+        <th colspan="2"></th>
+        <th>Nominative</th>
+        <th>Accusative</th>
+        <th>Genitive</th>
+        <th>Dative</th>
+      </tr>
+      <ng-container *ngFor="let NumberType of pronTypeNumber">
+        <tr *ngFor="let PersonType of pronTypePerson; let TypeIndex=index">
+          <th *ngIf="TypeIndex%3===0" rowspan="3">
+            <i>{{ capitalize(NumberType) }}</i>
+          </th>
+          <th [innerHTML]="tenseCheck(PersonType)"> Loading... </th>
+          <td *ngFor="let key of pronDefNames">
+            <p> <i>{{ pronounsEng[PersonType][NumberType][key] }}</i> </p>
+            <p> <b>{{ pronouns[PersonType][NumberType][key] }}</b> </p>
+          </td>
+        </tr>
+      </ng-container>
+    </table>
+  </div>
+  <div class="table-tab bg-block" id="lang-verbs">
+    <h3 class="head-verbs">Verbs</h3>
+    <table class="tg">
+      <tr>
+        <th colspan="5">Indicative mood</th>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+        <td>Past</td>
+        <td>Present</td>
+        <td>Future</td>
+      </tr>
+      <tr>
+        <td rowspan="7">Perfective</td>
+        <td></td>
+        <td> <i>studied</i> </td>
+        <td> <i>study</i> </td>
+        <td> <i>will study</i> </td>
+      </tr>
+      <tr *ngFor="let Key of allTenses">
+        <td [innerHTML]="tenseCheck(Key)"> Loading... </td>
+        <td [innerHTML]="get(Key).tense.past"> Loading... </td>
+        <td [innerHTML]="get(Key).tense.present"> Loading... </td>
+        <td [innerHTML]="get(Key).tense.future"> Loading... </td>
+      </tr>
+    </table>
+  </div>
+</div>

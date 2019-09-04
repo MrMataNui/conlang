@@ -1,0 +1,33 @@
+<div id="lang-grammar">
+  <div class="table-tab bg-block" id="noun-morph">
+    <h2 class="hh head-noun-morph">Noun morphology</h2>
+    <table id="howbig">
+      <tr>
+        <th colspan="1"></th>
+        <th colspan="2">Singular</th>
+        <th colspan="2">Plural</th>
+      </tr>
+      <tr *ngFor="let article of pronNounMorph">
+        <td> <b>{{ article }}</b> </td>
+        <td> <i>{{ nounMorphNameType[article].singular }}</i> </td>
+        <td [innerHTML]="nounMorph[article].singular"> Loading... </td>
+        <td> <i>{{ nounMorphNameType[article].plural }}</i> </td>
+        <td [innerHTML]="nounMorph[article].plural"> Loading... </td>
+      </tr>
+    </table>
+  </div>
+  <div id="lang-der-morph" class="bg-block">
+    <table>
+      <tr>
+        <th class="head-der-morph" colspan="2">
+          <h3 style="color: #FFF;">Derivational morphology</h3>
+        </th>
+      </tr>
+      <tr *ngFor="let Key of DerivMorphNames">
+        <td [innerHTML]="derivMorph[Key].name"> Loading... </td>
+        <td [innerHTML]="derivMorph[Key].rule"> Loading... </td>
+      </tr>
+    </table>
+    <br />
+  </div>
+</div>

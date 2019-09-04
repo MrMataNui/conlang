@@ -1,0 +1,17 @@
+.display,
+input,
+textarea {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+
+textarea {
+	border: 1px solid black;
+}
+
+input#translate-button {
+	width: 45%;
+	background-color: aqua;
+	cursor: pointer;
+}

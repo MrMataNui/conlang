@@ -1,0 +1,217 @@
+$grey1: #BBB;
+$grey2: #CCC;
+$grey3: #DDD;
+$grey4: #EEE;
+$lightBlueGreen: #008B8B;
+$lightGreen: #4CAF50;
+$lightPink: #A569BD;
+$darkPink: #821583;
+$paleBlue: #152283;
+html {
+  margin: auto;
+  background-color: $lightBlueGreen;
+}
+
+body {
+  width: 80%;
+  margin: 0 auto;
+  background-color: $lightBlueGreen;
+  main {
+    font-family: serif;
+    margin: auto;
+    border: double black;
+    background-color: $grey1;
+  }
+}
+
+main {
+  margin: 2em auto 0;
+  float: right;
+  width: 80%;
+  padding-bottom: 1.5em;
+  border-left: 1px solid $grey3;
+  margin-top: 50px;
+}
+
+footer {
+  clear: both;
+  margin-top: 1em;
+  border-top: 2px solid black;
+  p {
+    text-align: center;
+    font-size: 110%;
+    margin: 1em 0;
+  }
+}
+
+
+:not(header h1),
+h1 {
+  font-size: 150%;
+  margin: 0;
+  padding: .5em 0 .25em;
+}
+
+header {
+  margin: 0;
+  border-bottom: 2px solid black;
+  h1 {
+    margin: 0;
+    padding: .5em 0;
+    color: black;
+    font-family: serif;
+    font-weight: none;
+  }
+}
+
+h2,
+h3 {
+  font-size: 120%;
+  margin: 0;
+  padding: .25em 0 .5em;
+}
+
+h1,
+h2 {
+  text-align: center;
+  font-family: 'Black Ops One', serif, cursive;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-align: center;
+}
+
+h1 {
+  color: $darkPink;
+}
+
+h2 {
+  color: $lightPink;
+  font-family: 'Audiowide', serif, cursive;
+}
+
+h3 {
+  color: $paleBlue;
+  font-family: 'Fugaz One', serif, cursive;
+}
+
+h4 {
+  color: #5F71FB;
+  font-family: 'Fugaz One', serif, cursive;
+}
+
+:not(header h1),
+h1,
+h2,
+h3,
+h4 {
+  color: #04C;
+  font-weight: bold;
+}
+
+p {
+  text-align: center;
+}
+
+#top {
+  margin: 0;
+  padding: 0;
+  background-color: none;
+}
+
+a {
+  font-weight: bold;
+}
+
+table:not(#vowelTable),
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+  vertical-align: center;
+  border-spacing: 5px;
+  font-family: serif;
+}
+
+th {
+  background-color: $lightGreen;
+  color: white;
+  border: 1px solid black;
+}
+
+table:not(#vowelTable) {
+  margin: auto;
+  width: 95%;
+  border: 1px solid black;
+  border-collapse: collapse;
+  th,
+  td {
+    border: 1px dashed black;
+    vertical-align: center;
+    text-align: center;
+  }
+  th {
+    border: 1px solid black;
+    background-color: blue;
+    color: white;
+  }
+  tr {
+    &:nth-child(odd) {
+      background-color: $grey2;
+    }
+  }
+  tr {
+    &:nth-child(even) {
+      background-color: $grey4;
+    }
+  }
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+#verbs {
+  tr:nth-child(odd) {
+    background-color: $grey4;
+  }
+  tr:nth-child(even) {
+    background-color: $grey2;
+  }
+}
+
+br {
+  clear: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.backward {
+  display: inline-block;
+  -moz-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+
+table:not(#vowelTable),
+th,
+td {
+  border: 1px solid black;
+  border-spacing: 5px;
+  border-collapse: collapse;
+  vertical-align: center;
+  text-align: center;
+  font-family: serif;
+}
+
+th {
+  border: 1px solid black;
+  background-color: $lightGreen;
+  color: white;
+}
