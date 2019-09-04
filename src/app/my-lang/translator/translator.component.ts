@@ -40,9 +40,30 @@ interface BoolCheck {
 
 export class TranslatorComponent implements OnInit {
 	constructor() { }
+	engLang = 'Start typing to see the translation of the words';
+	johiLang = 'Ʊỻ eñiȝ ʈo ȝö uɥoỻe ƙuʈü ɥüꝡ';
+
+	ETJ_IsHidden = false;
+	JTE_IsHidden = true;
+
 	showTranslator = true;
-	@Input() engLang = 'Start typing to see the translation of the words';
 	translation: Translation;
+	langTranslation: Translation;
+
+	show(lang: string) {
+		switch (lang) {
+			case 'English':
+				this.ETJ_IsHidden = false;
+				this.JTE_IsHidden = true;
+				this.translation = undefined;
+				break;
+			case 'Johi':
+				this.ETJ_IsHidden = true;
+				this.JTE_IsHidden = false;
+				this.langTranslation = undefined;
+				break;
+		}
+	}
 
 	testDisplay = (testVar: boolean | string, display: string): { display: string } => ({
 		display: (testVar) ? display : 'none'
@@ -223,5 +244,90 @@ export class TranslatorComponent implements OnInit {
 		};
 	}
 
+	reverseTranslate(text: string): Translation {
+		text = text.toLowerCase();
+		const userText: string[] = text.split(blankSpace);
+		userText.forEach((userWord, i) => {
+			userText[i] = (userWord !== 'i') ? userText[i] : 'I';
+		});
+
+		const wordDefaults: AllWords = {
+			langText: '',
+			langIPA: '',
+			wordOrder: '',
+			getPartOfSpeech: '',
+		};
+
+		const allWords: AllWords = wordDefaults;
+		let newWords: AllWords = wordDefaults;
+		const newWordMorph: { getWord: GetAffix, wordLoc: number }[] = [];
+		userText.forEach(userWord => {
+			let prevWord: string;
+			newLanguage.forEach(newLangWord => {
+				const { langWord } = newLangWord;
+				if (langWord !== prevWord) {
+					// this.getRegex(userWord, engWord);
+					if (userWord === langWord) {
+						newWords = this.getBlanks(allWords, newLangWord);
+						prevWord = userWord;
+					} else if (userWord === `u${langWord}`) {
+						newLangWord.langWord = `u${langWord}`;
+						newWords = this.getBlanks(allWords, newLangWord);
+						prevWord = userWord;
+					} else if (userWord === `ɥü${langWord}`) {
+						newLangWord.langWord = `ɥü${langWord}`;
+						newWords = this.getBlanks(allWords, newLangWord);
+						prevWord = userWord;
+					}
+				}
+			});
+		});
+
+		newWords.langIPA = newWords.langIPA.replace(/\//g, '');
+		const trim: AllWords = getTrim(newWords);
+		newWordMorph.forEach(word => {
+			// watering
+			const { wordLoc, getWord } = word;
+
+			getWord.lang.IPA = getWord.lang.IPA.replace(/\//g, '');
+			trim.langIPA = this.addMorph(trim.langIPA, getWord.lang.IPA, wordLoc);
+			trim.langText = this.addMorph(trim.langText, getWord.lang.word, wordLoc);
+			trim.wordOrder = this.addMorph(trim.wordOrder, getWord.engWord, wordLoc);
+		});
+
+		return {
+			display: this.testDisplay(this.johiLang, 'block'),
+			english: capitalize(trim.wordOrder),
+			langWord: capitalize(trim.langText),
+			IPA: getIPA(trim.langIPA),
+		};
+	}
+
 	ngOnInit() { }
 }
+/*     },
+		{
+			"langWord": "eñiȝ",
+			"IPA": "/eɳiy/",
+			"partOfSpeech": "noun",
+			"engWord": "typing",
+			"partOfSpeech2": "",
+			"engWord2": ""
+		},
+		{
+			"langWord": "ɥüꝡ",
+			"IPA": "/huːhʷi/",
+			"partOfSpeech": "noun",
+			"engWord": "words",
+			"partOfSpeech2": "",
+			"engWord2": ""
+		},
+		{
+			"langWord": "uɥoỻe",
+			"IPA": "/uʍoˈxe/",
+			"partOfSpeech": "verb",
+			"engWord": "translation",
+			"partOfSpeech2": "",
+			"engWord2": ""
+ */
+

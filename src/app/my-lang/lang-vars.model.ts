@@ -491,6 +491,7 @@ export function letterSort(source: string): Symbols[] {
 		{ symbol: 'ö', count: 0 },
 		{ symbol: 'u', count: 0 },
 		{ symbol: 'ü', count: 0 },
+		{ symbol: 'ʊ', count: 0 },
 	];
 	newLanguageTable.forEach(word => {
 		symbols.forEach(symbol => {

@@ -30,6 +30,7 @@ export class LexiconComponent implements OnInit {
 	letterCheck: string;
 	letterSort: Symbols[] = letterSort('lexicon');
 	showLetter: string;
+	newGetLetter: { letter: string; count: string; };
 
 	firstWord: { letter: string, word: Lexicon }[] = [];
 	getAllWords: { letter: string, words: Lexicon[] }[] = [];
@@ -133,11 +134,15 @@ export class LexiconComponent implements OnInit {
 	allClick() {
 		this.newTable = this.allTable;
 		this.letterCheck = 'All Letters';
+
+		this.newGetLetter = this.getLetter();
 	}
 
 	letterClick(find: { letter: string, words: Lexicon[] }) {
 		this.newTable = find.words;
 		this.letterCheck = find.letter;
+
+		this.newGetLetter = this.getLetter();
 	}
 
 	getLetter() {

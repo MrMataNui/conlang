@@ -8,11 +8,11 @@ export class AppComponent { }
 // ⱶ ꝸ ꝙ
 /*
 	Lord Gwyn (Ɥäçoꞥo Ᵹꝡꞥ)
-	Gravelord Nito (Digoɥaçöꞥo ꞥïtö)
-	Furtive Pygmy (Ꝺoꭓiʯɥöm Ȼaȝëꝭ)
-	Witch of Izalith (Ꞇäȝi ȝu Ïçaꞥït)
+	Gravelord Nito (Diᵹoɥaçöꞥo ꞥïʈö)
+	Furtive Pygmy (Ꝺoꭓiʯɥöm ƙaȝëꝭ)
+	Witch of Izalith (Ꝭäȝi ȝu ïçaꞥït)
 	Four Kings (Çï ɥeꞥib)
-	Pinwheel (Gïguʯüꞥiᵹ)
+	Pinwheel (Ᵹïᵹuʯüꞥiᵹ)
 
 	Sif (Çïꝡ)
 
