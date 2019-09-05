@@ -20,11 +20,11 @@
   <div *ngIf="!ETJ_IsHidden" id="EngToJohi" [ngStyle]="testDisplay(showTranslator, 'initial')">
     <div>
       <h3>English Sentence:</h3>
-      <textarea id="eng-phrase" rows="3" cols="45" type="text" [value]="(engLang) ? engLang : ''"
-        (input)="engLang=$event.target.value"></textarea>
+      <textarea id="eng-phrase" rows="3" cols="45" type="text" [value]="(engLangInput) ? engLangInput : ''"
+        (input)="engLangInput=$event.target.value"></textarea>
       <br />
       <input id="translate-button" type="button" value="Translate The Text"
-        (click)="translation = translate(engLang)" />
+        (click)="translation = translate(engLangInput)" />
       <br />
       <h3>Word Order:</h3>
       <div id="wordOrder" *ngIf="translation">
@@ -47,11 +47,11 @@
   <div *ngIf="!JTE_IsHidden" id="JohiToEng" [ngStyle]="testDisplay(showTranslator, 'initial')">
     <div>
       <h3>Johi Sentence:</h3>
-      <textarea id="johi-phrase" rows="3" cols="45" type="text" [value]="(johiLang) ? johiLang : ''"
-        (input)="johiLang=$event.target.value"></textarea>
+      <textarea id="johi-phrase" rows="3" cols="45" type="text" [value]="(johiLangInput) ? johiLangInput : ''"
+        (input)="johiLangInput=$event.target.value"></textarea>
       <br />
       <input id="translate-button" type="button" value="Translate The Text"
-        (click)="langTranslation = reverseTranslate(johiLang)" />
+        (click)="langTranslation = reverseTranslate(johiLangInput)" />
       <br />
       <h3>Translation:</h3>
       <div id="wordOrder" *ngIf="langTranslation">

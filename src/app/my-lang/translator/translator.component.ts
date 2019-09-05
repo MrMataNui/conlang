@@ -23,6 +23,10 @@ import {
 	getTrim,
 	addBlank,
 	Translation,
+	reverseIon,
+	reversePlur,
+	reversePerson,
+	reverseIng,
 } from './translator.model';
 
 interface BoolCheck {
@@ -40,8 +44,8 @@ interface BoolCheck {
 
 export class TranslatorComponent implements OnInit {
 	constructor() { }
-	engLang = 'Start typing to see the translation of the words';
-	johiLang = 'Ʊỻ eñiȝ ʈo ȝö uɥoỻe ƙuʈü ɥüꝡ';
+	engLangInput = 'Start typing to see the translation of the words';
+	johiLangInput = 'Ʊỻ eñiȝ ʈo ȝö uɥoỻe ƙuʈü ɥüꝡ';
 
 	ETJ_IsHidden = false;
 	JTE_IsHidden = true;
@@ -237,7 +241,7 @@ export class TranslatorComponent implements OnInit {
 		});
 
 		return {
-			display: this.testDisplay(this.engLang, 'block'),
+			display: this.testDisplay(this.engLangInput, 'block'),
 			english: capitalize(trim.wordOrder),
 			langWord: capitalize(trim.langText),
 			IPA: getIPA(trim.langIPA),
@@ -266,6 +270,8 @@ export class TranslatorComponent implements OnInit {
 			newLanguage.forEach(newLangWord => {
 				const { langWord } = newLangWord;
 				let { IPA } = newLangWord;
+				let getNew: NewLang;
+				let findWord: { word: string };
 				IPA = IPA.replace(/\//g, '');
 				if (langWord !== prevWord) {
 					switch (userWord) {
@@ -274,38 +280,51 @@ export class TranslatorComponent implements OnInit {
 							prevWord = userWord;
 							break;
 						case `u${langWord}`:
-							newLangWord.langWord = `u${langWord}`;
-							newLangWord.IPA = `/u${IPA}/`;
-							newWords = this.getBlanks(allWords, newLangWord);
+							getNew = { ...newLangWord, langWord: `u${langWord}`, IPA: `/u${IPA}/` };
+							findWord = reverseIon(getNew, newLangWord);
+							if (findWord.word) {
+								getNew = { ...getNew, engWord: findWord.word };
+								newWords = this.getBlanks(allWords, getNew);
+							}
 							prevWord = userWord;
 							break;
 						case `ɥü${langWord}`:
-							newLangWord.langWord = `ɥü${langWord}`;
-							newLangWord.engWord = `words`;
-							newLangWord.IPA = `/huː${IPA}/`;
-							newWords = this.getBlanks(allWords, newLangWord);
+							getNew = { ...newLangWord, engWord: 'words', langWord: `ɥü${langWord}`, IPA: `/huː${IPA}/` };
+							findWord = reversePlur(getNew, newLangWord);
+							if (findWord.word) {
+								getNew = { ...getNew, engWord: findWord.word };
+								newWords = this.getBlanks(allWords, getNew);
+							}
 							prevWord = userWord;
 							break;
 						case `ɥe${langWord}`:
-							newLangWord.langWord = `ɥe${langWord}`;
-							newLangWord.IPA = `/hʷe${IPA}/`;
-							newWords = this.getBlanks(allWords, newLangWord);
+							getNew = { ...newLangWord, langWord: `ɥe${langWord}`, IPA: `/hʷe${IPA}/` };
+							findWord = reversePlur(getNew, newLangWord);
+							if (findWord.word) {
+								getNew = { ...getNew, engWord: findWord.word };
+								newWords = this.getBlanks(allWords, getNew);
+							}
 							prevWord = userWord;
 							break;
 						case `ꝭe${langWord}`:
-							newLangWord.langWord = `ꝭe${langWord}`;
-							newLangWord.IPA = `/ʃe${IPA}/`;
-							newWords = this.getBlanks(allWords, newLangWord);
+							getNew = { ...newLangWord, langWord: `ꝭe${langWord}`, IPA: `/ʃe${IPA}/` };
+							findWord = reversePerson(getNew, newLangWord);
+							if (findWord.word) {
+								getNew = { ...getNew, engWord: findWord.word };
+								newWords = this.getBlanks(allWords, getNew);
+							}
 							prevWord = userWord;
 							break;
 						case `${langWord}iȝ`:
-							newLangWord.langWord = `${langWord}iȝ`;
-							newLangWord.IPA = `/${IPA}ij/`;
-							newWords = this.getBlanks(allWords, newLangWord);
+							getNew = { ...newLangWord, langWord: `${langWord}iȝ`, IPA: `/${IPA}ij/` };
+							findWord = reverseIng(getNew, newLangWord);
+							if (findWord.word) {
+								getNew = { ...getNew, engWord: findWord.word };
+								newWords = this.getBlanks(allWords, getNew);
+							}
 							prevWord = userWord;
 							break;
 					}
-					// this.getRegex(userWord, engWord);
 				}
 			});
 		});
@@ -323,7 +342,7 @@ export class TranslatorComponent implements OnInit {
 		});
 
 		return {
-			display: this.testDisplay(this.johiLang, 'block'),
+			display: this.testDisplay(this.johiLangInput, 'block'),
 			english: capitalize(trim.wordOrder),
 			langWord: capitalize(trim.langText),
 			IPA: getIPA(trim.langIPA),
