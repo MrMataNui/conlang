@@ -30,6 +30,7 @@
     "@angular/platform-browser": "^8.2.3",
     "@angular/platform-browser-dynamic": "^8.2.3",
     "@angular/router": "^8.2.3",
+    "angular-cli-ghpages": "^0.6.0",
     "body-parser": "^1.19.0",
     "chai-truthy": "^1.0.0",
     "core-js": "^2.5.4",
