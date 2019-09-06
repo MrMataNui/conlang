@@ -6,15 +6,15 @@
 	(record|book)
 	'start typing to see the translation',
 	----------------------------------------------------------------
-	constList: [p b t d ʈ ɖ k g ʔ m n ɳ ɲ ʃ c ʂ x x hʷ hʷi j ʍ ʍi ɽ];
-	constList: [p b t d ʈ ɖ k ᵹ ʯ m n ꞥ ñ ꝭ ƙ ç ỻ ꭓ ɥ ꝡ ȝ ɥ ꝡ ꝛ];
+	constList: [p b t d ʈ Ɖ k g ʔ m n ɳ ɲ ʃ c ʂ x x hʷ hʷi j ʍ ʍi ɽ];
+	constList: [p b t d ʈ Ɖ k ᵹ ʯ m n ꞥ ñ ꝭ ƙ ç ỻ ꭓ Ɥ ꝡ ȝ Ɥ ꝡ ꝛ];
 	----------------------------------------------------------------
 	ʊ̃ ɯː
 	----------------------------------------------------------------
 	b > b
 	t > t
 	ʈ > ʈ
-	ɖ > ɖ
+	Ɖ > Ɖ
 	g > ᵹ
 	ʔ > ʯ
 	m > m
@@ -27,7 +27,7 @@
 	x > ỻ OR ꭓ
 	j > ȝ
 	hʷi OR ʍi > ꝡ
-	hʷ OR ʍ > ɥ
+	hʷ OR ʍ > Ɥ
 	ɽ > ꝛ
 	aː > ä
 	eː > ë
@@ -53,8 +53,8 @@
 	vowelList: a aː e eː i iː o oː u uː ɯ
 	vowelList: a ä e ë i ï o ö u ü ʊ
 	----------------------------------------------------------------
-	constList1 = ['p', 'b', 't', 'd', 'ʈ', 'ɖ', 'k', 'g', 'ʔ', 'm', 'n', 'ɳ', 'ɲ', 'ʃ', 'c', 'ʂ', 'x', 'x', 'hʷ', 'hʷi', 'j', 'ʍ', 'ʍi', 'ɽ'];
-	constList2 = ['p', 'b', 't', 'd', 'ʈ', 'ɖ', 'k', 'ᵹ', 'ʯ', 'm', 'n', 'ꞥ', 'ñ', 'ꝭ', 'ƙo', 'ç', 'ỻ', 'ꭓ', 'ɥ', 'ꝡ', 'ȝ', 'ɥ', 'ꝡ', 'ꝛ'];
+	constList1 = ['p', 'b', 't', 'd', 'ʈ', 'Ɖ', 'k', 'g', 'ʔ', 'm', 'n', 'ɳ', 'ɲ', 'ʃ', 'c', 'ʂ', 'x', 'x', 'hʷ', 'hʷi', 'j', 'ʍ', 'ʍi', 'ɽ'];
+	constList2 = ['p', 'ꞗ', 't', 'd', 'ʈ', 'Ɖ', 'k', 'ᵹ', 'ʯ', 'm', 'n', 'ꞥ', 'ñ', 'ꝭ', 'ƙo', 'ç', 'ỻ', 'ꭓ', 'Ɥ', 'ꝡ', 'ȝ', 'Ɥ', 'ꝡ', 'ꝛ'];
 	(langWord: '.*)ꝷ(.*',)
 	$1ʈ$2
 	----------------------------------------------------------------
@@ -67,6 +67,19 @@ interface ConstList {
 	sound: string;
 	letter: string;
 }
+
+export function setLocale(getString: number, getLocale?: string) {
+	return getString.toLocaleString(locale(getLocale));
+}
+
+export let locale = (getLocale?: string) => {
+	switch (getLocale.toLowerCase()) {
+		case 'arabic': return 'ar-EG';
+		case 'german': return 'de';
+		case 'english': return 'en';
+		default: return navigator.language;
+	}
+};
 
 export const getIPA = (langIPA: string): string => `/${langIPA}/`;
 
@@ -459,40 +472,8 @@ import { Symbols } from './data/data.model';
 
 export function letterSort(source: string): Symbols[] {
 	const newLanguageTable: string[] = newLanguage.map(get => get.langWord);
-	const symbols: Symbols[] = [
-		{ symbol: 'p', count: 0 },
-		{ symbol: 'b', count: 0 },
-		{ symbol: 't', count: 0 },
-		{ symbol: 'ʈ', count: 0 },
-		{ symbol: 'ɖ', count: 0 },
-		{ symbol: 'k', count: 0 },
-		{ symbol: 'ᵹ', count: 0 },
-		{ symbol: 'ʯ', count: 0 },
-		{ symbol: 'm', count: 0 },
-		{ symbol: 'n', count: 0 },
-		{ symbol: 'ꞥ', count: 0 },
-		{ symbol: 'ñ', count: 0 },
-		{ symbol: 'ꞇ', count: 0 },
-		{ symbol: 'ȼ', count: 0 },
-		{ symbol: 'ç', count: 0 },
-		{ symbol: 'ỻ', count: 0 },
-		{ symbol: 'ꭓ', count: 0 },
-		{ symbol: 'ꝩ', count: 0 },
-		{ symbol: 'ꝡ', count: 0 },
-		{ symbol: 'ȝ', count: 0 },
-		{ symbol: 'ꝛ', count: 0 },
-		{ symbol: 'a', count: 0 },
-		{ symbol: 'ä', count: 0 },
-		{ symbol: 'e', count: 0 },
-		{ symbol: 'ë', count: 0 },
-		{ symbol: 'i', count: 0 },
-		{ symbol: 'ï', count: 0 },
-		{ symbol: 'o', count: 0 },
-		{ symbol: 'ö', count: 0 },
-		{ symbol: 'u', count: 0 },
-		{ symbol: 'ü', count: 0 },
-		{ symbol: 'ʊ', count: 0 },
-	];
+	const symbols: Symbols[] = getSymbols.map(symbol => ({ ...symbol, count: 0 }));
+
 	newLanguageTable.forEach(word => {
 		symbols.forEach(symbol => {
 			const wordStart: string = word[0].toLowerCase();
@@ -509,11 +490,6 @@ export function letterSort(source: string): Symbols[] {
 			}
 		});
 	});
-	symbols.forEach(symbol => {
-		if (symbol.symbol !== 'ʯ') {
-			symbol.symbol = capitalize(symbol.symbol) + ' ' + symbol.symbol;
-		}
-	});
 
 	const Sorter = (a: number, b: number): number => (a < b) ? -1 : (a > b) ? 1 : 0;
 	return symbols.sort((a, b) => Sorter(b.count, a.count));
@@ -521,11 +497,12 @@ export function letterSort(source: string): Symbols[] {
 
 
 import language from './dictionary.json';
+import { getSymbols } from './lexicon/lexicon.model';
 export const newLanguage: NewLang[] = language.dictionary;
 export const nameSort: { [propName: string]: string[]; } = language.namesList;
 
 /*
-	p b t d ʈ ɖ k ᵹ ʯ m n ꞥ ñ ꝭ ƙ ç ỻ ꭓ ɥ ꝡ ȝ ɥ ꝡ ꝛ
+	p b t d ʈ Ɖ k ᵹ ʯ m n ꞥ ñ ꝭ ƙ ç ỻ ꭓ Ɥ ꝡ ȝ Ɥ ꝡ ꝛ
 	a ä e ë i ï o ö u ü ʊ
 */
 let getNames: string[] = [];
@@ -596,15 +573,15 @@ export const langNames = (nameLetter: string[]): GetLangNames[] => nameLetter.ma
 		const findLetter = (getLetter: string) => (newName[letter].toLowerCase() === getLetter);
 		langName += findLetter('z') ? 'ç'
 			: findLetter('s') ? 'ç'
-				: findLetter('p') ? 'b'
-					: findLetter('f') ? 'b'
+				: findLetter('p') ? 'ꞗ'
+					: findLetter('f') ? 'ꞗ'
 						: findLetter('g') ? 'ᵹ'
 							: findLetter('y') ? 'ȝ'
-								: findLetter('h') ? 'ɥ'
+								: findLetter('h') ? 'Ɥ'
 									: findLetter('r') ? 'ꝛ'
 										: findLetter('t') ? 'ʈ'
-											: findLetter('d') ? 'ɖ'
-												: findLetter('v') ? 'ɖ'
+											: findLetter('d') ? 'Ɖ'
+												: findLetter('v') ? 'Ɖ'
 													: findLetter('q') ? 'ỻ'
 														: findLetter('l') ? 'ỻ'
 															: findLetter('j') ? 'ƙ'
@@ -619,8 +596,8 @@ export const langNames = (nameLetter: string[]): GetLangNames[] => nameLetter.ma
 		{ engLett: 'James', regex: /ƙameç/i, langLett: 'ƙämç' },
 	]);
 
-	langName = getName(name, 'Abdallah') ? 'Abɖäỻä'
-		: getName(name, 'Abraham') ? 'Abꝛaꭓam'
+	langName = getName(name, 'Abdallah') ? 'AꞗƉäỻä'
+		: getName(name, 'Abraham') ? 'Aꞗꝛaꭓam'
 			: getName(name, 'Ace') ? 'Äç'
 				: getName(name, 'Charlie') ? 'Ꝭaꝛçï'
 					: getName(name, 'Charly') ? 'Ꝭaꝛçï'

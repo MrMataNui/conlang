@@ -19,7 +19,7 @@ export interface FirstWord {
 
 export const getSymbols: { symbol: string }[] = [
 	{ symbol: 'a' },
-	{ symbol: 'b' },
+	{ symbol: 'ꞗ' },
 	{ symbol: 'e' },
 	{ symbol: 'i' },
 	{ symbol: 'k' },
@@ -37,8 +37,8 @@ export const getSymbols: { symbol: string }[] = [
 	{ symbol: 'ü' },
 	{ symbol: 'ƙ' },
 	{ symbol: 'ȝ' },
-	{ symbol: 'ɖ' },
-	{ symbol: 'ɥ' },
+	{ symbol: 'Ɖ' },
+	{ symbol: 'Ɥ' },
 	{ symbol: 'ʈ' },
 	{ symbol: 'ʊ' },
 	{ symbol: 'ʯ' },
@@ -53,10 +53,10 @@ export const getSymbols: { symbol: string }[] = [
 
 export const soundSymbols: SoundSymbols[] = [
 	{ sound: 'p', symbol: 'p' },
-	{ sound: 'b', symbol: 'b' },
+	{ sound: 'b', symbol: 'ꞗ' },
 	{ sound: 't', symbol: 't' },
 	{ sound: 'ʈ', symbol: 'ʈ' },
-	{ sound: 'ɖ', symbol: 'ɖ' },
+	{ sound: 'Ɖ', symbol: 'Ɖ' },
 	{ sound: 'k', symbol: 'k' },
 	{ sound: 'g', symbol: 'ᵹ' },
 	{ sound: 'ʔ', symbol: 'ʯ' },
@@ -70,8 +70,8 @@ export const soundSymbols: SoundSymbols[] = [
 	{ sound: 'ɣ', symbol: 'ꭓ' },
 	{ sound: 'ɣ', symbol: 'ỻ' },
 	{ sound: 'j', symbol: 'ȝ' },
-	{ sound: 'hʷ', symbol: 'ɥ' },
-	{ sound: 'ʍ', symbol: 'ɥ' },
+	{ sound: 'hʷ', symbol: 'Ɥ' },
+	{ sound: 'ʍ', symbol: 'Ɥ' },
 	{ sound: 'hʷi', symbol: 'ꝡ' },
 	{ sound: 'ʍi', symbol: 'ꝡ' },
 	{ sound: 'ɽ', symbol: 'ꝛ' },

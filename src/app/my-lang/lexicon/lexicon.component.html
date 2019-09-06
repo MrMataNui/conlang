@@ -13,10 +13,10 @@
         <ng-container *ngFor="let find of getAllWords">
           <ng-container *ngIf="letter == find.letter">
             <ng-template [ngIf]="find.words.length !== 0" [ngIfElse]="letterCheck">
-              <span class="letterCheck" (click)="letterClick(find)"> {{ langCapitalize(letter) }} </span>
+              <span class="letterCheck" (click)="letterClick(find)"> {{ letter }} </span>
             </ng-template>
             <ng-template #letterCheck>
-              <span> {{ langCapitalize(letter) }} </span>
+              <span> {{ letter }} </span>
             </ng-template>
           </ng-container>
         </ng-container>
@@ -27,10 +27,10 @@
         <ng-container *ngFor="let find of getAllWords">
           <ng-container *ngIf="letter == find.letter">
             <ng-template [ngIf]="find.words.length !== 0" [ngIfElse]="letterCheck">
-              <span class="letterCheck" (click)="letterClick(find)"> {{ langCapitalize(letter) }} </span>
+              <span class="letterCheck" (click)="letterClick(find)"> {{ letter }} </span>
             </ng-template>
             <ng-template #letterCheck>
-              <span> {{ langCapitalize(letter) }} </span>
+              <span> {{ letter }} </span>
             </ng-template>
           </ng-container>
         </ng-container>
@@ -38,7 +38,6 @@
     </tr>
   </table>
   <br />
-  <!-- <h3 class="getLetter"> {{ getLetter() }} </h3> -->
   <h3 class="getLetter"> {{ newGetLetter.letter }} </h3>
   <h3 class="getLetter"> {{ newGetLetter.count }} </h3>
   <table id="lexicon-table">
@@ -52,11 +51,6 @@
     </tr>
     <tr *ngFor="let newWord of newTable">
       <td>
-        <ng-container *ngFor="let find of firstWord">
-          <ng-container *ngIf="newWord.spelling == find.word">
-            <span id="{{ find.letter }}"></span>
-          </ng-container>
-        </ng-container>
         {{ newWord.spelling }}
       </td>
       <td> {{ newWord.IPA }} </td>

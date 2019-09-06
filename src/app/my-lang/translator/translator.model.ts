@@ -211,10 +211,10 @@ export function plurCheck(word: string): GetAffix {
 	let affix: GetAffix;
 	switch (word) {
 		case 'words':
-			affix = getWordAffix({ word: 'word', prefix: 'ɥü', IPA: '/huː/', engWord: word });
+			affix = getWordAffix({ word: 'word', prefix: 'Ɥü', IPA: '/huː/', engWord: word });
 			break;
 		default:
-			affix = getWordAffix({ word: word.slice(0, -1), prefix: 'ɥe', IPA: '/hʷe/', engWord: word });
+			affix = getWordAffix({ word: word.slice(0, -1), prefix: 'Ɥe', IPA: '/hʷe/', engWord: word });
 			break;
 	}
 	return (/e?s$/.test(word)) ? affix : returnObject(word);
@@ -229,7 +229,7 @@ export function thirdSingular(word: string): NewLang {
 	switch (word) {
 		case 'he':
 		case 'she':
-			newIt = { langWord: 'ɥeb', IPA: '/hʷeb/', engWord: 'it' };
+			newIt = { langWord: 'Ɥeꞗ', IPA: '/hʷeb/', engWord: 'it' };
 			break;
 		case 'him':
 		case 'her':
@@ -237,11 +237,11 @@ export function thirdSingular(word: string): NewLang {
 			break;
 		case 'his':
 		case 'hers':
-			newIt = { langWord: 'ɥaƙ', IPA: '/hʷac/', engWord: 'its' };
+			newIt = { langWord: 'Ɥaƙ', IPA: '/hʷac/', engWord: 'its' };
 			break;
 		case 'to him':
 		case 'to her':
-			newIt = { langWord: 'ɥöȝ', IPA: '/hʷoːj/', engWord: 'to it' };
+			newIt = { langWord: 'Ɥöȝ', IPA: '/hʷoːj/', engWord: 'to it' };
 			break;
 		// default: return word;
 	}
@@ -311,11 +311,11 @@ export function reversePlur(getNew: NewLang, newLangWord: NewLang): { word: stri
 			case 'word':
 			case 'words':
 				getWord = { word: getNew.engWord };
-				newWord = { prefix: 'ɥü', IPA: '/huː/' };
+				newWord = { prefix: 'Ɥü', IPA: '/huː/' };
 				break;
 			default:
 				getWord = { word: getNew.engWord.slice(0, -1) };
-				newWord = { prefix: 'ɥe', IPA: '/hʷe/' };
+				newWord = { prefix: 'Ɥe', IPA: '/hʷe/' };
 				break;
 		}
 		return getWord;

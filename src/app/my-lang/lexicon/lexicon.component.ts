@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { soundSymbols, getSymbols, SoundSymbols, Lexicon, FirstWord } from './lexicon.model';
+import { soundSymbols, getSymbols, SoundSymbols, Lexicon } from './lexicon.model';
 import { Symbols } from '../data/data.model';
-import { newLanguage, capitalize, NewLang, letterSort } from '../lang-vars.model';
+import { newLanguage, capitalize, NewLang, letterSort, setLocale } from '../lang-vars.model';
 
 // import { NgModule } from '@angular/core';
 // import { MainPipe } from './capitalize-pipe.module';
 // import { AppComponent }	 from '../../app.component';
-
 
 // @NgModule({ imports: [ MainPipe ], bootstrap: [ AppComponent ] })
 
@@ -31,8 +30,8 @@ export class LexiconComponent implements OnInit {
 	letterSort: Symbols[] = letterSort('lexicon');
 	showLetter: string;
 	newGetLetter: { letter: string; count: string; };
+	allCount = 0;
 
-	firstWord: { letter: string, word: Lexicon }[] = [];
 	getAllWords: { letter: string, words: Lexicon[] }[] = [];
 
 	capitals: string[] = this.getSymbols.map(symbol => capitalize(symbol));
@@ -40,7 +39,7 @@ export class LexiconComponent implements OnInit {
 	sorter = (a: string, b: string): number => (a < b) ? -1 : (a > b) ? 1 : 0;
 
 	tableStructure = (get: NewLang): Lexicon => ({
-		spelling: capitalize(get.langWord),
+		spelling: get.langWord,
 		IPA: get.IPA,
 		partOfSpeech: capitalize(get.partOfSpeech),
 		engWord: capitalize(get.engWord),
@@ -49,17 +48,19 @@ export class LexiconComponent implements OnInit {
 	})
 
 	changeLang(lang: string): void {
+		let sorter: (a: Lexicon, b: Lexicon) => number;
 		switch (lang) {
 			case 'English':
-				this.newTable.sort((a, b) => this.sorter(a.engWord, b.engWord));
+				sorter = (a, b) => this.sorter(a.engWord, b.engWord);
 				break;
 			case 'Lang':
-				this.newTable.sort((a, b) => this.sorter(a.spelling, b.spelling));
+				sorter = (a, b) => this.sorter(a.spelling, b.spelling);
 				break;
 		}
+		this.newTable.sort(sorter);
 	}
 
-	symbolSort(symbols: string[]) {
+	symbolSort(symbols: string[]): string[] {
 		const myArray: string[] = symbols;
 		const newArray: string[] = [];
 		for (let i = 0; i < myArray.length; i++) {
@@ -73,12 +74,11 @@ export class LexiconComponent implements OnInit {
 				}
 			}
 		}
-		console.log('newArray', newArray);
 		return newArray;
 	}
 
-	wordSort(lang: Lexicon[], symbols: string[]) {
-		console.log('symbols', symbols);
+	wordSort(lang: Lexicon[], symbols: string[]): void {
+		// console.log('symbols', symbols);
 		// const newSymbols = this.symbolSort(symbols);
 		// console.log('newSymbols', newSymbols);
 
@@ -86,21 +86,17 @@ export class LexiconComponent implements OnInit {
 		let wordLetter: string;
 		let langSpelling0: string;
 		for (let i = 0; i < symbols.length; i++) {
-			wordLetter = capitalize(symbols[i]);
+			wordLetter = symbols[i];
 			wordGet = [];
 			for (let j = 0; j < lang.length; j++) {
 				langSpelling0 = lang[j].spelling.charAt(0);
-				if (wordLetter === langSpelling0) {
-					wordGet.push(lang[j]);
-				}
+				if (wordLetter === langSpelling0) { wordGet.push(lang[j]); }
 			}
 			this.getAllWords.push({ letter: symbols[i], words: wordGet });
-			this.firstWord.push({ letter: symbols[i], word: wordGet[0] });
 		}
-		console.log('this.getAllWords', this.getAllWords);
 	}
 
-	getSymbol() {
+	getSymbol(): void {
 		const newSoundSymbols = [];
 		this.soundSymbols.forEach((letter, i) => {
 			const newS0 = (i - 1 < 0)
@@ -131,37 +127,45 @@ export class LexiconComponent implements OnInit {
 		this.soundSymbols = this.soundSymbols.sort((a, b) => this.sorter(a.symbol, b.symbol));
 	}
 
-	allClick() {
+	allClick(): void {
 		this.newTable = this.allTable;
 		this.letterCheck = 'All Letters';
 
 		this.newGetLetter = this.getLetter();
 	}
 
-	letterClick(find: { letter: string, words: Lexicon[] }) {
-		this.newTable = find.words;
-		this.letterCheck = find.letter;
+	letterClick({ words, letter }): void {
+		this.newTable = words;
+		this.letterCheck = letter;
 
 		this.newGetLetter = this.getLetter();
 	}
 
-	getLetter() {
-		let getLetter: string;
+	getLetter(): { letter: string, count: string } {
 		let finalLetter: { letter: string, count: string };
-		if (this.letterCheck !== 'All Letters') {
-			getLetter = this.langCapitalize(this.letterCheck);
-		} else {
-			getLetter = this.letterCheck;
-		}
-		this.letterSort.forEach(letter => {
-			if (getLetter === letter.symbol) {
-				finalLetter = { letter: `Letter: ${letter.symbol} `, count: ` Count: ${letter.count}` };
-			}
+		const getTheLetter = (getLetter: string, getCount: number) => ({
+			letter: getLetter,
+			count: `Count: ${setLocale(getCount, 'English')}`
 		});
+
+		if (this.letterCheck === 'All Letters') {
+			finalLetter = getTheLetter(this.letterCheck, this.allCount);
+		} else {
+			// const getLetter: string = this.langCapitalize(this.letterCheck);
+			this.letterSort.forEach(letter => {
+				if (this.letterCheck === letter.symbol) {
+					finalLetter = getTheLetter(this.letterCheck, letter.count);
+					console.log('letter', letter);
+					console.log('finalLetter', finalLetter);
+				}
+			});
+		}
 		return finalLetter;
 	}
 
 	ngOnInit(): void {
+		this.letterSort.forEach(letter => { this.allCount += letter.count; });
+
 		this.allTable = newLanguage
 			.map(this.tableStructure)
 			.sort((a, b) => this.sorter(a.spelling, b.spelling));
@@ -170,14 +174,17 @@ export class LexiconComponent implements OnInit {
 		/* ---------------------------------------------------------------------------------------------------------------- */
 
 		this.getSymbols = this.getSymbols.sort(this.sorter);
+		console.log('this.getSymbols', this.getSymbols);
 
 		this.wordSort(this.allTable, this.getSymbols);
 
 		this.symbols1 = this.getSymbols.slice(0, 16);
 		this.symbols2 = this.getSymbols.slice(16);
 
-		this.letterClick(this.getAllWords[0]);
+		console.log('this.symbols1', this.symbols1);
+		console.log('this.symbols2', this.symbols2);
+		console.log('this.getAllWords', this.getAllWords);
 
-		console.log('this.letterSort', this.letterSort);
+		this.letterClick(this.getAllWords[0]);
 	}
 }

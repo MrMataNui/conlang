@@ -62,3 +62,14 @@ table tr:nth-child(even) {
   color: #D80036;
   text-decoration: underline;
 }
+
+#johi-letter {
+  width: 80%;
+}
+
+#johi-letter td {
+  padding: initial;
+  width: 2em;
+  border-spacing: initial;
+  border-collapse: initial;
+}
