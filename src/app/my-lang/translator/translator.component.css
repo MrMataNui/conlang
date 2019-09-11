@@ -1,29 +1,17 @@
 .display,
 input,
 textarea {
-  display: block;
-  margin: 0 auto;
-  text-align: center;
+	display: block;
+	margin: 0 auto;
+	text-align: center;
 }
 
 textarea {
-  border: 1px solid black;
-}
-
-div#translate-switch-buttons {
-  display: block;
-  margin: 0 auto;
-  text-align: center;
-}
-
-button#English-to-Johi,
-button#Johi-to-English {
-  background-color: aqua;
-  cursor: pointer;
+	border: 1px solid black;
 }
 
 input#translate-button {
-  width: 45%;
-  background-color: aqua;
-  cursor: pointer;
+	width: 45%;
+	background-color: aqua;
+	cursor: pointer;
 }

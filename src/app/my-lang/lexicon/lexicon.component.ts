@@ -30,9 +30,12 @@ export class LexiconComponent implements OnInit {
 	letterCheck: string;
 	letterSort: Symbols[] = letterSort('lexicon');
 	showLetter: string;
+<<<<<<< HEAD
 	newGetLetter: { letter: string; count: string; };
 	halfSymbols: number;
 	allCount = 0;
+=======
+>>>>>>> parent of 03e4d7ac... Improved the translator
 
 	getAllWords: { letter: string, words: Lexicon[] }[] = [];
 
@@ -132,15 +135,19 @@ export class LexiconComponent implements OnInit {
 	allClick(): void {
 		this.newTable = this.allTable;
 		this.letterCheck = 'All Letters';
-
-		this.newGetLetter = this.getLetter();
 	}
 
+<<<<<<< HEAD
 	letterClick({ words, letter }): void {
 		this.newTable = words;
 		this.letterCheck = letter;
 
 		this.newGetLetter = this.getLetter();
+=======
+	letterClick(find: { letter: string, words: Lexicon[] }) {
+		this.newTable = find.words;
+		this.letterCheck = find.letter;
+>>>>>>> parent of 03e4d7ac... Improved the translator
 	}
 
 	getLetter(): { letter: string, count: string } {

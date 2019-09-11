@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 export class AppComponent { }
 // ⱶ ꝸ ꝙ
 /*
+<<<<<<< HEAD
 	Lord Gwyn (Ƕäçoꞥo ᵹꝡꞥ)
 	Gravelord Nito (ẟiᵹoǶaçöꞥo ꞥïʈö)
 	Furtive Pygmy (ẟoꭓiʯꞍöm ƙaȝëꝭ)
