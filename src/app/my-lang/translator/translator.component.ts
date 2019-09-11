@@ -48,19 +48,15 @@ interface BoolCheck {
 
 export class TranslatorComponent implements OnInit {
 	constructor() { }
-<<<<<<< HEAD
 	engLangInput = 'Start typing to see the translation of the words';
 	johiLangInput = 'ʊꭓ eñiȝ ʈo ȝö uꞍoꭓe ƙuʈü Ɥüꝡ';
 
 	ETJ_IsVisible = true;
 	JTE_IsVisible = false;
 
-=======
->>>>>>> parent of 03e4d7ac... Improved the translator
 	showTranslator = true;
 	@Input() engLang = 'Start typing to see the translation of the words';
 	translation: Translation;
-<<<<<<< HEAD
 	langTranslation: Translation;
 
 	show(lang: string) {
@@ -77,8 +73,6 @@ export class TranslatorComponent implements OnInit {
 				break;
 		}
 	}
-=======
->>>>>>> parent of 03e4d7ac... Improved the translator
 
 	testDisplay = (testVar: boolean | string, display: string): { display: string } => ({
 		display: (testVar) ? display : 'none'
@@ -259,7 +253,6 @@ export class TranslatorComponent implements OnInit {
 		};
 	}
 
-<<<<<<< HEAD
 	reverseTranslate(text: string): Translation {
 		const userText: string[] = text.split(blankSpace);
 		userText.forEach((userWord, i) => {
@@ -388,7 +381,3 @@ export class TranslatorComponent implements OnInit {
 			"engWord2": ""
  */
 
-=======
-	ngOnInit() { }
-}
->>>>>>> parent of 03e4d7ac... Improved the translator

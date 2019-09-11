@@ -23239,9 +23239,10 @@
       "langWord": "Ƕe|ᵹiç",
       "IPA": "/hʷeˈgiʂ/",
       "partOfSpeech": "contraction",
-      "engWord": "it's"
-    },
-    {
+      "engWord": "it's",
+      "partOfSpeech2": "",
+      "engWord2": ""
+    }, {
       "langWord": "ᵹꝡꞥ",
       "IPA": "/gʍiɳ/",
       "partOfSpeech": "noun",
@@ -23260,6 +23261,7 @@
       "engWord": "izalith"
     },
     {
+      "langWord": "Çïꝡ",
       "IPA": "/ʂiːhʷi/",
       "partOfSpeech": "noun",
       "engWord": "sif"

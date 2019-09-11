@@ -473,44 +473,8 @@ import { Symbols } from './data/data.model';
 
 export function letterSort(source: string): Symbols[] {
 	const newLanguageTable: string[] = newLanguage.map(get => get.langWord);
-<<<<<<< HEAD
 	const symbols: Symbols[] = getSymbols.map(symbol => ({ ...symbol, count: 0 }));
 
-=======
-	const symbols: Symbols[] = [
-		{ symbol: 'p', count: 0 },
-		{ symbol: 'b', count: 0 },
-		{ symbol: 't', count: 0 },
-		{ symbol: 'ʈ', count: 0 },
-		{ symbol: 'ɖ', count: 0 },
-		{ symbol: 'k', count: 0 },
-		{ symbol: 'ᵹ', count: 0 },
-		{ symbol: 'ʯ', count: 0 },
-		{ symbol: 'm', count: 0 },
-		{ symbol: 'n', count: 0 },
-		{ symbol: 'ꞥ', count: 0 },
-		{ symbol: 'ñ', count: 0 },
-		{ symbol: 'ꞇ', count: 0 },
-		{ symbol: 'ȼ', count: 0 },
-		{ symbol: 'ç', count: 0 },
-		{ symbol: 'ỻ', count: 0 },
-		{ symbol: 'ꭓ', count: 0 },
-		{ symbol: 'ꝩ', count: 0 },
-		{ symbol: 'ꝡ', count: 0 },
-		{ symbol: 'ȝ', count: 0 },
-		{ symbol: 'ꝛ', count: 0 },
-		{ symbol: 'a', count: 0 },
-		{ symbol: 'ä', count: 0 },
-		{ symbol: 'e', count: 0 },
-		{ symbol: 'ë', count: 0 },
-		{ symbol: 'i', count: 0 },
-		{ symbol: 'ï', count: 0 },
-		{ symbol: 'o', count: 0 },
-		{ symbol: 'ö', count: 0 },
-		{ symbol: 'u', count: 0 },
-		{ symbol: 'ü', count: 0 },
-	];
->>>>>>> parent of 03e4d7ac... Improved the translator
 	newLanguageTable.forEach(word => {
 		symbols.forEach(symbol => {
 			const wordStart: string = word[0].toLowerCase();
