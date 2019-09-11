@@ -211,10 +211,10 @@ export function plurCheck(word: string): GetAffix {
 	let affix: GetAffix;
 	switch (word) {
 		case 'words':
-			affix = getWordAffix({ word: 'word', prefix: 'Ɥü', IPA: '/huː/', engWord: word });
+			affix = getWordAffix({ word: 'word', prefix: 'Ƕü', IPA: '/huː/', engWord: word });
 			break;
 		default:
-			affix = getWordAffix({ word: word.slice(0, -1), prefix: 'Ɥe', IPA: '/hʷe/', engWord: word });
+			affix = getWordAffix({ word: word.slice(0, -1), prefix: 'Ƕe', IPA: '/hʷe/', engWord: word });
 			break;
 	}
 	return (/e?s$/.test(word)) ? affix : returnObject(word);
@@ -229,7 +229,7 @@ export function thirdSingular(word: string): NewLang {
 	switch (word) {
 		case 'he':
 		case 'she':
-			newIt = { langWord: 'Ɥeꞗ', IPA: '/hʷeb/', engWord: 'it' };
+			newIt = { langWord: 'Ƕeꞗ', IPA: '/hʷeb/', engWord: 'it' };
 			break;
 		case 'him':
 		case 'her':
@@ -237,11 +237,11 @@ export function thirdSingular(word: string): NewLang {
 			break;
 		case 'his':
 		case 'hers':
-			newIt = { langWord: 'Ɥaƙ', IPA: '/hʷac/', engWord: 'its' };
+			newIt = { langWord: 'Ƕᴀƙ', IPA: '/hʷac/', engWord: 'its' };
 			break;
 		case 'to him':
 		case 'to her':
-			newIt = { langWord: 'Ɥöȝ', IPA: '/hʷoːj/', engWord: 'to it' };
+			newIt = { langWord: 'Ƕöȝ', IPA: '/hʷoːj/', engWord: 'to it' };
 			break;
 		// default: return word;
 	}
@@ -264,9 +264,6 @@ export function personCheck(word: string): GetAffix {
 }
 
 export function reverseIon(getNew: NewLang, newLangWord: NewLang): { word: string; } {
-	console.log('ion');
-	// console.log('getNew.engWord', getNew.engWord);
-	// console.log('newLangWord.engWord', newLangWord.engWord);
 	let getWord: { word: string; };
 	if (getNew.engWord === newLangWord.engWord) {
 		switch (getNew.engWord) {
@@ -281,9 +278,6 @@ export function reverseIon(getNew: NewLang, newLangWord: NewLang): { word: strin
 }
 
 export function reversePerson(getNew: NewLang, newLangWord: NewLang): { word: string; } {
-	console.log('person');
-	// console.log('getNew.engWord', getNew.engWord);
-	// console.log('newLangWord.engWord', newLangWord.engWord);
 	let getWord: { word: string; };
 	if (getNew.engWord === newLangWord.engWord) {
 		if (/er$/.test(getNew.engWord)) {
@@ -301,9 +295,6 @@ export function reversePerson(getNew: NewLang, newLangWord: NewLang): { word: st
 }
 
 export function reversePlur(getNew: NewLang, newLangWord: NewLang): { word: string; } {
-	console.log('plur');
-	// console.log('getNew.engWord', getNew.engWord);
-	// console.log('newLangWord.engWord', newLangWord.engWord);
 	let getWord: { word: string; };
 	let newWord: { prefix: string; IPA: string; };
 	if (getNew.engWord === newLangWord.engWord + 's') {
@@ -311,11 +302,11 @@ export function reversePlur(getNew: NewLang, newLangWord: NewLang): { word: stri
 			case 'word':
 			case 'words':
 				getWord = { word: getNew.engWord };
-				newWord = { prefix: 'Ɥü', IPA: '/huː/' };
+				newWord = { prefix: 'Ƕü', IPA: '/huː/' };
 				break;
 			default:
 				getWord = { word: getNew.engWord.slice(0, -1) };
-				newWord = { prefix: 'Ɥe', IPA: '/hʷe/' };
+				newWord = { prefix: 'Ƕe', IPA: '/hʷe/' };
 				break;
 		}
 		return getWord;
@@ -325,9 +316,6 @@ export function reversePlur(getNew: NewLang, newLangWord: NewLang): { word: stri
 }
 
 export function reverseIng(getNew: NewLang, newLangWord: NewLang): { word: string; } {
-	console.log('ing');
-	// console.log('getNew.engWord', getNew.engWord);
-	// console.log('newLangWord.engWord', newLangWord.engWord);
 	let getWord: { word: string };
 	if (getNew.engWord === newLangWord.engWord) {
 		switch (getNew.engWord) {

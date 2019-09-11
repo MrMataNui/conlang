@@ -1,3 +1,7 @@
+// ("langWord": ".*Ɥ.*",\n[\t ]+"IPA": ".*)ʍ
+// $1ʧ
+// Ƕ ƕ
+
 import { Component, Input, OnInit } from '@angular/core';
 import {
 	NewLang,
@@ -45,10 +49,10 @@ interface BoolCheck {
 export class TranslatorComponent implements OnInit {
 	constructor() { }
 	engLangInput = 'Start typing to see the translation of the words';
-	johiLangInput = 'ʊỻ eñiȝ ʈo ȝö uꞍoỻe ƙuʈü Ɥüꝡ';
+	johiLangInput = 'ʊꭓ eñiȝ ʈo ȝö uꞍoꭓe ƙuʈü Ɥüꝡ';
 
-	ETJ_IsHidden = false;
-	JTE_IsHidden = true;
+	ETJ_IsVisible = true;
+	JTE_IsVisible = false;
 
 	showTranslator = true;
 	translation: Translation;
@@ -57,13 +61,13 @@ export class TranslatorComponent implements OnInit {
 	show(lang: string) {
 		switch (lang) {
 			case 'English':
-				this.ETJ_IsHidden = false;
-				this.JTE_IsHidden = true;
+				this.ETJ_IsVisible = true;
+				this.JTE_IsVisible = false;
 				this.translation = undefined;
 				break;
 			case 'Johi':
-				this.ETJ_IsHidden = true;
-				this.JTE_IsHidden = false;
+				this.ETJ_IsVisible = false;
+				this.JTE_IsVisible = true;
 				this.langTranslation = undefined;
 				break;
 		}
@@ -147,7 +151,7 @@ export class TranslatorComponent implements OnInit {
 			if (userWord === 'you') {
 				const getNewWord: NewLang = {
 					langWord: 'Ɥe',
-					IPA: '/ʍe/',
+					IPA: '/ʧe/',
 					partOfSpeech: 'pronoun',
 					engWord: 'you',
 					partOfSpeech2: '',
@@ -287,8 +291,8 @@ export class TranslatorComponent implements OnInit {
 							}
 							prevWord = userWord;
 							break;
-						case `Ɥü${langWord}`:
-							getNew = { ...newLangWord, engWord: 'words', langWord: `Ɥü${langWord}`, IPA: `/huː${IPA}/` };
+						case `Ƕü${langWord}`:
+							getNew = { ...newLangWord, engWord: 'words', langWord: `Ƕü${langWord}`, IPA: `/huː${IPA}/` };
 							findWord = reversePlur(getNew, newLangWord);
 							if (findWord.word) {
 								getNew = { ...getNew, engWord: findWord.word };
@@ -296,8 +300,8 @@ export class TranslatorComponent implements OnInit {
 							}
 							prevWord = userWord;
 							break;
-						case `Ɥe${langWord}`:
-							getNew = { ...newLangWord, langWord: `Ɥe${langWord}`, IPA: `/hʷe${IPA}/` };
+						case `Ƕe${langWord}`:
+							getNew = { ...newLangWord, langWord: `Ƕe${langWord}`, IPA: `/hʷe${IPA}/` };
 							findWord = reversePlur(getNew, newLangWord);
 							if (findWord.word) {
 								getNew = { ...getNew, engWord: findWord.word };
@@ -360,7 +364,7 @@ export class TranslatorComponent implements OnInit {
 			"engWord2": ""
 		},
 		{
-			"langWord": "Ɥüꝡ",
+			"langWord": "Ƕüꝡ",
 			"IPA": "/huːhʷi/",
 			"partOfSpeech": "noun",
 			"engWord": "words",
@@ -368,8 +372,8 @@ export class TranslatorComponent implements OnInit {
 			"engWord2": ""
 		},
 		{
-			"langWord": "uꞍoỻe",
-			"IPA": "/uʍoˈxe/",
+			"langWord": "uꞍoꭓe",
+			"IPA": "/uʧoˈɣe/",
 			"partOfSpeech": "verb",
 			"engWord": "translation",
 			"partOfSpeech2": "",

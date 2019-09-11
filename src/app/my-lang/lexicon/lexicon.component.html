@@ -6,35 +6,35 @@
   <br />
   <table id="johi-letter">
     <tr>
-      <th colspan="16" class="letterCheck" (click)="allClick()"> All Letters </th>
+      <th class="letterSort" [attr.colspan]="symbolColspan" (click)="allClick()"> All Letters </th>
     </tr>
     <tr>
-      <td *ngFor="let letter of symbols1">
+      <ng-container *ngFor="let letter of symbols1">
         <ng-container *ngFor="let find of getAllWords">
           <ng-container *ngIf="letter == find.letter">
-            <ng-template [ngIf]="find.words.length !== 0" [ngIfElse]="letterCheck">
-              <span class="letterCheck" (click)="letterClick(find)"> {{ letter }} </span>
+            <ng-template [ngIf]="find.words.length !== 0" [ngIfElse]="letterCheck1">
+              <td class="letterSort" (click)="letterClick(find)"> <span> {{ letter }} </span> </td>
             </ng-template>
-            <ng-template #letterCheck>
-              <span> {{ letter }} </span>
+            <ng-template #letterCheck1>
+              <td> <span> {{ letter }} </span> </td>
             </ng-template>
           </ng-container>
         </ng-container>
-      </td>
+      </ng-container>
     </tr>
     <tr>
-      <td *ngFor="let letter of symbols2">
+      <ng-container *ngFor="let letter of symbols2">
         <ng-container *ngFor="let find of getAllWords">
           <ng-container *ngIf="letter == find.letter">
-            <ng-template [ngIf]="find.words.length !== 0" [ngIfElse]="letterCheck">
-              <span class="letterCheck" (click)="letterClick(find)"> {{ letter }} </span>
+            <ng-template [ngIf]="find.words.length !== 0" [ngIfElse]="letterCheck2">
+              <td class="letterSort" (click)="letterClick(find)"> <span> {{ letter }} </span> </td>
             </ng-template>
-            <ng-template #letterCheck>
-              <span> {{ letter }} </span>
+            <ng-template #letterCheck2>
+              <td> <span> {{ letter }} </span> </td>
             </ng-template>
           </ng-container>
         </ng-container>
-      </td>
+      </ng-container>
     </tr>
   </table>
   <br />

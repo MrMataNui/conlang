@@ -10,6 +10,9 @@ import {
 	Words
 } from './grammar.model';
 
+interface Affix { affix: string; affixIPA: string; }
+interface Name { name: string; nameIPA: string; }
+
 @Component({
 	selector: 'app-grammar',
 	templateUrl: './grammar.component.html',
@@ -63,11 +66,12 @@ export class GrammarComponent implements OnInit {
 			},
 		},
 	};
+
 	pronouns: Pronouns = {
 		first: {
 			singular: {
 				Nominative: 'i /i/',
-				Accusative: 'iɥ /iʍ/',
+				Accusative: 'iꞍ /iʧ/',
 				Genitive: 'ik /ik/',
 				Dative: 'iȝ /ij/',
 			},
@@ -80,68 +84,69 @@ export class GrammarComponent implements OnInit {
 		},
 		second: {
 			singular: {
-				Nominative: 'ɥe /ʍe/',
-				Accusative: 'ɥum /ʍum/',
-				Genitive: 'ɥöp /ʍoːp/',
-				Dative: 'ɥo /ʍo/',
+				Nominative: 'Ɥe /ʧe/',
+				Accusative: 'Ɥum /ʧum/',
+				Genitive: 'Ɥöꞗ /ʧoːb/',
+				Dative: 'Ɥo /ʧo/',
 			},
 			plural: {
-				Nominative: 'peꭓ /peɣ/',
-				Accusative: 'peç /peʂ/',
-				Genitive: 'peᵹ /peg/',
-				Dative: 'pïb /piːb/',
+				Nominative: 'ꞗeꭓ /beɣ/',
+				Accusative: 'ꞗeç /beʂ/',
+				Genitive: 'ꞗeᵹ /beg/',
+				Dative: 'ꞗïꞗ /biːb/',
 			},
 		},
 		third: {
 			singular: {
-				Nominative: 'ɥep /hʷep/',
-				Accusative: 'ɥiᵹ /hʷig/',
-				Genitive: 'ɥaȼ /hʷaʤ/',
-				Dative: 'ɥöȝ /hʷoːj/',
+				Nominative: 'Ƕeꞗ /hʷeb/',
+				Accusative: 'Ƕiᵹ /hʷig/',
+				Genitive: 'Ƕᴀꝭ /hʷaʃ/',
+				Dative: 'Ƕöȝ /hʷoːj/',
 			},
 			plural: {
-				Nominative: 'kuȼ /kuʤ/',
+				Nominative: 'kuꝭ /kuʃ/',
 				Accusative: 'kïȝ /kiːj/',
 				Genitive: 'koȝ /koj/',
 				Dative: 'kun /kun/',
 			},
 		},
 	};
+
 	tenses: Tenses = { past: '', present: '', future: '' };
 	verbs: AllTenses = {
 		first: {
 			singular: {
 				past: this.newTenseCheck(
 					'Suffix',
-					'-(i)b', '/-(i)b/',
-					'ȼiꞇib', '/ʤiˈʧib/',
+					{ affix: '-(i)ꞗ', affixIPA: '/-(i)b/' },
+					{ name: 'ꝭiꞍiꞗ', nameIPA: '/ʃiˈʧib/' }
 				),
 				present: this.newTenseCheck(
 					'Suffix',
-					'-(e)ꞇi', '/eʧi/',
-					'ȼiꞇiꞇi', '/ʤiˈʧiʧi/',
+					{ affix: '-(e)Ɥi', affixIPA: '/-eʧi/' },
+					{ name: 'ꝭiꞍiꞍi', nameIPA: '/ʃiˈʧiʧi/' }
 				),
 				future: this.newTenseCheck(
 					'Suffix',
-					'-ë', '/-eː/',
-					'ȼiꞇië', '/ʤiˈʧieː/',
+					{ affix: '-ë', affixIPA: '/-eː/' },
+					{ name: 'ꝭiꞍië', nameIPA: '/ʃiˈʧieː/' }
 				),
 			},
 			plural: {
 				past: this.newTenseCheck(
 					'Suffix',
-					'-(o)ñ', '/-(o)ɲ/',
-					'ȼiꞇiñ', '/ʤiˈʧiɲ/'
+					{ affix: '-(o)ñ', affixIPA: '/-(o)ɲ/' },
+					{ name: 'ꝭiꞍiñ', nameIPA: '/ʃiˈʧiɲ/' }
 				),
 				present: this.newTenseCheck(
 					'Suffix',
-					'-ï', '/-iː/',
-					'ȼiꞇiï', '/ʤiˈʧiiː/'
+					{ affix: '-ï', affixIPA: '/-iː/' },
+					{ name: 'ꝭiꞍiï', nameIPA: '/ʃiˈʧiiː/' }
 				),
 				future: this.newTenseCheck(
 					'Suffix',
-					'-(o)ꝺu', '/odu/',
-					'ȼiꞇiꝺu', '/ʤiˈʧidu/'
+					{ affix: '-(o)ẟu', affixIPA: '/-oɖu/' },
+					{ name: 'ꝭiꞍiẟu', nameIPA: '/ʃiˈʧiɖu/' }
 				),
 			},
 		},
@@ -149,35 +154,35 @@ export class GrammarComponent implements OnInit {
 			singular: {
 				past: this.newTenseCheck(
 					'Suffix',
-					'-(u)ꝺ', '/-(u)d/',
-					'ȼiꞇiꝺ', '/ʤiˈʧid/'
+					{ affix: '-(u)ẟ', affixIPA: '/-(u)ɖ/' },
+					{ name: 'ꝭiꞍiẟ', nameIPA: '/ʃiˈʧiɖ/' }
 				),
 				present: this.newTenseCheck(
 					'Suffix',
-					'-(i)ꝺi', '/idi/',
-					'ȼiꞇiꝺi', '/ʤiˈʧidi/'
+					{ affix: '-(i)ẟi', affixIPA: '/-iɖi/' },
+					{ name: 'ꝭiꞍiẟi', nameIPA: '/ʃiˈʧiɖi/' }
 				),
 				future: this.newTenseCheck(
 					'Suffix',
-					'-(o)ñ', '/-(o)ɲ/',
-					'ȼiꞇiñ', '/ʤiˈʧiɲ/'
+					{ affix: '-(o)ñ', affixIPA: '/-(o)ɲ/' },
+					{ name: 'ꝭiꞍiñ', nameIPA: '/ʃiˈʧiɲ/' }
 				),
 			},
 			plural: {
 				past: this.newTenseCheck(
 					'Suffix',
-					'-(i)ȼ', '/-(i)ʤ/',
-					'ȼiꞇiȼ', '/ʤiˈʧiʤ/'
+					{ affix: '-(i)ꝭ', affixIPA: '/-(i)ʃ/' },
+					{ name: 'ꝭiꞍiꝭ', nameIPA: '/ʃiˈʧiʃ/' }
 				),
 				present: this.newTenseCheck(
 					'Suffix',
-					'-(i)p', '/-(i)p/',
-					'ȼiꞇip', '/ʤiˈʧip/'
+					{ affix: '-(i)ꞗ', affixIPA: '/-(i)b/' },
+					{ name: 'ꝭiꞍiꞗ', nameIPA: '/ʃiˈʧib/' }
 				),
 				future: this.newTenseCheck(
 					'Suffix',
-					'-(e)ɖ̥', '/-(e)ɖ̥/',
-					'ȼiꞇiɖ̥', '/ʤiˈʧiɖ̥/'
+					{ affix: '-(e)ẟ', affixIPA: '/-(e)ɖ/' },
+					{ name: 'ꝭiꞍiẟ', nameIPA: '/ʃiˈʧiɖ/' }
 				),
 			},
 		},
@@ -185,39 +190,40 @@ export class GrammarComponent implements OnInit {
 			singular: {
 				past: this.newTenseCheck(
 					'Suffix',
-					'-(i)n', '/-(i)n/',
-					'ȼiꞇin', '/ʤiˈʧin/'
+					{ affix: '-(i)n', affixIPA: '/-(i)n/' },
+					{ name: 'ꝭiꞍin', nameIPA: '/ʃiˈʧin/' }
 				),
 				present: this.newTenseCheck(
 					'Suffix',
-					'-(u)çu', '/uʂu/',
-					'ȼiꞇiçu', '/ʤiˈʧiʂu/'
+					{ affix: '-(u)çu', affixIPA: '/-uʂu/' },
+					{ name: 'ꝭiꞍiçu', nameIPA: '/ʃiˈʧiʂu/' }
 				),
 				future: this.newTenseCheck(
 					'Suffix',
-					'-(i)ȝ', '/-(i)j/',
-					'ȼiꞇiȝ', '/ʤiˈʧij/'
+					{ affix: '-(i)ȝ', affixIPA: '/-(i)j/' },
+					{ name: 'ꝭiꞍiȝ', nameIPA: '/ʃiˈʧij/' }
 				),
 			},
 			plural: {
 				past: this.newTenseCheck(
 					'Suffix',
-					'-(ö)ᵹo', '/oːgo/',
-					'ȼiꞇiᵹo', '/ʤiˈʧigo/'
+					{ affix: '-(ö)ᵹo', affixIPA: '/-oːgo/' },
+					{ name: 'ꝭiꞍiᵹo', nameIPA: '/ʃiˈʧigo/' }
 				),
 				present: this.newTenseCheck(
 					'Suffix',
-					'-(i)ȝ', '/-(i)j/',
-					'ȼiꞇiȝ', '/ʤiˈʧij/'
+					{ affix: '-(i)ȝ', affixIPA: '/-(i)j/' },
+					{ name: 'ꝭiꞍiȝ', nameIPA: '/ʃiˈʧij/' }
 				),
 				future: this.newTenseCheck(
 					'Suffix',
-					'-(e)ꞥ', '/-(e)ɳ/',
-					'ȼiꞇiꞥ', '/ʤiˈʧiɳ/'
+					{ affix: '-(e)ꞥ', affixIPA: '/-(e)ɳ/' },
+					{ name: 'ꝭiꞍiꞥ', nameIPA: '/ʃiˈʧiɳ/' }
 				),
 			},
 		},
 	};
+
 	pronTypeNumber: string[] = ['singular', 'plural'];
 	pronTypePerson: string[] = ['first', 'second', 'third'];
 	pronDefNames: string[] = ['Nominative', 'Accusative', 'Genitive', 'Dative'];
@@ -229,33 +235,30 @@ export class GrammarComponent implements OnInit {
 		'second plural',
 		'third plural',
 	];
-	newTenseCheck(
-		affixName: string,
-		affix: string,
-		affixIPA: string,
-		name: string,
-		nameIPA: string
-	): string {
-		return `${affixName}:
-		<p> <b>${affix}<br /> ${affixIPA} </b> </p>
-		<p> <b>${name}<br /> ${nameIPA} </b> </p>`;
+
+	tenseP(name: string, IPA: string) { return `<p> <b>${name}<br /> ${IPA} </b> </p>`; }
+
+	newTenseCheck(affixName: string, { affix, affixIPA }: Affix, { name, nameIPA }: Name): string {
+		return `${affixName}: ${this.tenseP(affix, affixIPA)} ${this.tenseP(name, nameIPA)}`;
 	}
-	capitalize = (text: string): string => (text)
-		? text.charAt(0).toUpperCase() + text.slice(1).toLowerCase()
-		: ''
-	SubScr = (word: string, type: string): string => `(${word})<sub> <b>${type}</b> </sub> `;
+
+	capitalize = (text: string): string => text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+
+	subscript = (word: string, type: string): string => `(${word})<sub> <b>${type}</b> </sub> `;
 	partOfSpeech = (): PartOfSpeech => ({
-		Subject: this.SubScr('Mary', 'Sub'),
-		Oblique: this.SubScr('with a key', 'Obl'),
-		Object: this.SubScr('the door', 'Obj'),
-		Verb: this.SubScr('opened', 'Verb'),
+		Subject: this.subscript('Mary', 'Sub'),
+		Oblique: this.subscript('with a key', 'Obl'),
+		Object: this.subscript('the door', 'Obj'),
+		Verb: this.subscript('opened', 'Verb'),
 	})
-	getBrackets = (string: string): string => `<b>[ </b> ${string} <b> ]</b>`;
+
+	getBrackets = (string: string): string => `<b>[ </b> ${string.trim()} <b> ]</b>`;
 	word = (): Words => ({
 		order: this.getBrackets('Subject-Oblique-Object-Verb'),
 		adOrder: this.getBrackets('Adjectives are positioned before the noun'),
 		adposition: this.getBrackets('Postpositions'),
 	})
+
 	typeCheck = (type: string): string => (type) ? `<br /> ${type} ` : '';
 	first = (type: string): string => '1<sup>st</sup>' + this.typeCheck(type);
 	second = (type: string): string => '2<sup>nd</sup>' + this.typeCheck(type);
@@ -264,14 +267,17 @@ export class GrammarComponent implements OnInit {
 		wordOrder: this.getWordOrder(type),
 		tense: this.getTenses(type),
 	})
+
 	tenseCheck(tense: string): string {
 		switch (tense) {
 			case 'first': return this.first('');
 			case 'first singular': return this.first('singular');
 			case 'first plural': return this.first('plural');
+
 			case 'second': return this.second('');
 			case 'second singular': return this.second('singular');
 			case 'second plural': return this.second('plural');
+
 			case 'third': return this.third('');
 			case 'third singular': return this.third('singular');
 			case 'third plural': return this.third('plural');
@@ -281,29 +287,21 @@ export class GrammarComponent implements OnInit {
 	/**
 	 * gets the word order for the specified language
 	 * and displays the example sentance
-	 * @param	{string} lang
-	 *						the language to get the word order for
+	 * @param	{string} lang the language to get the word order for
 	 * @returns {string}
 	 */
 	getWordOrder(lang: string): string {
 		const { Subject, Verb, Object, Oblique } = this.partOfSpeech();
-		let wordOrder: string;
 		switch (lang) {
-			case 'English':
-				wordOrder = Subject + Verb + Object + Oblique;
-				break;
-			case 'NewLang':
-				wordOrder = Subject + Oblique + Object + Verb;
-				break;
+			case 'English': return this.getBrackets(Subject + Verb + Object + Oblique);
+			case 'NewLang': return this.getBrackets(Subject + Oblique + Object + Verb);
 			default: return;
 		}
-		return this.getBrackets(wordOrder.trim());
 	}
 
 	/**
 	 * checks the tense to determine which table header to display
-	 * @param	{string} tenseCheck
-	 *						the tense to be checked
+	 * @param	{string} tenseCheck the tense to be checked
 	 * @param	{Tenses}
 	 */
 	getTenses(tenseCheck: string): Tenses {
@@ -311,12 +309,16 @@ export class GrammarComponent implements OnInit {
 		switch (tenseCheck) {
 			case 'first singular': return tense.first.singular;
 			case 'first plural': return tense.first.plural;
+
 			case 'second singular': return tense.second.singular;
 			case 'second plural': return tense.second.plural;
+
 			case 'third singular': return tense.third.singular;
 			case 'third plural': return tense.third.plural;
+
 			default: return;
 		}
 	}
+
 	ngOnInit() { }
 }

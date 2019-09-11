@@ -17,6 +17,7 @@ import { newLanguage, capitalize, NewLang, letterSort, setLocale } from '../lang
 
 export class LexiconComponent implements OnInit {
 	constructor() { }
+	symbolColspan: number;
 	engSort = false;
 	langSort = true;
 	newTable: Lexicon[];
@@ -30,6 +31,7 @@ export class LexiconComponent implements OnInit {
 	letterSort: Symbols[] = letterSort('lexicon');
 	showLetter: string;
 	newGetLetter: { letter: string; count: string; };
+	halfSymbols: number;
 	allCount = 0;
 
 	getAllWords: { letter: string, words: Lexicon[] }[] = [];
@@ -151,12 +153,9 @@ export class LexiconComponent implements OnInit {
 		if (this.letterCheck === 'All Letters') {
 			finalLetter = getTheLetter(this.letterCheck, this.allCount);
 		} else {
-			// const getLetter: string = this.langCapitalize(this.letterCheck);
 			this.letterSort.forEach(letter => {
 				if (this.letterCheck === letter.symbol) {
 					finalLetter = getTheLetter(this.letterCheck, letter.count);
-					console.log('letter', letter);
-					console.log('finalLetter', finalLetter);
 				}
 			});
 		}
@@ -174,16 +173,20 @@ export class LexiconComponent implements OnInit {
 		/* ---------------------------------------------------------------------------------------------------------------- */
 
 		this.getSymbols = this.getSymbols.sort(this.sorter);
-		console.log('this.getSymbols', this.getSymbols);
 
 		this.wordSort(this.allTable, this.getSymbols);
 
-		this.symbols1 = this.getSymbols.slice(0, 16);
-		this.symbols2 = this.getSymbols.slice(16);
+		this.halfSymbols = this.getSymbols.length / 2;
+		this.symbolColspan = (this.getSymbols.length % 2)
+			? Math.ceil(this.halfSymbols)
+			: this.halfSymbols;
 
-		console.log('this.symbols1', this.symbols1);
-		console.log('this.symbols2', this.symbols2);
-		console.log('this.getAllWords', this.getAllWords);
+		this.symbols1 = this.getSymbols.slice(0, this.symbolColspan);
+		this.symbols2 = this.getSymbols.slice(this.symbolColspan);
+		if (this.getSymbols.length % 2) {
+			this.symbols2.push(' ');
+			this.getAllWords.push({ letter: ' ', words: [] });
+		}
 
 		this.letterClick(this.getAllWords[0]);
 	}

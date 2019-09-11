@@ -53,14 +53,18 @@ table tr:nth-child(even) {
   margin: auto;
 }
 
-.letterCheck {
-  color: blue;
+.letterSort {
   cursor: pointer;
+  color: blue;
 }
 
-.letterCheck:hover {
+.letterSort:hover {
   color: #D80036;
   text-decoration: underline;
+}
+
+th.letterSort:hover {
+  color: orange;
 }
 
 #johi-letter {

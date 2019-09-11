@@ -18,7 +18,7 @@
     eng -> johi
     johi -> eng
   -->
-  <div *ngIf="!ETJ_IsHidden" id="EngToJohi" [ngStyle]="testDisplay(showTranslator, 'initial')">
+  <div *ngIf="ETJ_IsVisible" id="EngToJohi" [ngStyle]="testDisplay(showTranslator, 'initial')">
     <div>
       <h3>English Sentence:</h3>
       <textarea id="eng-phrase" rows="3" cols="45" type="text" [value]="(engLangInput) ? engLangInput : ''"
@@ -45,7 +45,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="!JTE_IsHidden" id="JohiToEng" [ngStyle]="testDisplay(showTranslator, 'initial')">
+  <div *ngIf="JTE_IsVisible" id="JohiToEng" [ngStyle]="testDisplay(showTranslator, 'initial')">
     <div>
       <h3>Johi Sentence:</h3>
       <textarea id="johi-phrase" rows="3" cols="45" type="text" [value]="(johiLangInput) ? johiLangInput : ''"
