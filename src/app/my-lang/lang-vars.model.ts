@@ -73,8 +73,9 @@ export function setLocale(getString: number, getLocale?: string) {
 	return getString.toLocaleString(locale(getLocale));
 }
 
-export const locale = (getLocale?: string): string => {
+export let locale = (getLocale?: string) => {
 	switch (getLocale.toLowerCase()) {
+		case 'arabic': return 'ar-EG';
 		case 'german': return 'de';
 		case 'english': return 'en';
 		default: return navigator.language;
