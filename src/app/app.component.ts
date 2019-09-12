@@ -7,21 +7,12 @@ import { Component } from '@angular/core';
 export class AppComponent { }
 // ⱶ ꝸ ꝙ
 /*
-<<<<<<< HEAD
 	Lord Gwyn (Ƕäçoꞥo ᵹꝡꞥ)
 	Gravelord Nito (ẟiᵹoǶaçöꞥo ꞥïʈö)
 	Furtive Pygmy (ẟoꭓiʯꞍöm ƙaȝëꝭ)
 	Witch of Izalith (ꝭäȝi ȝu ïçaꞥïʈ)
 	Four Kings (çï Ƕeꞥiꞗ)
 	Pinwheel (ᵹïᵹuʯüꞥiᵹ)
-=======
-	Lord Gwyn (Ɥäçoꞥo Ᵹꝡꞥ)
-	Gravelord Nito (Digoɥaçöꞥo ꞥïtö)
-	Furtive Pygmy (Ꝺoꭓiʯɥöm Ȼaȝëꝭ)
-	Witch of Izalith (Ꞇäȝi ȝu Ïçaꞥït)
-	Four Kings (Çï ɥeꞥib)
-	Pinwheel (Gïguʯüꞥiᵹ)
->>>>>>> parent of 03e4d7ac... Improved the translator
 
 	Sif (çïꝡ)
 

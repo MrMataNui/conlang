@@ -1,5 +1,4 @@
 <div id="togTrans">
-<<<<<<< HEAD
   <div>
     <p>
       Note: Translator does not automatically do word order and only finds exact matches in your dictionary
@@ -24,18 +23,6 @@
       <h3>English Sentence:</h3>
       <textarea id="eng-phrase" rows="3" cols="45" type="text" [value]="(engLangInput) ? engLangInput : ''"
         (input)="engLangInput=$event.target.value"></textarea>
-=======
-  <div [ngStyle]="testDisplay(showTranslator, 'initial')">
-    <div>
-      <p>
-        Note: Translator does not automatically do word order and only finds exact matches in your dictionary
-        (will not find plurals, past-tense, etc.)
-      </p>
-      <p>Making the translator smarter is a work in progress.</p>
-      <h3>Sentence:</h3>
-      <textarea id="eng-phrase" rows="3" cols="45" type="text" [value]="(engLang) ? engLang : ''"
-        (input)="engLang=$event.target.value"></textarea>
->>>>>>> parent of 03e4d7ac... Improved the translator
       <br />
       <input id="translate-button" type="button" value="Translate The Text"
         (click)="translation = translate(engLangInput)" />
@@ -58,7 +45,6 @@
       </div>
     </div>
   </div>
-<<<<<<< HEAD
   <div *ngIf="JTE_IsVisible" id="JohiToEng" [ngStyle]="testDisplay(showTranslator, 'initial')">
     <div>
       <h3>Johi Sentence:</h3>
@@ -86,6 +72,4 @@
       </div>
     </div>
   </div>
-=======
->>>>>>> parent of 03e4d7ac... Improved the translator
 </div>
