@@ -1,18 +1,27 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
     <title>LangTest</title>
-    <base href="https://mrmatanui.github.io/conlang/" />
+    <meta charset="utf-8">
+    <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
   </head>
   <body>
     <app-root></app-root>
+    <canvas class="background"></canvas>
+    <script src="assets/particles.min.js"></script>
+    <script>
+      window.onload = () => Particles.init({
+        selector: 'canvas.background',
+        maxParticles: 250,
+        speed: 1.5,
+        connectParticles: true,
+        minDistance: 150,
+        color: ['#F00', '#0F0', '#00F']
+        // color: ['#83E22B', '#8A2BE2']
+        // color: ['#2BE28A', '#E28A2B']
+      });
+    </script>
   </body>
 </html>
-<!--
-cd "C:\Users\Tyler\Documents\GitHub\MrMataNui.github.io\conlang-johi\src"
-ng build --prod --output-path docs --base-href "https://mrmatanui.github.io/conlang"
-ngh -d ../docs
--->

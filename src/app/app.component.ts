@@ -7,28 +7,23 @@ import { Component } from '@angular/core';
 export class AppComponent { }
 // ⱶ ꝸ ꝙ
 /*
-	Lord Gwyn (Ƕäçoꞥo ᵹꝡꞥ)
-	Gravelord Nito (ẟiᵹoǶaçöꞥo ꞥïʈö)
-	Furtive Pygmy (ẟoꭓiʯꞍöm ƙaȝëꝭ)
-	Witch of Izalith (ꝭäȝi ȝu ïçaꞥïʈ)
-	Four Kings (çï Ƕeꞥiꞗ)
-	Pinwheel (ᵹïᵹuʯüꞥiᵹ)
+	Lord Gwyn (Ɥäçoꞥo Ᵹꝡꞥ)
+	Gravelord Nito (Digoɥaçöꞥo ꞥïtö)
+	Furtive Pygmy (Ꝺoꭓiʯɥöm Ȼaȝëꝭ)
+	Witch of Izalith (Ꞇäȝi ȝu Ïçaꞥït)
+	Four Kings (Çï ɥeꞥib)
+	Pinwheel (Gïguʯüꞥiᵹ)
 
-	Sif (çïꝡ)
+	Sif (Çïꝡ)
 
-	It's time to learn geography now [Ƕe|ᵹiç ȝoç ʈo ᴀb Ɥöꞥ Ƕomiñ] /hʷeˈgiʂ joʂ ʈo ab ʧoːɳ hʷoˈmiɳ/
-	Now it's time to learn geography [Ƕomiñ Ƕe|ᵹiç ȝoç ʈo ᴀb Ɥöꞥ] /hʷoˈmiɳ hʷeˈgiʂ joʂ ʈo ab ʧoːɳ/
-	(start [ʊꭓ] /ɯx/)
+	It's time to learn geography now [Ɥe|ᵹiç ȝoç ʈo ab ɥöꞥ ɥomiñ] /hʷeˈgiʂ joʂ ʈo ab ʍoːɳ hʷoˈmiɳ/
+	Now it's time to learn geography [Ɥomiñ ɥe|ᵹiç ȝoç ʈo ab ɥöꞥ] /hʷoˈmiɳ hʷeˈgiʂ joʂ ʈo ab ʍoːɳ/
+	(start [ʊỻ] /ɯx/)
 
 	(really (më))
 	(okay (mï))
 	(everyone (ꞥo))
-	oȝꭓʊꭓeꞥ
+	oȝꭓʊỻeꞥ
 	worry
-
-	Phrases:
-		I'm awesome | Wonderful me [moʈᴀñ iꞍ] /moˈʈaɳ iʧ/
-		I am OK | I good [ꝡʯï Ɥe] /hʷiʔiː ʧe/
-		I am okay | I good [ꝡʯï Ɥe] /hʷiʔiː ʧe/
 */
 

@@ -6,40 +6,38 @@
   <br />
   <table id="johi-letter">
     <tr>
-      <th class="letterSort" [attr.colspan]="symbolColspan" (click)="allClick()"> All Letters </th>
+      <th colspan="16" class="letterCheck" (click)="newTable = allTable"> All Letters </th>
     </tr>
     <tr>
-      <ng-container *ngFor="let letter of symbols1">
+      <td *ngFor="let letter of symbols1">
         <ng-container *ngFor="let find of getAllWords">
           <ng-container *ngIf="letter == find.letter">
-            <ng-template [ngIf]="find.words.length !== 0" [ngIfElse]="letterCheck1">
-              <td class="letterSort" (click)="letterClick(find)"> <span> {{ letter }} </span> </td>
+            <ng-template [ngIf]="find.words.length !== 0" [ngIfElse]="letterCheck">
+              <span class="letterCheck" (click)="newTable = find.words"> {{ langCapitalize(letter) }} </span>
             </ng-template>
-            <ng-template #letterCheck1>
-              <td> <span> {{ letter }} </span> </td>
+            <ng-template #letterCheck>
+              <span> {{ langCapitalize(letter) }} </span>
             </ng-template>
           </ng-container>
         </ng-container>
-      </ng-container>
+      </td>
     </tr>
     <tr>
-      <ng-container *ngFor="let letter of symbols2">
+      <td *ngFor="let letter of symbols2">
         <ng-container *ngFor="let find of getAllWords">
           <ng-container *ngIf="letter == find.letter">
-            <ng-template [ngIf]="find.words.length !== 0" [ngIfElse]="letterCheck2">
-              <td class="letterSort" (click)="letterClick(find)"> <span> {{ letter }} </span> </td>
+            <ng-template [ngIf]="find.words.length !== 0" [ngIfElse]="letterCheck">
+              <span class="letterCheck" (click)="newTable = find.words"> {{ langCapitalize(letter) }} </span>
             </ng-template>
-            <ng-template #letterCheck2>
-              <td> <span> {{ letter }} </span> </td>
+            <ng-template #letterCheck>
+              <span> {{ langCapitalize(letter) }} </span>
             </ng-template>
           </ng-container>
         </ng-container>
-      </ng-container>
+      </td>
     </tr>
   </table>
   <br />
-  <h3 class="getLetter"> {{ newGetLetter.letter }} </h3>
-  <h3 class="getLetter"> {{ newGetLetter.count }} </h3>
   <table id="lexicon-table">
     <tr>
       <th> Spelling </th>
@@ -51,6 +49,11 @@
     </tr>
     <tr *ngFor="let newWord of newTable">
       <td>
+        <ng-container *ngFor="let find of firstWord">
+          <ng-container *ngIf="newWord.spelling == find.word">
+            <span id="{{ find.letter }}"></span>
+          </ng-container>
+        </ng-container>
         {{ newWord.spelling }}
       </td>
       <td> {{ newWord.IPA }} </td>

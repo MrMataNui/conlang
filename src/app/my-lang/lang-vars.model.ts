@@ -5,16 +5,16 @@
 /*
 	(record|book)
 	'start typing to see the translation',
-	------------------------------------------------------------------------
-	constList: [p b t d ʈ ẟ k g ʔ m n ɳ ɲ ʃ c ʂ x hʷ hʷi j ʧ ʍi ɽ];
-	constList: [p b t d ʈ ẟ k ᵹ ʯ m n ꞥ ñ ꝭ ƙ ç ꭓ Ƕ ꝡ ȝ Ɥ ꝡ ꝛ];
-	------------------------------------------------------------------------
+	----------------------------------------------------------------
+	constList: [p b t d ʈ ɖ k g ʔ m n ɳ ɲ ʃ c ʂ x x hʷ hʷi j ʍ ʍi ɽ];
+	constList: [p b t d ʈ ɖ k ᵹ ʯ m n ꞥ ñ ꝭ ƙ ç ỻ ꭓ ɥ ꝡ ȝ ɥ ꝡ ꝛ];
+	----------------------------------------------------------------
 	ʊ̃ ɯː
-	------------------------------------------------------------------------
+	----------------------------------------------------------------
 	b > b
 	t > t
 	ʈ > ʈ
-	d > ẟ
+	ɖ > ɖ
 	g > ᵹ
 	ʔ > ʯ
 	m > m
@@ -24,20 +24,19 @@
 	ʃ > ꝭ
 	c > ƙ
 	ʂ > ç
-	ɣ > ꭓ
+	x > ỻ OR ꭓ
 	j > ȝ
 	hʷi OR ʍi > ꝡ
-	hʷ > Ƕ
-	 ʧ > Ɥ
+	hʷ OR ʍ > ɥ
 	ɽ > ꝛ
 	aː > ä
 	eː > ë
-	iː > ï
+	iː > Ï
 	oː > ö
 	uː > ü
 	ɯ > ʊ
 	----------------------------------------------------------------
-	ʧ > ʃ
+	tʃ > ʃ
 	dc > c
 	aː > ä
 	eː > ë
@@ -54,8 +53,8 @@
 	vowelList: a aː e eː i iː o oː u uː ɯ
 	vowelList: a ä e ë i ï o ö u ü ʊ
 	----------------------------------------------------------------
-	constList1 = ['p', 'b', 't', 'd', 'ʈ', 'ẟ', 'k', 'g', 'ʔ', 'm', 'n', 'ɳ', 'ɲ', 'ʃ', 'c', 'ʂ', 'x', 'hʷ', 'hʷi', 'j', 'ʧ', 'ʍi', 'ɽ'];
-	constList2 = ['p', 'ꞗ', 't', 'd', 'ʈ', 'ẟ', 'k', 'ᵹ', 'ʯ', 'm', 'n', 'ꞥ', 'ñ', 'ꝭ', 'ƙ', 'ç', 'ꭓ', 'Ƕ', 'ꝡ', 'ȝ', 'Ɥ', 'ꝡ', 'ꝛ'];
+	constList1 = ['p', 'b', 't', 'd', 'ʈ', 'ɖ', 'k', 'g', 'ʔ', 'm', 'n', 'ɳ', 'ɲ', 'ʃ', 'c', 'ʂ', 'x', 'x', 'hʷ', 'hʷi', 'j', 'ʍ', 'ʍi', 'ɽ'];
+	constList2 = ['p', 'b', 't', 'd', 'ʈ', 'ɖ', 'k', 'ᵹ', 'ʯ', 'm', 'n', 'ꞥ', 'ñ', 'ꝭ', 'ƙo', 'ç', 'ỻ', 'ꭓ', 'ɥ', 'ꝡ', 'ȝ', 'ɥ', 'ꝡ', 'ꝛ'];
 	(langWord: '.*)ꝷ(.*',)
 	$1ʈ$2
 	----------------------------------------------------------------
@@ -68,22 +67,7 @@ interface ConstList {
 	sound: string;
 	letter: string;
 }
-
-export function setLocale(getString: number, getLocale?: string) {
-	return getString.toLocaleString(locale(getLocale));
-}
-
-export let locale = (getLocale?: string) => {
-	switch (getLocale.toLowerCase()) {
-		case 'arabic': return 'ar-EG';
-		case 'german': return 'de';
-		case 'english': return 'en';
-		default: return navigator.language;
-	}
-};
-
 export const getIPA = (langIPA: string): string => `/${langIPA}/`;
-
 export function capitalize(text: string): string {
 	const textCapital = text.charAt(0).toUpperCase();
 	const textLower = text.slice(1).toLowerCase();
@@ -99,7 +83,6 @@ export function capitalize(text: string): string {
 	}
 	return getText;
 }
-
 export interface NewLang {
 	langWord: string;
 	IPA: string;
@@ -110,7 +93,6 @@ export interface NewLang {
 	engWord2?: string;
 	engWord2Desc?: string;
 }
-
 export const erWordsDefaults: string[] = [
 	'oyster',
 	'matter',
@@ -286,7 +268,6 @@ export const erWordsDefaults: string[] = [
 	'cylinder',
 	'mother',
 ];
-
 export const istWordsDefaults: string[] = [
 	'insist',
 	'mist',
@@ -308,7 +289,6 @@ export const istWordsDefaults: string[] = [
 	'chemist',
 	'wrist',
 ];
-
 export const ionWordsDefaults: string[] = [
 	'friction',
 	'restoration',
@@ -420,7 +400,6 @@ export const ionWordsDefaults: string[] = [
 	'addiction',
 	'reservation',
 ];
-
 export const ingWordsDefaults: string[] = [
 	'concerning',
 	'pending',
@@ -469,41 +448,12 @@ export const ingWordsDefaults: string[] = [
 	'string',
 ];
 
-import { Symbols } from './data/data.model';
-
-export function letterSort(source: string): Symbols[] {
-	const newLanguageTable: string[] = newLanguage.map(get => get.langWord);
-	const symbols: Symbols[] = getSymbols.map(symbol => ({ ...symbol, count: 0 }));
-
-	newLanguageTable.forEach(word => {
-		symbols.forEach(symbol => {
-			const wordStart: string = word[0].toLowerCase();
-			const getString: string = symbol.symbol.toLowerCase();
-			switch (source) {
-				case 'lexicon':
-					if (wordStart === getString) { symbol.count++; }
-					break;
-				case 'data':
-					for (const letter of word) {
-						if (letter === symbol.symbol) { symbol.count++; }
-					}
-					break;
-			}
-		});
-	});
-
-	const Sorter = (a: number, b: number): number => (a < b) ? -1 : (a > b) ? 1 : 0;
-	return symbols.sort((a, b) => Sorter(b.count, a.count));
-}
-
 
 import language from './dictionary.json';
-import { getSymbols } from './lexicon/lexicon.model';
 export const newLanguage: NewLang[] = language.dictionary;
 export const nameSort: { [propName: string]: string[]; } = language.namesList;
-
 /*
-	p b t d ʈ ẟ k ᵹ ʯ m n ꞥ ñ ꝭ ƙ ç ꭓ Ƕ ꝡ ȝ Ɥ ꝡ ꝛ
+	p b t d ʈ ɖ k ᵹ ʯ m n ꞥ ñ ꝭ ƙ ç ỻ ꭓ ɥ ꝡ ȝ ɥ ꝡ ꝛ
 	a ä e ë i ï o ö u ü ʊ
 */
 let getNames: string[] = [];
@@ -514,7 +464,6 @@ for (const letter in nameSort) {
 		...nameSort[letter]
 	];
 }
-
 export const allNames = getNames;
 interface GetLangNames { engName: string; langName: string; }
 export const langNames = (nameLetter: string[]): GetLangNames[] => nameLetter.map(name => {
@@ -541,53 +490,53 @@ export const langNames = (nameLetter: string[]): GetLangNames[] => nameLetter.ma
 
 	/** Changes specific letter combinations */
 	twoLetterCheck([
-		{ engLett: 'ph', regex: /ph/i, langLett: 'b' },
-		{ engLett: 'gh', regex: /gh/i, langLett: 'ꭓ' },
-		{ engLett: 'zh', regex: /zh/i, langLett: 'ꭓ' },
-		{ engLett: 'kh', regex: /kh/i, langLett: 'ꭓ' },
-		{ engLett: 'ch', regex: /ch/i, langLett: 'ꝭ' },
-		{ engLett: 'sh', regex: /sh/i, langLett: 'ꝭ' },
-		{ engLett: 'ny', regex: /ny/i, langLett: 'ñ' },
-		{ engLett: 'll', regex: /ll/i, langLett: 'l' },
-		{ engLett: 'tt', regex: /tt/i, langLett: 't' },
-		{ engLett: 'dd', regex: /dd/i, langLett: 'd' },
-		{ engLett: 'ck', regex: /ck/i, langLett: 'ƙ' },
-		{ engLett: 'rr', regex: /rr/i, langLett: 'ꝛ' },
-		{ engLett: 'ss', regex: /ss/i, langLett: 's' },
-		{ engLett: 'qu', regex: /qu/i, langLett: 'ꝡ' },
-		{ engLett: 'ah', regex: /ah/i, langLett: 'ä' },
-		{ engLett: 'aa', regex: /aa/i, langLett: 'ä' },
-		{ engLett: 'ee', regex: /ee/i, langLett: 'ë' },
-		{ engLett: 'eh', regex: /eh/i, langLett: 'ë' },
-		{ engLett: 'ii', regex: /ii/i, langLett: 'ï' },
-		{ engLett: 'ih', regex: /ih/i, langLett: 'ï' },
-		{ engLett: 'oo', regex: /oo/i, langLett: 'ö' },
-		{ engLett: 'oh', regex: /oh/i, langLett: 'ö' },
-		{ engLett: 'uu', regex: /uu/i, langLett: 'ü' },
-		{ engLett: 'uh', regex: /uh/i, langLett: 'ü' },
-		{ engLett: 'ty', regex: /tȝ/i, langLett: 'tï' },
-		{ engLett: 'ty', regex: /ʈȝ/i, langLett: 'ʈï' },
-		{ engLett: 'ry', regex: /ꝛȝ/i, langLett: 'ꝛï' },
+		{ engLett: 'ph', regex: /ph/i, langLett: 'B' },
+		{ engLett: 'gh', regex: /gh/i, langLett: 'Ꭓ' },
+		{ engLett: 'zh', regex: /zh/i, langLett: 'Ꭓ' },
+		{ engLett: 'kh', regex: /kh/i, langLett: 'Ꭓ' },
+		{ engLett: 'ch', regex: /ch/i, langLett: 'Ꝭ' },
+		{ engLett: 'sh', regex: /sh/i, langLett: 'Ꝭ' },
+		{ engLett: 'ny', regex: /ny/i, langLett: 'Ñ' },
+		{ engLett: 'll', regex: /ll/i, langLett: 'L' },
+		{ engLett: 'tt', regex: /tt/i, langLett: 'T' },
+		{ engLett: 'dd', regex: /dd/i, langLett: 'D' },
+		{ engLett: 'ck', regex: /ck/i, langLett: 'K' },
+		{ engLett: 'rr', regex: /rr/i, langLett: 'R' },
+		{ engLett: 'ss', regex: /ss/i, langLett: 'S' },
+		{ engLett: 'qu', regex: /qu/i, langLett: 'Ꝡ' },
+		{ engLett: 'ah', regex: /ah/i, langLett: 'Ä' },
+		{ engLett: 'aa', regex: /aa/i, langLett: 'Ä' },
+		{ engLett: 'ee', regex: /ee/i, langLett: 'Ë' },
+		{ engLett: 'eh', regex: /eh/i, langLett: 'Ë' },
+		{ engLett: 'ii', regex: /ii/i, langLett: 'Ï' },
+		{ engLett: 'ih', regex: /ih/i, langLett: 'Ï' },
+		{ engLett: 'oo', regex: /oo/i, langLett: 'Ö' },
+		{ engLett: 'oh', regex: /oh/i, langLett: 'Ö' },
+		{ engLett: 'uu', regex: /uu/i, langLett: 'Ü' },
+		{ engLett: 'uh', regex: /uh/i, langLett: 'Ü' },
+		{ engLett: 'ty', regex: /[Tt][Ȝȝ]/i, langLett: 'TÏ' },
+		{ engLett: 'ty', regex: /[Ʈʈ][Ȝȝ]/i, langLett: 'ƮÏ' },
+		{ engLett: 'ry', regex: /[Ꝛꝛ][Ȝȝ]/i, langLett: 'ꝚÏ' },
 	]);
 
 	let langName = '';
 	for (const letter in newName) {
-		const findLetter = (getLetter: string): boolean => (newName[letter].toLowerCase() === getLetter);
+		const findLetter = (getLetter: string) => (newName[letter].toLowerCase() === getLetter);
 		langName += findLetter('z') ? 'ç'
 			: findLetter('s') ? 'ç'
-				: findLetter('p') ? 'ꞗ'
-					: findLetter('f') ? 'ꞗ'
+				: findLetter('p') ? 'b'
+					: findLetter('f') ? 'b'
 						: findLetter('g') ? 'ᵹ'
 							: findLetter('y') ? 'ȝ'
-								: findLetter('h') ? 'Ƕ'
+								: findLetter('h') ? 'ɥ'
 									: findLetter('r') ? 'ꝛ'
 										: findLetter('t') ? 'ʈ'
-											: findLetter('d') ? 'ẟ'
-												: findLetter('v') ? 'ẟ'
-													: findLetter('q') ? 'ꭓ'
-														: findLetter('l') ? 'ꭓ'
+											: findLetter('d') ? 'ɖ'
+												: findLetter('v') ? 'ɖ'
+													: findLetter('q') ? 'ỻ'
+														: findLetter('l') ? 'ỻ'
 															: findLetter('j') ? 'ƙ'
-																: findLetter('c') ? 'ƙ'
+																: findLetter('c') ? 'k'
 																	: findLetter('x') ? 'ꭓ'
 																		: findLetter('k') ? 'ꭓ'
 																			: newName[letter];
@@ -598,16 +547,16 @@ export const langNames = (nameLetter: string[]): GetLangNames[] => nameLetter.ma
 		{ engLett: 'James', regex: /ƙameç/i, langLett: 'ƙämç' },
 	]);
 
-	langName = getName(name, 'Abdallah') ? 'ᴀꞗẟäꭓä'
-		: getName(name, 'Abraham') ? 'ᴀꞗꝛᴀꭓᴀm'
-			: getName(name, 'Ace') ? 'äç'
-				: getName(name, 'Charlie') ? 'ꝭᴀꝛçï'
-					: getName(name, 'Charly') ? 'ꝭᴀꝛçï'
-						: getName(name, 'Tyler') ? 'ʈïꭓeꝛ'
+	langName = getName(name, 'Abdallah') ? 'Abɖäỻä'
+		: getName(name, 'Abraham') ? 'Abꝛaꭓam'
+			: getName(name, 'Ace') ? 'Äç'
+				: getName(name, 'Charlie') ? 'Ꝭaꝛçï'
+					: getName(name, 'Charly') ? 'Ꝭaꝛçï'
+						: getName(name, 'Tyler') ? 'Ʈïỻeꝛ'
 							: langName;
 	return {
 		engName: name,
-		langName: langName,
+		langName: capitalize(langName),
 	};
 });
 const nameSort2: { [propName: string]: GetLangNames[]; } = {};

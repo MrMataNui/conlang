@@ -2,8 +2,8 @@
   "name": "lang-test",
   "version": "0.0.0",
   "scripts": {
-    "test": "protractor ConvertedJSFiles/config.js",
     "start": "ng serve",
+    "test": "protractor ConvertedJSFiles/config.js",
     "clean": "rm -rf ./node_modules",
     "reinstall": "npm run clean && npm install",
     "debug": "node --inspect-brk ./node_modules/.bin/protractor conf.js",
@@ -30,7 +30,6 @@
     "@angular/platform-browser": "^8.2.3",
     "@angular/platform-browser-dynamic": "^8.2.3",
     "@angular/router": "^8.2.3",
-    "angular-cli-ghpages": "^0.6.0",
     "body-parser": "^1.19.0",
     "chai-truthy": "^1.0.0",
     "core-js": "^2.5.4",

@@ -1,47 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import { soundSymbols, getSymbols, SoundSymbols, Lexicon } from './lexicon.model';
-import { Symbols } from '../data/data.model';
-import { newLanguage, capitalize, NewLang, letterSort, setLocale } from '../lang-vars.model';
+import { soundSymbols, SoundSymbols, Lexicon, FirstWord, removeDups } from './lexicon.model';
+import { newLanguage, capitalize, NewLang } from '../lang-vars.model';
 
 // import { NgModule } from '@angular/core';
 // import { MainPipe } from './capitalize-pipe.module';
 // import { AppComponent }	 from '../../app.component';
 
-// @NgModule({ imports: [ MainPipe ], bootstrap: [ AppComponent ] })
 
+// @NgModule({ imports: [ MainPipe ], bootstrap: [ AppComponent ] })
 @Component({
 	selector: 'app-lexicon',
 	templateUrl: './lexicon.component.html',
 	styleUrls: ['./lexicon.component.css']
 })
-
 export class LexiconComponent implements OnInit {
 	constructor() { }
-	symbolColspan: number;
 	engSort = false;
 	langSort = true;
 	newTable: Lexicon[];
 	allTable: Lexicon[];
-	symbols: string[] = soundSymbols.map(letter => letter.symbol);
-	getSymbols: string[] = getSymbols.map(letter => letter.symbol);
+	symbols: string[] = removeDups([
+		...soundSymbols.map(letter => letter.symbol)
+	]);
 	symbols1: string[];
 	symbols2: string[];
 	soundSymbols: SoundSymbols[] = soundSymbols;
-	letterCheck: string;
-	letterSort: Symbols[] = letterSort('lexicon');
-	showLetter: string;
-	newGetLetter: { letter: string; count: string; };
-	halfSymbols: number;
-	allCount = 0;
 
+	firstWord: { letter: string, word: Lexicon }[] = [];
 	getAllWords: { letter: string, words: Lexicon[] }[] = [];
 
-	capitals: string[] = this.getSymbols.map(symbol => capitalize(symbol));
+	capitals: string[] = this.symbols.map(symbol => capitalize(symbol));
 	langCapitalize = (letter: string): string => (letter === 'ʯ') ? letter : `${capitalize(letter)} ${letter}`;
 	sorter = (a: string, b: string): number => (a < b) ? -1 : (a > b) ? 1 : 0;
 
 	tableStructure = (get: NewLang): Lexicon => ({
-		spelling: get.langWord,
+		spelling: capitalize(get.langWord),
 		IPA: get.IPA,
 		partOfSpeech: capitalize(get.partOfSpeech),
 		engWord: capitalize(get.engWord),
@@ -50,55 +43,35 @@ export class LexiconComponent implements OnInit {
 	})
 
 	changeLang(lang: string): void {
-		let sorter: (a: Lexicon, b: Lexicon) => number;
 		switch (lang) {
 			case 'English':
-				sorter = (a, b) => this.sorter(a.engWord, b.engWord);
+				this.newTable.sort((a, b) => this.sorter(a.engWord, b.engWord));
 				break;
 			case 'Lang':
-				sorter = (a, b) => this.sorter(a.spelling, b.spelling);
+				this.newTable.sort((a, b) => this.sorter(a.spelling, b.spelling));
 				break;
 		}
-		this.newTable.sort(sorter);
 	}
 
-	symbolSort(symbols: string[]): string[] {
-		const myArray: string[] = symbols;
-		const newArray: string[] = [];
-		for (let i = 0; i < myArray.length; i++) {
-			if (i === 0) {
-				newArray.push(myArray[i]);
-			} else {
-				let sameValue = false;
-				for (let j = 0; j < newArray.length; j++) {
-					if (myArray[i] === newArray[j]) { sameValue = true; }
-					if (sameValue === false) { newArray.push(myArray[i]); }
-				}
-			}
-		}
-		return newArray;
-	}
-
-	wordSort(lang: Lexicon[], symbols: string[]): void {
-		// console.log('symbols', symbols);
-		// const newSymbols = this.symbolSort(symbols);
-		// console.log('newSymbols', newSymbols);
-
+	wordSort(lang: Lexicon[], symbols: string[]) {
 		let wordGet: Lexicon[] = [];
 		let wordLetter: string;
 		let langSpelling0: string;
 		for (let i = 0; i < symbols.length; i++) {
-			wordLetter = symbols[i];
+			wordLetter = capitalize(symbols[i]);
 			wordGet = [];
 			for (let j = 0; j < lang.length; j++) {
 				langSpelling0 = lang[j].spelling.charAt(0);
-				if (wordLetter === langSpelling0) { wordGet.push(lang[j]); }
+				if (wordLetter === langSpelling0) {
+					wordGet.push(lang[j]);
+				}
 			}
 			this.getAllWords.push({ letter: symbols[i], words: wordGet });
+			this.firstWord.push({ letter: symbols[i], word: wordGet[0] });
 		}
 	}
 
-	getSymbol(): void {
+	getSymbol() {
 		const newSoundSymbols = [];
 		this.soundSymbols.forEach((letter, i) => {
 			const newS0 = (i - 1 < 0)
@@ -129,63 +102,31 @@ export class LexiconComponent implements OnInit {
 		this.soundSymbols = this.soundSymbols.sort((a, b) => this.sorter(a.symbol, b.symbol));
 	}
 
-	allClick(): void {
-		this.newTable = this.allTable;
-		this.letterCheck = 'All Letters';
-	}
-
-	letterClick({ words, letter }): void {
-		this.newTable = words;
-		this.letterCheck = letter;
-
-		this.newGetLetter = this.getLetter();
-	}
-
-	getLetter(): { letter: string, count: string } {
-		let finalLetter: { letter: string, count: string };
-		const getTheLetter = (getLetter: string, getCount: number) => ({
-			letter: getLetter,
-			count: `Count: ${setLocale(getCount, 'English')}`
-		});
-
-		if (this.letterCheck === 'All Letters') {
-			finalLetter = getTheLetter(this.letterCheck, this.allCount);
-		} else {
-			this.letterSort.forEach(letter => {
-				if (this.letterCheck === letter.symbol) {
-					finalLetter = getTheLetter(this.letterCheck, letter.count);
-				}
-			});
-		}
-		return finalLetter;
-	}
-
 	ngOnInit(): void {
-		this.letterSort.forEach(letter => { this.allCount += letter.count; });
-
 		this.allTable = newLanguage
 			.map(this.tableStructure)
 			.sort((a, b) => this.sorter(a.spelling, b.spelling));
 
+		this.newTable = this.allTable;
 		this.getSymbol();
 		/* ---------------------------------------------------------------------------------------------------------------- */
 
-		this.getSymbols = this.getSymbols.sort(this.sorter);
+		this.symbols = this.symbols.sort(this.sorter);
 
-		this.wordSort(this.allTable, this.getSymbols);
+		this.wordSort(this.allTable, this.symbols);
 
-		this.halfSymbols = this.getSymbols.length / 2;
-		this.symbolColspan = (this.getSymbols.length % 2)
-			? Math.ceil(this.halfSymbols)
-			: this.halfSymbols;
-
-		this.symbols1 = this.getSymbols.slice(0, this.symbolColspan);
-		this.symbols2 = this.getSymbols.slice(this.symbolColspan);
-		if (this.getSymbols.length % 2) {
-			this.symbols2.push(' ');
-			this.getAllWords.push({ letter: ' ', words: [] });
+		let symbolLength: number;
+		switch (this.symbols.length % 2) {
+			case 0:
+				symbolLength = this.symbols.length / 2;
+				break;
+			case 1:
+				this.symbols.push('');
+				symbolLength = Math.ceil(this.symbols.length / 2);
+				break;
 		}
 
-		this.letterClick(this.getAllWords[0]);
+		this.symbols1 = this.symbols.slice(0, symbolLength);
+		this.symbols2 = this.symbols.slice(symbolLength);
 	}
 }

@@ -10,28 +10,18 @@ import {
 	Words
 } from '../grammar.model';
 
-interface Affix { affix: string; affixIPA: string; }
-interface Name { name: string; nameIPA: string; }
-
 @Component({
 	selector: 'app-morphology',
 	templateUrl: './morphology.component.html',
 	styleUrls: ['./morphology.component.css']
 })
-
 export class MorphologyComponent implements OnInit {
-	constructor() { }
-	// tslint:disable:member-ordering
-	derivRule = (affixName: string, affix: string): string => `<i>${affixName}:</i> <br /> <b> ${affix} </b>`;
-	getAffix = ({ affix, affixIPA }: Affix): string => `<p> <i> ${affix} <br /> ${affixIPA} </i> </p>`;
-	getName = ({ name, nameIPA }: Name): string => `<p> ${name} <br /> ${nameIPA} </p>`;
-	newMorph = (affixName: string, affix: Affix, name: Name) => `<i>${affixName}: </i>
-	  <b> ${this.getAffix(affix)} ${this.getName(name)} </b>`
 
+	constructor() { }
 	derivMorph = {
 		NounToAdj: {
 			name: '<b>Noun → adjective</b>:',
-			rule: this.derivRule('Suffix', '-(i)Ɥü /-iʧuː/'),
+			rule: this.derivRule('Suffix', '-(i)ȼü /iʤuː/'),
 		},
 		AdjToNoun: {
 			name: '<b>Adjective → noun</b>:',
@@ -51,7 +41,7 @@ export class MorphologyComponent implements OnInit {
 		},
 		AdjToAdv: {
 			name: '<b>Adjective → adverb</b>:',
-			rule: this.derivRule('Suffix', '-(e)ẟe /-eɖe/'),
+			rule: this.derivRule('Suffix', '-(e)ꝺe /ede/'),
 		},
 		OneWho: {
 			name: '<b>One who Xs (e.g. paint → painter)</b>:',
@@ -59,7 +49,7 @@ export class MorphologyComponent implements OnInit {
 		},
 		Loc: {
 			name: '<b>Place where (e.g. wine → winery)</b>:',
-			rule: this.derivRule('Prefix', ' Ɥ(i)- /ʧ(i)-/'),
+			rule: this.derivRule('Prefix', ' ꞇ(i)- /ʧ(i)-/'),
 		},
 		Dim: {
 			name: '<b>Diminutive</b>:',
@@ -67,10 +57,9 @@ export class MorphologyComponent implements OnInit {
 		},
 		Augm: {
 			name: '<b>Augmentative</b>:',
-			rule: this.derivRule('Suffix', '-(o)bü /-obuː/'),
-		}
+			rule: this.derivRule('Suffix', '-(o)bü /obuː/'),
+		},
 	};
-
 	DerivMorphNames: string[] = Object.keys(this.derivMorph);
 	nounMorphNameType: Article = {
 		Nominative: {
@@ -94,43 +83,62 @@ export class MorphologyComponent implements OnInit {
 			plural: 'in/at/by [the/some] men',
 		},
 	};
-
 	nounMorph: Article = {
 		Nominative: {
-			singular: '<b><p> ꞗü <br /> /buː/ </p></b>',
-			plural: `<i> <b>No plural marker</b> </i>
-				<br /> <b><p> ꞗü <br /> /buː/ </p></b>`,
+			singular: '<b><p> pü <br /> /puː/ </p></b>',
+			plural: this.newMorph(
+				'No plural marker',
+				'', '',
+				'ppü', '/ppuː/',
+			),
 		},
 		Accusative: {
 			singular: this.newMorph(
 				'Prefix',
-				{ affix: 'i-', affixIPA: '/i-/' },
-				{ name: 'iꞗü', nameIPA: '/iˈbuː/' }
+				'i-', '/i-/',
+				'ipü', '/iˈpuː/'
 			),
-			plural: `<i> <b>No plural marker</b> </i>
-				<br /> <b><p> ꞗü <br /> /buː/ </p></b>`,
+			plural: this.newMorph(
+				'No plural marker',
+				'', '',
+				'ꭓpü', '/ɣpuː/'
+			),
 		},
 		Genitive: {
 			singular: this.newMorph(
 				'Suffix',
-				{ affix: '-ï', affixIPA: '/-iː/' },
-				{ name: 'ꞗüï', nameIPA: '/buːˈiː/' }
+				'-ï', '/-iː/',
+				'püï', '/puːˈiː/'
 			),
-			plural: `<i> <b>No plural marker</b> </i>
-				<br /> <b><p> ꞗü <br /> /buː/ </p></b>`,
+			plural: this.newMorph(
+				'No plural marker',
+				'', '',
+				'ȼpü', '/ʤpuː/'
+			),
 		},
 		Dative: {
 			singular: this.newMorph(
 				'Suffix',
-				{ affix: '-e', affixIPA: '/-e/' },
-				{ name: 'ꞗüe', nameIPA: '/buːˈe/' }
+				'-e', '/-e/',
+				'püe', '/puːˈe/'
 			),
-			plural: `<i> <b>No plural marker</b> </i>
-				<br /> <b><p> ꞗü <br /> /buː/ </p></b>`,
+			plural: this.newMorph(
+				'No plural marker',
+				'', '',
+				'opü', '/oˈpuː/'
+			),
 		},
 	};
-
 	pronNounMorph = Object.keys(this.nounMorph);
 
+	derivRule(affixName, affix) { return `<i>${affixName}:</i> <br /> <b> ${affix} </b>`; }
+	newMorph(affixName, affix, affixIPA, name, nameIPA) {
+		return `<i>${affixName}: </i>
+		<b>
+			<p> <i> ${affix} <br /> ${affixIPA} </i> </p>
+			<p> ${name} <br /> ${nameIPA} </p>
+		</b>`;
+	}
 	ngOnInit() { }
+
 }
