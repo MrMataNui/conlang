@@ -38,22 +38,18 @@ export class LexiconComponent implements OnInit {
 		IPA: get.IPA,
 		partOfSpeech: capitalize(get.partOfSpeech),
 		engWord: capitalize(get.engWord),
-		partOfSpeech2: get.partOfSpeech2 ? capitalize(get.partOfSpeech2) : '',
-		engWord2: get.engWord2 ? capitalize(get.engWord2) : ''
+		partOfSpeech2: (get.partOfSpeech2) ? capitalize(get.partOfSpeech2) : '',
+		engWord2: (get.engWord2) ? capitalize(get.engWord2) : ''
 	})
 
 	changeLang(lang: string): void {
 		switch (lang) {
-			case 'English':
-				this.newTable.sort((a, b) => this.sorter(a.engWord, b.engWord));
-				break;
-			case 'Lang':
-				this.newTable.sort((a, b) => this.sorter(a.spelling, b.spelling));
-				break;
+			case 'English': this.newTable.sort((a, b) => this.sorter(a.engWord, b.engWord)); break;
+			case 'Lang': this.newTable.sort((a, b) => this.sorter(a.spelling, b.spelling)); break;
 		}
 	}
 
-	wordSort(lang: Lexicon[], symbols: string[]) {
+	wordSort(lang: Lexicon[], symbols: string[]): void {
 		let wordGet: Lexicon[] = [];
 		let wordLetter: string;
 		let langSpelling0: string;
@@ -71,7 +67,7 @@ export class LexiconComponent implements OnInit {
 		}
 	}
 
-	getSymbol() {
+	getSymbol(): void {
 		const newSoundSymbols = [];
 		this.soundSymbols.forEach((letter, i) => {
 			const newS0 = (i - 1 < 0)

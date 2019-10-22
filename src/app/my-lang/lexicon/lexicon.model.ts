@@ -54,4 +54,4 @@ export const soundSymbols: SoundSymbols[] = [
 	{ sound: 'ɯ', symbol: 'ʊ' },
 ];
 
-export const removeDups = (names: string[]) => names.filter((v, i) => names.indexOf(v) === i);
+export const removeDups = (names: string[]): string[] => names.filter((v, i) => names.indexOf(v) === i);
