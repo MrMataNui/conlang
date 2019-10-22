@@ -1,7 +1,3 @@
-// ("langWord": ".*Ɥ.*",\n[\t ]+"IPA": ".*)ʍ
-// $1ʧ
-// Ƕ ƕ
-
 import { Component, Input, OnInit } from '@angular/core';
 import {
 	NewLang,
@@ -27,10 +23,6 @@ import {
 	getTrim,
 	addBlank,
 	Translation,
-	reverseIon,
-	reversePlur,
-	reversePerson,
-	reverseIng,
 } from './translator.model';
 
 interface BoolCheck {
@@ -48,30 +40,9 @@ interface BoolCheck {
 
 export class TranslatorComponent implements OnInit {
 	constructor() { }
-	engLangInput = 'Start typing to see the translation of the words';
-	johiLangInput = 'ʊꭓ eñiȝ ʈo ȝö uꞍoꭓe ƙuʈü Ɥüꝡ';
-
-	ETJ_IsVisible = true;
-	JTE_IsVisible = false;
-
 	showTranslator = true;
+	@Input() engLang = 'Start typing to see the translation of the words';
 	translation: Translation;
-	langTranslation: Translation;
-
-	show(lang: string) {
-		switch (lang) {
-			case 'English':
-				this.ETJ_IsVisible = true;
-				this.JTE_IsVisible = false;
-				this.translation = undefined;
-				break;
-			case 'Johi':
-				this.ETJ_IsVisible = false;
-				this.JTE_IsVisible = true;
-				this.langTranslation = undefined;
-				break;
-		}
-	}
 
 	testDisplay = (testVar: boolean | string, display: string): { display: string } => ({
 		display: (testVar) ? display : 'none'
@@ -150,8 +121,8 @@ export class TranslatorComponent implements OnInit {
 			const boolCheck: BoolCheck = { ing: true, ion: true, plur: true, person: true };
 			if (userWord === 'you') {
 				const getNewWord: NewLang = {
-					langWord: 'Ɥe',
-					IPA: '/ʧe/',
+					langWord: 'ɥe',
+					IPA: '/ʍe/',
 					partOfSpeech: 'pronoun',
 					engWord: 'you',
 					partOfSpeech2: '',
@@ -245,138 +216,12 @@ export class TranslatorComponent implements OnInit {
 		});
 
 		return {
-			display: this.testDisplay(this.engLangInput, 'block'),
+			display: this.testDisplay(this.engLang, 'block'),
 			english: capitalize(trim.wordOrder),
-			langWord: trim.langText,
-			IPA: getIPA(trim.langIPA),
-		};
-	}
-
-	reverseTranslate(text: string): Translation {
-		const userText: string[] = text.split(blankSpace);
-		userText.forEach((userWord, i) => {
-			userText[i] = (userWord !== 'i') ? userText[i] : 'I';
-		});
-
-		const wordDefaults: AllWords = {
-			langText: '',
-			langIPA: '',
-			wordOrder: '',
-			getPartOfSpeech: '',
-		};
-
-		const allWords: AllWords = wordDefaults;
-		let newWords: AllWords = wordDefaults;
-		const newWordMorph: { getWord: GetAffix, wordLoc: number }[] = [];
-		userText.forEach(userWord => {
-			let prevWord: string;
-			newLanguage.forEach(newLangWord => {
-				const { langWord } = newLangWord;
-				let { IPA } = newLangWord;
-				let getNew: NewLang;
-				let findWord: { word: string };
-				IPA = IPA.replace(/\//g, '');
-				if (langWord !== prevWord) {
-					switch (userWord) {
-						case langWord:
-							newWords = this.getBlanks(allWords, newLangWord);
-							prevWord = userWord;
-							break;
-						case `u${langWord}`:
-							getNew = { ...newLangWord, langWord: `u${langWord}`, IPA: `/u${IPA}/` };
-							findWord = reverseIon(getNew, newLangWord);
-							if (findWord.word) {
-								getNew = { ...getNew, engWord: findWord.word };
-								newWords = this.getBlanks(allWords, getNew);
-							}
-							prevWord = userWord;
-							break;
-						case `Ƕü${langWord}`:
-							getNew = { ...newLangWord, engWord: 'words', langWord: `Ƕü${langWord}`, IPA: `/huː${IPA}/` };
-							findWord = reversePlur(getNew, newLangWord);
-							if (findWord.word) {
-								getNew = { ...getNew, engWord: findWord.word };
-								newWords = this.getBlanks(allWords, getNew);
-							}
-							prevWord = userWord;
-							break;
-						case `Ƕe${langWord}`:
-							getNew = { ...newLangWord, langWord: `Ƕe${langWord}`, IPA: `/hʷe${IPA}/` };
-							findWord = reversePlur(getNew, newLangWord);
-							if (findWord.word) {
-								getNew = { ...getNew, engWord: findWord.word };
-								newWords = this.getBlanks(allWords, getNew);
-							}
-							prevWord = userWord;
-							break;
-						case `ꝭe${langWord}`:
-							getNew = { ...newLangWord, langWord: `ꝭe${langWord}`, IPA: `/ʃe${IPA}/` };
-							findWord = reversePerson(getNew, newLangWord);
-							if (findWord.word) {
-								getNew = { ...getNew, engWord: findWord.word };
-								newWords = this.getBlanks(allWords, getNew);
-							}
-							prevWord = userWord;
-							break;
-						case `${langWord}iȝ`:
-							getNew = { ...newLangWord, langWord: `${langWord}iȝ`, IPA: `/${IPA}ij/` };
-							findWord = reverseIng(getNew, newLangWord);
-							if (findWord.word) {
-								getNew = { ...getNew, engWord: findWord.word };
-								newWords = this.getBlanks(allWords, getNew);
-							}
-							prevWord = userWord;
-							break;
-					}
-				}
-			});
-		});
-
-		newWords.langIPA = newWords.langIPA.replace(/\//g, '');
-		const trim: AllWords = getTrim(newWords);
-		newWordMorph.forEach(word => {
-			// watering
-			const { wordLoc, getWord } = word;
-
-			getWord.lang.IPA = getWord.lang.IPA.replace(/\//g, '');
-			trim.langIPA = this.addMorph(trim.langIPA, getWord.lang.IPA, wordLoc);
-			trim.langText = this.addMorph(trim.langText, getWord.lang.word, wordLoc);
-			trim.wordOrder = this.addMorph(trim.wordOrder, getWord.engWord, wordLoc);
-		});
-
-		return {
-			display: this.testDisplay(this.johiLangInput, 'block'),
-			english: capitalize(trim.wordOrder),
-			langWord: trim.langText,
+			langWord: capitalize(trim.langText),
 			IPA: getIPA(trim.langIPA),
 		};
 	}
 
 	ngOnInit() { }
 }
-/*     },
-		{
-			"langWord": "eñiȝ",
-			"IPA": "/eɳiy/",
-			"partOfSpeech": "noun",
-			"engWord": "typing",
-			"partOfSpeech2": "",
-			"engWord2": ""
-		},
-		{
-			"langWord": "Ƕüꝡ",
-			"IPA": "/huːhʷi/",
-			"partOfSpeech": "noun",
-			"engWord": "words",
-			"partOfSpeech2": "",
-			"engWord2": ""
-		},
-		{
-			"langWord": "uꞍoꭓe",
-			"IPA": "/uʧoˈɣe/",
-			"partOfSpeech": "verb",
-			"engWord": "translation",
-			"partOfSpeech2": "",
-			"engWord2": ""
- */
-

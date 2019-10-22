@@ -1,31 +1,17 @@
 <div id="togTrans">
-  <div>
-    <p>
-      Note: Translator does not automatically do word order and only finds exact matches in your dictionary
-      <br />
-      (will only find some plurals - will not find tenses)
-    </p>
-    <p>Making the translator smarter is a work in progress.</p>
-  </div>
-  <br />
-  <div id="translate-switch-buttons">
-    <button id="English-to-Johi" (click)="show('English')"> English -> Johi </button>
-    &nbsp;
-    <button id="Johi-to-English" (click)="show('Johi')"> Johi -> English </button>
-  </div>
-  <br />
-  <!--
-    eng -> johi
-    johi -> eng
-  -->
-  <div *ngIf="ETJ_IsVisible" id="EngToJohi" [ngStyle]="testDisplay(showTranslator, 'initial')">
+  <div [ngStyle]="testDisplay(showTranslator, 'initial')">
     <div>
-      <h3>English Sentence:</h3>
-      <textarea id="eng-phrase" rows="3" cols="45" type="text" [value]="(engLangInput) ? engLangInput : ''"
-        (input)="engLangInput=$event.target.value"></textarea>
+      <p>
+        Note: Translator does not automatically do word order and only finds exact matches in your dictionary
+        (will not find plurals, past-tense, etc.)
+      </p>
+      <p>Making the translator smarter is a work in progress.</p>
+      <h3>Sentence:</h3>
+      <textarea id="eng-phrase" rows="3" cols="45" type="text" [value]="(engLang) ? engLang : ''"
+        (input)="engLang=$event.target.value"></textarea>
       <br />
       <input id="translate-button" type="button" value="Translate The Text"
-        (click)="translation = translate(engLangInput)" />
+        (click)="translation = translate(engLang)" />
       <br />
       <h3>Word Order:</h3>
       <div id="wordOrder" *ngIf="translation">
@@ -42,33 +28,6 @@
       <h3>IPA:</h3>
       <div id="ipa" *ngIf="translation">
         <p [ngStyle]="translation.display" [innerHTML]="translation.IPA"></p>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="JTE_IsVisible" id="JohiToEng" [ngStyle]="testDisplay(showTranslator, 'initial')">
-    <div>
-      <h3>Johi Sentence:</h3>
-      <textarea id="johi-phrase" rows="3" cols="45" type="text" [value]="(johiLangInput) ? johiLangInput : ''"
-        (input)="johiLangInput=$event.target.value"></textarea>
-      <br />
-      <input id="translate-button" type="button" value="Translate The Text"
-        (click)="langTranslation = reverseTranslate(johiLangInput)" />
-      <br />
-      <h3>IPA:</h3>
-      <div id="ipa" *ngIf="langTranslation">
-        <p [ngStyle]="langTranslation.display" [innerHTML]="langTranslation.IPA"></p>
-      </div>
-      <h3>Translation:</h3>
-      <div id="wordOrder" *ngIf="langTranslation">
-        <p [ngStyle]="langTranslation.display">
-          <b [innerHTML]="langTranslation.english"></b>
-        </p>
-      </div>
-      <h3>Word Order:</h3>
-      <div id="langTranslation" *ngIf="langTranslation">
-        <p [ngStyle]="langTranslation.display">
-          <i [innerHTML]="langTranslation.langWord"></i>
-        </p>
       </div>
     </div>
   </div>

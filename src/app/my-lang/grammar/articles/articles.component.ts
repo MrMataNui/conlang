@@ -18,8 +18,6 @@ import {
 export class ArticlesComponent implements OnInit {
 
 	constructor() { }
-	// tslint:disable:member-ordering
-	defType = (word: string, IPA: string): string => `<p><b> ${word} <br /> /${IPA}/ </b></p>`;
 	defArticleNameType: Article = {
 		Nominative: {
 			singular: '<i>the [man]</i>',
@@ -44,7 +42,7 @@ export class ArticlesComponent implements OnInit {
 	};
 	defArticle: Article = {
 		Nominative: {
-			singular: this.defType('Ɥo', 'ʧo'),
+			singular: this.defType('ȼo', 'ʤo'),
 			plural: this.defType('pe', 'pe'),
 		},
 		Accusative: {
@@ -53,7 +51,7 @@ export class ArticlesComponent implements OnInit {
 		},
 		Genitive: {
 			singular: this.defType('ʈep', 'ʈep'),
-			plural: this.defType('Ɥoȝ', 'ʧoj'),
+			plural: this.defType('ȼoȝ', 'ʤoj'),
 		},
 		Dative: {
 			singular: this.defType('ỻuç', 'ɣuʂ'),
@@ -61,6 +59,7 @@ export class ArticlesComponent implements OnInit {
 		}
 	};
 	pronDefArticle = Object.keys(this.defArticle);
+	defType(word: string, IPA: string): string { return `<p><b> ${word} <br /> /${IPA}/ </b></p>`; }
 	getBrackets = (string: string): string => `<b>[ </b> ${string} <b> ]</b>`;
 	example = (): Example => ({
 		indefArt: 'There is no indefinite article',
@@ -68,6 +67,5 @@ export class ArticlesComponent implements OnInit {
 	})
 
 	ngOnInit() { }
-	// ȼ ʤ
-	// Ɥ ʧ
+
 }

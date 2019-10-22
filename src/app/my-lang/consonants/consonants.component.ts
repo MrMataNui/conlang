@@ -237,27 +237,28 @@ export class ConsonantsComponent implements OnInit {
 	placeList: string[] = Object.keys(this.consonants);
 	mannerList: string[] = Object.keys(this.mannerDefaults);
 
+	constList: string[] = ['m', 'ɳ', 'ɲ', 'b', 'ʈ ɖ', 'g', 'ʔ', 'ʃ', 'c', 'ʂ', 'x', 'hʷ', 'j', 'ʍ', 'ɽ'];
 	soundSymbols: SoundSymbols[] = [
 		{ sound: 'm', symbol: 'm' },
 		{ sound: 'ɳ', symbol: 'ꞥ' },
 		{ sound: 'ɲ', symbol: 'ñ' },
-		{ sound: 'b', symbol: 'ꞗ' },
+		{ sound: 'b', symbol: 'b' },
 		{ sound: 'ʈ', symbol: 'ʈ' },
-		{ sound: 'ɖ', symbol: 'ẟ' },
+		{ sound: 'ɖ', symbol: 'd' },
 		{ sound: 'g', symbol: 'ᵹ' },
 		{ sound: 'ʔ', symbol: 'ʯ' },
-		{ sound: 'ʧ', symbol: 'Ɥ' },
 		{ sound: 'ʃ', symbol: 'ꝭ' },
 		{ sound: 'c', symbol: 'ƙ' },
 		{ sound: 'ʂ', symbol: 'ç' },
-		{ sound: 'ɣ', symbol: 'ꭓ' },
-		{ sound: 'hʷ', symbol: 'Ƕ' },
+		{ sound: 'x', symbol: 'ỻ' },
+		{ sound: 'x', symbol: 'ꭓ' },
+		{ sound: 'hʷ', symbol: 'ɥ' },
 		{ sound: 'hʷi', symbol: 'ꝡ' },
 		{ sound: 'j', symbol: 'ȝ' },
+		{ sound: 'ʍ', symbol: 'ɥ' },
 		{ sound: 'ʍi', symbol: 'ꝡ' },
 		{ sound: 'ɽ', symbol: 'ꝛ' },
 	];
-	constList: string[] = this.soundSymbols.map(letter => letter.sound);
 
 	/**
 	 * checks the place value

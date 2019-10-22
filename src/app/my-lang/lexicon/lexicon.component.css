@@ -1,79 +1,59 @@
 table,
 th,
 td {
-  border: 1px solid black;
-  border-spacing: 5px;
-  border-collapse: collapse;
-  vertical-align: center;
-  text-align: center;
-  font-family: serif;
+	border: 1px solid black;
+	border-spacing: 5px;
+	border-collapse: collapse;
+	vertical-align: center;
+	text-align: center;
+	font-family: serif;
 }
 
 th {
-  border: 1px solid black;
-  background-color: #4CAF50;
-  color: white;
+	border: 1px solid black;
+	background-color: #4CAF50;
+	color: white;
 }
 
 table {
-  margin: auto;
-  width: 95%;
-  border: 1px solid black;
-  border-collapse: collapse;
+	margin: auto;
+	width: 95%;
+	border: 1px solid black;
+	border-collapse: collapse;
 }
 
 table th,
 table td {
-  border: 1px dashed black;
-  vertical-align: center;
-  text-align: center;
+	border: 1px dashed black;
+	vertical-align: center;
+	text-align: center;
 }
 
 table th {
-  border: 1px solid black;
-  background-color: #00F;
-  color: #FFF;
+	border: 1px solid black;
+	background-color: #00F;
+	color: #FFF;
 }
 
 table tr:nth-child(odd) {
-  background-color: #CCC;
+	background-color: #CCC;
 }
 
 table tr:nth-child(even) {
-  background-color: #EEE;
-}
-
-.getLetter {
-  vertical-align: center;
-  text-align: center;
+	background-color: #EEE;
 }
 
 #table-sort {
-  display: block;
-  margin: auto;
+	display: block;
+	margin: auto;
 }
 
-.letterSort {
-  cursor: pointer;
-  color: blue;
+.letterCheck {
+	color: blue;
+	cursor: pointer;
 }
 
-.letterSort:hover {
-  color: #D80036;
-  text-decoration: underline;
-}
-
-th.letterSort:hover {
-  color: orange;
-}
-
-#johi-letter {
-  width: 80%;
-}
-
-#johi-letter td {
-  padding: initial;
-  width: 2em;
-  border-spacing: initial;
-  border-collapse: initial;
+.letterCheck:hover {
+	color: #D80036;
+	text-decoration: underline;
 }
