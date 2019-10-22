@@ -228,10 +228,9 @@ textarea:focus {
   transform: translateX(1.8em);
 }
 
-body {
+main {
   max-width: 1920px;
   margin: 0px auto;
-  /* padding: 2% 5%; */
 }
 
 #loader {
@@ -692,12 +691,11 @@ html {
   background-color: #6300CC;
 }
 
-body {
+main {
   width: 90%;
-	/* margin: 2em auto; */
 }
 
-body main {
+/* body main {
   margin: auto;
   border: double black;
   background-color: #BBB;
@@ -707,10 +705,10 @@ main {
   margin: 1.5em auto !important;
   float: right;
   width: 90%;
-  /* padding-bottom: 1.5em; */
+  /* padding-bottom: 1.5em;
   border-left: 1px solid #DDD;
   margin-top: 50px;
-}
+} */
 
 footer {
   clear: both;
