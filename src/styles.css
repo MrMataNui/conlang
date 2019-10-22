@@ -724,10 +724,16 @@ footer p {
   margin: 1em 0;
 }
 
-:not(header h1), h1 {
+ h1 {
   font-size: 150%;
   margin: 0;
   padding: .5em 0 .25em;
+}
+
+header h1 {
+  font-size: initial;
+  margin: initial;
+  padding: initial;
 }
 
 header {
@@ -759,7 +765,9 @@ h2 { color: #A569BD; font-family: 'Audiowide', serif, cursive; }
 h3 { color: #152283; font-family: 'Fugaz One', serif, cursive; }
 h4 { color: #5F71FB; font-family: 'Fugaz One', serif, cursive; }
 
-:not(header h1), h1, h2, h3, h4 { color: #04C; font-weight: bold; }
+h1, h2, h3, h4 { color: #04C; font-weight: bold; }
+
+header h1 { color: initial; font-weight: initial; }
 
 p { text-align: center; }
 
