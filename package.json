@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "ng serve",
+    "build": "ng build --output-path docs --prod --base-href \"https://MrMataNui.github.io/conlang/\"",
     "test": "protractor ConvertedJSFiles/config.js",
     "clean": "rm -rf ./node_modules",
     "reinstall": "npm run clean && npm install",
@@ -12,7 +13,6 @@
     "webdriver-update": "webdriver-manager update --standalone=false --gecko=false",
     "ng": "ng",
     "startProxy": "ng serve --proxy-config proxy.json",
-    "build": "ng build",
     "ngtest": "ng test",
     "lint": "ng lint",
     "prod": "ng build --prod",
