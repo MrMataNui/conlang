@@ -452,7 +452,6 @@ div#vowels {
   vertical-align: top;
   background: rgba(0, 0, 0, 0.02);
   padding: 10px;
-  margin-top: 20px;
   margin-right: 10px;
   background: #FFFFFF;
   margin-bottom: 20px;
@@ -688,7 +687,7 @@ input[type="file"] { display: none; }
 
 html {
   margin: 0 auto;
-  background-color: #6300CC;
+  /* background-color: #6300CC; */
 }
 
 main {
