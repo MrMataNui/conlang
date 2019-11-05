@@ -34,7 +34,7 @@
     "chai-truthy": "^1.0.0",
     "core-js": "^2.5.4",
     "express": "^4.17.1",
-    "mongoose": "^5.6.2",
+    "mongoose": "^5.7.5",
     "npm": "^6.11.2",
     "portfinder": "^1.0.9",
     "rxjs": "^6.0.0",
